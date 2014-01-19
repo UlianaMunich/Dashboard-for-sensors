@@ -19,8 +19,8 @@
           var tag_icon = "<span class='icon col-sm-2'><img width='20px' src='" + sensor.icon + "'></img></span>";
           var tag_title = "<span class='title col-sm-6'>" + sensor.title + "</span>";
           var tag_subscribe = "<span class='subscribe col-sm-4'><button type='button'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
-          var tag_description = "<div class='description'>" + sensor.description + "</div>";
-          var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'>" + tag_icon + tag_title + tag_subscribe + tag_description + "</div>"
+          var tag_description = "<div class='description col-sm-12'>" + sensor.description + "</div>";
+          var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title + tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>"
           $('#sensor_list').append(tag_sensor);
           //$('.image').append(tag_icon);
           //$('.subscr_button').append(tag_subscribe);

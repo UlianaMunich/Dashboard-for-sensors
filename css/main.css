@@ -25,11 +25,19 @@ div.content {
 	display: none;
 } 
 
-title {
+div#sensor_list {
+    text-align: left;
+}
+
+.title {
 	color: #3276b1;
 }
 
 hr {
 	color:black;
 	height: 2px;
+}
+
+.sensor {
+    height: 120px;
 }
