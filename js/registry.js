@@ -16,12 +16,14 @@
       if (json.sensor_list[i].availability == true){
           var sensor = json.sensor_list[i];
 
-          var tag_title = "<span class='title'>" + sensor.title + "</span>";
+          var tag_title = "<span class='title'><h4>" + sensor.title + "</h4></span>";
           var tag_description = "<div class='description'>" + sensor.description + "</div>";
           var tag_icon = "<span class='icon'><img width='20px' src='" + sensor.icon + "'></img></span>";
           var tag_subscribe = "<span class='subscribe'><button type='button'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
-          var tag_sensor = "<div class='sensor' id='" + sensor.id + "'>" + tag_icon + tag_title + tag_subscribe + tag_description + "</div>"
+          var tag_sensor = "<div class='sensor' id='" + sensor.id + "'>" + tag_title + tag_description + "</div>"
           $('.sensor_list').append(tag_sensor);
+          $('.image').append(tag_icon);
+          $('.subscr_button').append(tag_subscribe);
        }
     };
     //accept SLA in alert window
@@ -29,7 +31,7 @@
       var sla = $(this).next().text();
       var result = confirm(sla); //put SLA text there
        if (result == true){
-        console.log("user made subscription");
+        alert("Successfuly subscribed");
        }
     });
   //Sign In button click and go to the sensor list

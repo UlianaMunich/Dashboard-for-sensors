@@ -12,7 +12,7 @@ var temp_chart_settings = {
     },
     "series": [
         {
-            "data": [],
+            "data": [0,1,0],
             "name": "Temperature in Dresden"
         }
     ],
@@ -20,7 +20,8 @@ var temp_chart_settings = {
         "text": "German weather"
     },
     "chart": {
-        "type": "spline"
+        "type": "spline",
+	"renderTo": "graph_placeholder"
     },
     "xAxis": {
         "labels": {
@@ -32,7 +33,7 @@ var temp_chart_settings = {
 
 function draw_graph(data) {
     console.log("New data: " + data);
-    var series = chart.series[0];
+    var series = temp_chart.series[0];
     var shift = series.data.length > 20; // shift if the series is longer than 20
     // add the point
     temp_chart.series[0].addPoint(data, true, shift);
@@ -80,13 +81,12 @@ function onMessage(msg) {
 }
 
 $(document).ready(function () {
-    temp_chart_settings.chart.renderTo = 'graph_placeholder';
-    temp_chart = new Highcharts.Chart(temp_chart_settings);
-    connection = new Strophe.Connection(BOSH_SERVICE);
     $('#connect').click(function(){
 	var button = $('#connect').get(0);
 	connection.connect($('#jid').get(0).value,
 			   $('#pass').get(0).value,
                            onConnect);
     });
+    temp_chart = new Highcharts.Chart(temp_chart_settings);
+    connection = new Strophe.Connection(BOSH_SERVICE);
 });

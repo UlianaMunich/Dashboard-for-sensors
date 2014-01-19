@@ -20,6 +20,7 @@
     <h1>SensDash</h1>
 </div>
 <div class="container">
+
   <form class="form-signin" role="form">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" id="jid" class="form-control" placeholder="JID" required="" autofocus="">
@@ -29,19 +30,42 @@
         </label>
         <button id="connect" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>
-</div>
-<div class="content"> 
-   <!--<h2>Welcome <span class="user_name"></span></h2>-->
-    <div class="sensor_list">
-    <!--
-       <div class="sensor">
-         <span class="icon"></span>
-         <span class="title"></span>
-         <span class="subscribe"></span>
-       </div>      
-    </div>-->
+
+  <div class="content"> 
+        <hr>
+        <div class="navigation row">
+          <div class="col-md-4 col-sm-8 col-xs-12" data-section="sensors_list">
+                  <h4><a href="#">Sensors list</a> </h4>
+                </div>
+          <div class="col-md-4 col-sm-8 col-xs-12" data-section="favorites">
+                  <h4><a href="#"> Favorites </a> </h4>
+                </div>
+          <div class="col-md-4 col-sm-8 col-xs-12" data-section="settings">
+                  <h4><a href="#">Settings </a> </h4>
+                </div>
+        </div>
+        <hr>
+       <!--<h2>Welcome <span class="user_name"></span></h2>-->
+       <div id="sensors_list" class="section">
+         <div class="row story">
+         <div class="col-sm-4 hidden-xs image"></div>
+        <div class="col-sm-4 ">
+            <div class="sensor_list">
+            <!--
+               <div class="sensor">
+                 <span class="icon"></span>
+                 <span class="title"></span>
+                 <span class="subscribe"></span>
+               </div>      
+            </div>-->
+          </div>
+        </div>
+        <div class="col-sm-4 subscr_button"></div>
+        </div>
+      </div>
+      <hr class="story-divider">
+      <div class="graph" id="graph_placeholder" style="width: 310px; height: 400px; margin: 0 auto">  </div>
   </div>
-  <div class="graph" id="graph_placeholder" style="width: 310px; height: 400px; margin: 0 auto">  </div>
 </div>
   
 </body>

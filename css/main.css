@@ -20,4 +20,8 @@ div.content {
 title {
 	color: #3276b1;
 }
+hr {
+	color:black;
+	height: 2px;
+}
 
