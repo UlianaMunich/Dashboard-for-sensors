@@ -24,4 +24,6 @@ hr {
 	color:black;
 	height: 2px;
 }
-
+div.graph{
+	display: none;
+}
