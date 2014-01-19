@@ -32,6 +32,7 @@
       var result = confirm(sla); //put SLA text there
        if (result == true){
         alert("Successfuly subscribed");
+        $('div.graph').show();
        }
     });
   //Sign In button click and go to the sensor list

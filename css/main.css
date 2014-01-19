@@ -37,7 +37,12 @@ hr {
 	color:black;
 	height: 2px;
 }
+<<<<<<< HEAD
 
 .sensor {
     height: 120px;
+=======
+div.graph{
+	display: none;
+>>>>>>> 9aa99625c7b58b99ef7bc6f937db9dc54939f87c
 }
