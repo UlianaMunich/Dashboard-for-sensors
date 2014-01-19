@@ -2,11 +2,13 @@
 <html>
 <head>
 <script src="https://code.jquery.com/jquery.js"></script>
-  <!--<script type='text/javascript' src='../strophe.js'></script>
-  <script type='text/javascript' src='echobot.js'></script>-->
-  <title> SensDash </title>
+<title> SensDash </title>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="js/mainJS.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script type='text/javascript' src='js/strophe.js'></script>
+<script type='text/javascript' src='js/xmpp.js'></script>
+<script src="js/registry.js"></script>
+
 <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/signin.css" rel="stylesheet">
@@ -20,12 +22,12 @@
 <div class="container">
   <form class="form-signin" role="form">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="form-control" placeholder="Email address" required="" autofocus="">
-        <input type="password" class="form-control" placeholder="Password" required="">
+        <input type="text" id="jid" class="form-control" placeholder="JID" required="" autofocus="">
+        <input type="password" id="pass" class="form-control" placeholder="Password" required="">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button id="connect" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   </form>
 </div>
 <div class="content"> 
@@ -39,6 +41,7 @@
        </div>      
     </div>-->
   </div>
+  <div class="graph" id="graph_placeholder" style="width: 310px; height: 400px; margin: 0 auto">  </div>
 </div>
   
 </body>

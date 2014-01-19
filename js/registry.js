@@ -1,4 +1,3 @@
-
   //self-defined anonymous function instead of onLoad()
     (function(){
     $.ajax({
@@ -34,13 +33,9 @@
        }
     });
   //Sign In button click and go to the sensor list
-    $('button:submit').click(function(){
+  $('button:submit').click(function(){
     $('form.form-signin').hide();
     $('div.content').show();
+    return false;
   });
   }
-
-
-
-
-

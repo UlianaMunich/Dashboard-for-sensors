@@ -1,1 +1,1 @@
-Repository for Strophe client
+Dashboard that renders charts based on incoming XMPP streams
