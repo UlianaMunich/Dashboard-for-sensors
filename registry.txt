@@ -28,7 +28,7 @@
             "icon": "http://airconditioning-icon-24px.jpg.to/"
         }
         {
-            "id": "1",
+            "id": "4",
             "title": "Temperature",
             "availability": true,
             "last_update": "2013-08-07T11:14:34.000+02:00",
@@ -37,7 +37,7 @@
             "icon": "http://temperature-icon-24px.jpg.to/"
         },
         {
-            "id": "2",
+            "id": "5",
             "title": "Heating",
             "availability": true,
             "last_update": "2013-08-07T11:14:34.000+02:00",
@@ -46,7 +46,7 @@
             "icon": "http://heating-icon-24px.jpg.to/"
         },
         {
-            "id": "3",
+            "id": "6",
             "title": "Air Conditioning",
             "availability": false,
             "last_update": "2013-08-07T11:14:34.000+02:00",
