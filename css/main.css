@@ -1,4 +1,9 @@
-.header {
+body {
+    padding-bottom: 20px;
+    background-color: #eee;
+}
+
+/*.header {
 	padding: 0 1em 0 1em;
 
 }
@@ -10,18 +15,21 @@
 }
 .sensor span {
 	padding-right: 1em;
-}
+}*/
+
 div.sla {
 	display: none;
 }
+
 div.content {
 	display: none;
 } 
+
 title {
 	color: #3276b1;
 }
+
 hr {
 	color:black;
 	height: 2px;
 }
-
