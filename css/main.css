@@ -40,6 +40,6 @@ hr {
 .sensor {
     height: 120px;
 }
-#graphs {
+div.graph {
 	display: none;
 }
