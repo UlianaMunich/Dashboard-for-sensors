@@ -1,5 +1,5 @@
   //self-defined anonymous function instead of onLoad()
-    (function getRegistryList(){
+    (function (){
     $.ajax({
                 dataType: "JSON",
                 url: "registry.txt",
