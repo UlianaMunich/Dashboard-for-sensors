@@ -1,5 +1,16 @@
   //self-defined anonymous function instead of onLoad()
     (function (){
+    	 //Sign In button click and go to the sensor list with prevented Default()
+
+    $('form.form-signin').submit(function(event) {
+      console.log('Handler for .submit() called.');
+      event.preventDefault();
+    });
+
+    $('button:submit').click(function(){
+      $('form.form-signin').hide();
+      $('div.content').show();
+     });
     $.ajax({
                 dataType: "JSON",
                 url: "registry.txt",
@@ -36,7 +47,6 @@
             
            }
            $('#sensor_list').append(tag_sensor);
-
        }
     };
     //accept SLA in alert window
@@ -48,13 +58,7 @@
         $('div.graph').show();
        }
     });
-  //Sign In button click and go to the sensor list with prevented Default()
-    $('button:submit').click(function(){
-      $('form.form-signin').hide();
-      $('div.content').show();
-      return false;
-     });
-  //update sensor list by clicking on Sensor List in nav.bar
+   //update sensor list by clicking on Sensor List in nav.bar
   //$('#update_list').click(getRegistryList());
   }
 
