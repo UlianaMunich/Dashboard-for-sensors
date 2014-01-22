@@ -57,4 +57,6 @@
   });
   }
     //update sensor list by clicking on Sensor List in nav.bar
-  $('#update_list').click(getRegistryList());
+  (function (){
+    $('#update_list').click(getRegistryList());
+  })();
