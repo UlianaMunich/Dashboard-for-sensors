@@ -1,5 +1,5 @@
   //self-defined anonymous function instead of onLoad()
-    (function(){
+    (function getRegistryList(){
     $.ajax({
                 dataType: "JSON",
                 url: "registry.txt",
@@ -18,12 +18,27 @@
 
           var tag_icon = "<span class='icon col-sm-2'><img width='20px' src='" + sensor.icon + "'></img></span>";
           var tag_title = "<span class='title col-sm-6'>" + sensor.title + "</span>";
-          var tag_subscribe = "<span class='subscribe col-sm-4'><button type='button'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
           var tag_description = "<div class='description col-sm-12'>" + sensor.description + "</div>";
-          var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title + tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>"
-          $('#sensor_list').append(tag_sensor);
-          //$('.image').append(tag_icon);
-          //$('.subscr_button').append(tag_subscribe);
+          var tag_subscribe = "<span class='subscribe col-sm-4'><button type='button'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
+         // var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title 
+                            //+ tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>";
+
+          //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
+          if (sensor.preview == true){
+            //Button that triggers modal
+            var tag_get_preview = "<span class='preview col-sm-4'>
+                                    <button type='button' class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Preview</button></span>";                     
+         
+            var tag_preview = "<span class='preview' col-sm-4'><img width='20px' src='" + sensor.preview + "'></img></span>";
+            var tag_sensor = "<div class='sensor col-md-2' id='" + sensor.id + "'><div class='row'>" + tag_preview + tag_title + tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>";
+                   
+          }else{
+            var tag_icon = "<span class='icon col-sm-2'><img width='20px' src='" + sensor.icon + "'></img></span>";
+            var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title + tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>";
+            
+           }
+           $('#sensor_list').append(tag_sensor);
+
        }
     };
     //accept SLA in alert window
@@ -42,3 +57,5 @@
     return false;
   });
   }
+    //update sensor list by clicking on Sensor List in nav.bar
+  $('#update_list').click(getRegistryList());
