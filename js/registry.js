@@ -1,5 +1,8 @@
-//self-defined anonymous function instead of onLoad()
-$(function () {
+
+jQuery( document ).ready(function( $ ) {
+  // Code using $ as usual goes here.
+//});//self-defined anonymous function instead of onLoad()
+//$(function () {
     //Sign In button click and go to the sensor list with prevented Default()
 
     $('form.form-signin').submit(function (event) {
