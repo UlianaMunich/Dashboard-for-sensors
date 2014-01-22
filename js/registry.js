@@ -27,7 +27,6 @@
           if (sensor.preview == true){
             //Button that triggers modal
             var tag_get_preview = "<span class='preview col-sm-4'><button type='button' class='btn btn-primary btn-lg' data-toggle='modal' data-target='#myModal'>Preview</button></span>";                     
-         
             var tag_preview = "<span class='preview' col-sm-4'><img width='20px' src='" + sensor.preview + "'></img></span>";
             var tag_sensor = "<div class='sensor col-md-2' id='" + sensor.id + "'><div class='row'>" + tag_preview + tag_title + tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>";
                    
@@ -50,11 +49,11 @@
        }
     });
   //Sign In button click and go to the sensor list with prevented Default()
-  $('button:submit').click(function(){
-    $('form.form-signin').hide();
-    $('div.content').show();
-    return false;
-  });
+    $('button:submit').click(function(){
+      $('form.form-signin').hide();
+      $('div.content').show();
+      return false;
+     });
   //update sensor list by clicking on Sensor List in nav.bar
   //$('#update_list').click(getRegistryList());
   }
