@@ -19,7 +19,7 @@ jQuery( document ).ready(function( $ ) {
         url: "registry.txt",
         success: registry_parsing,
     });
-})();
+});
 //parsing of Registry data and creating html structure
 var json;
 
