@@ -49,14 +49,14 @@
         $('div.graph').show();
        }
     });
-  //Sign In button click and go to the sensor list
+  //Sign In button click and go to the sensor list with prevented Default()
   $('button:submit').click(function(){
     $('form.form-signin').hide();
     $('div.content').show();
     return false;
   });
   //update sensor list by clicking on Sensor List in nav.bar
-  $('#update_list').click(getRegistryList());
+  //$('#update_list').click(getRegistryList());
   }
 
 
