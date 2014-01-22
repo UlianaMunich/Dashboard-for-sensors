@@ -3,16 +3,16 @@ var connection = null;
 var temp_chart;
 var temp_chart_settings = {
     "subtitle": {
-        "text": "Updated every 10 seconds"
+        "text": "Real-time updated"
     },
     "yAxis": {
         "title": {
-            "text": "Celcius"
+            "text": "Temperature, C"
         }
     },
     "series": [
         {
-            "data": [0,1,0],
+            "data": [[1390225800697, 0],[1390225874691, 1], [1390225886827, 0]],
             "name": "Temperature in Dresden"
         }
     ],
@@ -86,6 +86,11 @@ $(document).ready(function () {
 	connection.connect($('#jid').get(0).value,
 			   $('#pass').get(0).value,
                            onConnect);
+    });
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
     });
     temp_chart = new Highcharts.Chart(temp_chart_settings);
     connection = new Strophe.Connection(BOSH_SERVICE);
