@@ -55,8 +55,10 @@
     $('div.content').show();
     return false;
   });
+  //update sensor list by clicking on Sensor List in nav.bar
+  $('#update_list').click(getRegistryList());
   }
-    //update sensor list by clicking on Sensor List in nav.bar
-  (function (){
-    $('#update_list').click(getRegistryList());
-  })();
+
+
+    
+
