@@ -1,5 +1,5 @@
 //self-defined anonymous function instead of onLoad()
-(function () {
+$(function () {
     //Sign In button click and go to the sensor list with prevented Default()
 
     $('form.form-signin').submit(function (event) {
@@ -21,8 +21,8 @@
 var json;
 
 function registry_parsing(sensor_json) {
-    console.log(json);
-    json = sensor_json;
+         json = sensor_json;
+          console.log(json);
 
     for (var i = 0; i < json.sensor_list.length; i++) {
         if (json.sensor_list[i].availability == true) {
