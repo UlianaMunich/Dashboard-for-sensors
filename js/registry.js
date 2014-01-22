@@ -10,7 +10,7 @@ jQuery(document).ready(function ($) {
         $('div.content').show();
     });
 
-    var sensor_parsing = $.ajax({
+    $.ajax({
         dataType: "JSON",
         url: "registry.txt",
         success: registry_parsing,
@@ -59,5 +59,5 @@ function registry_parsing(sensor_json) {
         }
     });
     //update sensor list by clicking on Sensor List in nav.bar
-    $('#update_list').click(function(sensor_parsing));
+    //$('#update_list').click(function(sensor_parsing));
 }
