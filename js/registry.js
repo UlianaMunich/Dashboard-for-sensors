@@ -10,11 +10,13 @@ jQuery(document).ready(function ($) {
         $('div.content').show();
     });
 
-    $.ajax({
+    function getSensorsList(){ 
+        $.ajax({
         dataType: "JSON",
         url: "registry.txt",
         success: registry_parsing,
-    });
+        });
+    }
 });
 //parsing of Registry data and creating html structure
 var json;
