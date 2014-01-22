@@ -9,16 +9,16 @@ jQuery(document).ready(function ($) {
         $('form.form-signin').hide();
         $('div.content').show();
     });
-
-    function getSensorsList(){ 
-        $.ajax({
-        dataType: "JSON",
-        url: "registry.txt",
-        success: registry_parsing,
-        });
-    }
+    getSensorsList();
 });
 //parsing of Registry data and creating html structure
+function getSensorsList(){ $.ajax({
+    dataType: "JSON",
+    url: "registry.txt",
+    success: registry_parsing,
+    });
+}
+   
 var json;
 
 function registry_parsing(sensor_json) {
