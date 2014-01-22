@@ -1,17 +1,15 @@
 //self-defined anonymous function instead of onLoad()
-jQuery( document ).ready(function( $ ) {
+jQuery(document).ready(function ($) {
 
     //Sign In button click and go to the sensor list with prevented Default()
-
     $('form.form-signin').submit(function (event) {
-        console.log('Handler for .submit() called.');
         event.preventDefault();
     });
-
     $('button:submit').click(function () {
         $('form.form-signin').hide();
         $('div.content').show();
     });
+
     $.ajax({
         dataType: "JSON",
         url: "registry.txt",
@@ -22,8 +20,8 @@ jQuery( document ).ready(function( $ ) {
 var json;
 
 function registry_parsing(sensor_json) {
-         json = sensor_json;
-          console.log(json);
+    json = sensor_json;
+    console.log(json);
 
     for (var i = 0; i < json.sensor_list.length; i++) {
         if (json.sensor_list[i].availability == true) {
@@ -37,10 +35,10 @@ function registry_parsing(sensor_json) {
             //+ tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>";
 
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
-            if (sensor.preview == true) {
+            if (sensor.preview !='') {
                 //Button that triggers modal
                 var tag_get_preview = "<span class='preview col-sm-4'><button type='button' class='btn btn-primary btn-lg' data-toggle='modal' data-target='#myModal'>Preview</button></span>";
-                var tag_preview = "<span class='preview' col-sm-4'><img width='20px' src='" + sensor.preview + "'></img></span>";
+                var tag_preview = "<span class='preview' col-sm-4' width='20px' src='" + sensor.preview + "'></span>";
                 var tag_sensor = "<div class='sensor col-md-2' id='" + sensor.id + "'><div class='row'>" + tag_preview + tag_title + tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>";
 
             } else {
