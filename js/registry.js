@@ -66,7 +66,7 @@ function registry_parsing(sensor_json) {
     };
     //accept SLA in alert window
     $('.subscribe>button').click(function () {
-        var sla = $(this).next().text();
+        var sla = $(this).nextAll('div.sla').text();
         var result = confirm(sla); //put SLA text there
         if (result == true) {
 
@@ -80,8 +80,7 @@ function registry_parsing(sensor_json) {
             content: $(this).next().text()
         });
         $('button.preview').tooltip({
-            title: 'Get a free preview',
-            content: $(this).next().text()
+            title: 'Get a free preview'
         });
 
 
