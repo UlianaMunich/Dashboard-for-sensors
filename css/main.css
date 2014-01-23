@@ -46,3 +46,8 @@ div.graph {
 .btn-lg{
 	font-size: 14px;
 }
+.btn-subscribed{
+	background-color: #1CAA1C;
+	border-color: #113211;
+	color: white;
+}
