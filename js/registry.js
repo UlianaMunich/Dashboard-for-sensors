@@ -10,6 +10,11 @@ jQuery(document).ready(function ($) {
         $('div.content').show();
     });
     getSensorsList();
+
+    //update sensor list by clicking on Sensor List in nav.bar
+    $('#update_list').click(function(){
+      $('#sensor_list').getSensorsList();
+    });
 });
 //parsing of Registry data and creating html structure
 function getSensorsList(){ 
@@ -62,8 +67,5 @@ function registry_parsing(sensor_json) {
             $('div.graph').show();
         }
     });
-    //update sensor list by clicking on Sensor List in nav.bar
-    $('#update_list').click(function(){
-      $('#sensor_list').getSensorsList();
-    });
+    
 }
