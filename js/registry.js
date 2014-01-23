@@ -77,12 +77,10 @@ function registry_parsing(sensor_json) {
     });
         //tooltip for buttons
 $('button.subscribe').tooltip({
-        title: 'Subscription to a service',
-        content: 'Subscription to a service'
+        title: 'Subscription to a service'
     });
     $('button.preview').tooltip({
-        title: 'Get a free preview',
-        content: 'Get a free preview'
+        title: 'Get a free preview'
     });
 
 }
