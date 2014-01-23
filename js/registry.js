@@ -37,7 +37,7 @@ function registry_parsing(sensor_json) {
 
             var tag_icon = "<span class='icon col-sm-2'><img width='20px' src='" + sensor.icon + "'></img></span>";
             var tag_title = "<span class='title col-sm-6'><h3>" + sensor.title + "</h3></span>";
-            var tag_subscribe = "<span class='subscribe col-sm-2'><button class='btn btn-primary btn-lg' type='button'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
+            var tag_subscribe = "<span id='subscribe' class='subscribe col-sm-2'><button class='btn btn-primary btn-lg' type='button'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
             var tag_description = "<div class='description col-sm-6'>" + sensor.description + "</div>";
 
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
@@ -62,8 +62,8 @@ function registry_parsing(sensor_json) {
         var result = confirm(sla); //put SLA text there
         if (result == true) {
             alert("Successfuly subscribed");
-            $('.subscribe>button').prop('val','Subscribed').removeClass('btn-primary btn-lg').addClass('btn-subscribed');
-            $('div.graph').show();
+            $('button #subscribe').attr('val','Subscribed').removeClass('btn-primary').addClass('btn-subscribed');
+           // $('div.graph').show();
         }
     });
     
