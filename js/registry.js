@@ -29,11 +29,12 @@ var json;
 function registry_parsing(sensor_json) {
     json = sensor_json;
     console.log(json);
+            $('#sensor_list').empty();
 
     for (var i = 0; i < json.sensor_list.length; i++) {
         if (json.sensor_list[i].availability == true) {
             var sensor = json.sensor_list[i];
-            
+
 
             var tag_icon = "<span class='icon col-sm-2'><img width='20px' src='" + sensor.icon + "'></img></span>";
             var tag_title = "<span class='title col-sm-6'>" + sensor.title + "</span>";
@@ -54,7 +55,7 @@ function registry_parsing(sensor_json) {
                 var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title + tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>";
 
             }
-            $('#sensor_list').empty();
+
             $('#sensor_list').append(tag_sensor);
         }
     };
