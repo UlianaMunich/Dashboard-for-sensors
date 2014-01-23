@@ -37,7 +37,7 @@ function registry_parsing(sensor_json) {
 
             var tag_icon = "<span class='icon col-sm-2'><img width='20px' src='" + sensor.icon + "'></img></span>";
             var tag_title = "<span class='title col-md-2'><h3>" + sensor.title + "</h3></span>";
-            var tag_description = "<span class='description'>" + sensor.description + "</span>";
+            var tag_description = "<span class='description col-md-10'>" + sensor.description + "</span>";
             var tag_subscribe = "<span class='subscribe col-sm-4'><button id='subscribe' class='btn btn-primary' type='button' style='margin-top:10px'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
             
 
