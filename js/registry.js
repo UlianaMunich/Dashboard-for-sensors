@@ -12,7 +12,8 @@ jQuery(document).ready(function ($) {
     getSensorsList();
 });
 //parsing of Registry data and creating html structure
-function getSensorsList(){ $.ajax({
+function getSensorsList(){ 
+    $.ajax({
     dataType: "JSON",
     url: "registry.txt",
     success: registry_parsing,
