@@ -14,7 +14,12 @@ jQuery(document).ready(function ($) {
     //update sensor list by clicking on Sensor List in nav.bar
     $('#update_list').click(getSensorsList);
     //tooltip for buttons
-    $('button.subscribe').tooltip('toggle');
+    $('button.subscribe').tooltip({
+        title: 'Subscription to a service'
+    });
+    $('button.preview').tooltip({
+        title: 'Subscription to a service'
+    });
 
 });
 //parsing of Registry data and creating html structure
@@ -46,8 +51,8 @@ function registry_parsing(sensor_json) {
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
             if (sensor.preview != '') {
                 //Button that triggers modal
-                var tag_get_preview = "<span class='preview col-sm-4'><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#myModal' style='margin-top:10px'>Preview</button></span>";
-                var tag_preview = "<span class='preview' col-sm-4' width='20px' src='" + sensor.preview + "'></span>";
+                var tag_get_preview = "<span class='preview col-sm-4'><button type='button' class='preview btn btn-primary' data-toggle='modal' data-target='#myModal' style='margin-top:10px'>Preview</button></span>";
+                var tag_preview = "<span class='col-sm-4' width='20px' src='" + sensor.preview + "'></span>";
                 var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_title + tag_description + "</div><div class='row'>"+ tag_subscribe + tag_get_preview + "</div></div>";
 
             } else {
