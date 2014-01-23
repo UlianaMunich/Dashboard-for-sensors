@@ -56,7 +56,7 @@ function registry_parsing(sensor_json) {
 
             $('#sensor_list').append(tag_sensor);
             //limitation of symbols number in descrition field
-                $("div.description").each(function (i) {
+                $("span.description").each(function (i) {
                     len = $(this).text().length;
                     if (len > 200) {
                         $(this).text($(this).text().substr(0, 200) + '...');
