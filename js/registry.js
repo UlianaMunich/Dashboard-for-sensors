@@ -14,7 +14,7 @@ jQuery(document).ready(function ($) {
     //update sensor list by clicking on Sensor List in nav.bar
     $('#update_list').click(getSensorsList);
     //tooltip for buttons
-    $('button.subscribe').tooltip(animate);
+    $('button.subscribe').tooltip('toggle');
 
 });
 //parsing of Registry data and creating html structure
