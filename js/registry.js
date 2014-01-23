@@ -49,6 +49,7 @@ function registry_parsing(sensor_json) {
                 var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title + tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>";
 
             }
+            $('#sensor_list').empty();
             $('#sensor_list').append(tag_sensor);
         }
     };
