@@ -49,11 +49,12 @@ function registry_parsing(sensor_json) {
 
             } else {
                 var tag_icon = "<span class='icon col-sm-2'><img width='20px' src='" + sensor.icon + "'></img></span>";
-                var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title + "</div><div class='row'>" + tag_description + tag_subscribe + "</div></div>";
+                var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title + "</div><div class='row'>" + tag_description + tag_subscribe + "</div><div style='clear:both'></div></div>";
 
             }
 
             $('#sensor_list').append(tag_sensor);
+            
         }
     };
     //accept SLA in alert window
@@ -62,7 +63,7 @@ function registry_parsing(sensor_json) {
         var result = confirm(sla); //put SLA text there
         if (result == true) {
             alert("Successfuly subscribed");
-            $('button #subscribe').attr('val','Subscribed').removeClass('btn-primary').addClass('btn-subscribed');
+            $('button #subscribe').attr('val','Subscribed').removeClass('btn-primary btn-lg').addClass('btn-subscribed');
            // $('div.graph').show();
         }
     });
