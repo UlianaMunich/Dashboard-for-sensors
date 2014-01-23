@@ -14,9 +14,7 @@ jQuery(document).ready(function ($) {
     //update sensor list by clicking on Sensor List in nav.bar
     $('#update_list').click(getSensorsList);
 
-    
-
-});
+    });
 //parsing of Registry data and creating html structure
 function getSensorsList() {
     $.ajax({
@@ -25,15 +23,6 @@ function getSensorsList() {
         success: registry_parsing,
     });
 }
-    //tooltip for buttons
-$('button.subscribe').tooltip({
-        title: 'Subscription to a service',
-        content: 'Subscription to a service'
-    });
-    $('button.preview').tooltip({
-        title: 'Get a free preview',
-        content: 'Get a free preview'
-    });
 
 var json;
 
@@ -85,6 +74,15 @@ function registry_parsing(sensor_json) {
             $(this).removeClass('btn-primary').addClass('btn-subscribed').text('Subscribed');
             $('div.graph').show();
         }
+    });
+        //tooltip for buttons
+$('button.subscribe').tooltip({
+        title: 'Subscription to a service',
+        content: 'Subscription to a service'
+    });
+    $('button.preview').tooltip({
+        title: 'Get a free preview',
+        content: 'Get a free preview'
     });
 
 }
