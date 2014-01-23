@@ -62,5 +62,7 @@ function registry_parsing(sensor_json) {
         }
     });
     //update sensor list by clicking on Sensor List in nav.bar
-    $('#update_list').click(getSensorsList);
+    $('#update_list').click(function(){
+      $('#sensor_list').getSensorsList();
+    });
 }
