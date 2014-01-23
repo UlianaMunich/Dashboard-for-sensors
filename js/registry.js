@@ -66,13 +66,13 @@ function registry_parsing(sensor_json) {
     };
     //accept SLA in alert window
     $('.subscribe>button').click(function () {
-        var id = this.id;
+
         var sla = $(this).next().text();
         var result = confirm(sla); //put SLA text there
         if (result == true) {
-            if (id == $(this).parent("div:first")){
-            $('button.subscribe').removeClass('btn-primary').addClass('btn-subscribed').text('Subscribed');
-            }
+
+            $(this).removeClass('btn-primary').addClass('btn-subscribed').text('Subscribed');
+
            // $('div.graph').show();
         }
     });
