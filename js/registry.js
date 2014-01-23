@@ -74,8 +74,7 @@ function registry_parsing(sensor_json) {
             $(this).removeClass('btn-primary').addClass('btn-success').text('Subscribed');
             $('div.graph').show();
         }
-    });
-        //tooltip for buttons
+              //tooltip for buttons
     $('button.subscribe').tooltip({
         title: 'Subscription to a service',
         content:  sla
@@ -84,5 +83,7 @@ function registry_parsing(sensor_json) {
         title: 'Get a free preview',
         content: sla
     });
+    });
+  
 
 }
