@@ -38,8 +38,9 @@ function registry_parsing(sensor_json) {
 
             var tag_icon = "<span class='icon col-sm-2'><img width='20px' src='" + sensor.icon + "'></img></span>";
             var tag_title = "<span class='title col-sm-6'><h3>" + sensor.title + "</h3></span>";
-            var tag_description = "<div class='description col-sm-10'>" + sensor.description + "</div>";
-            var tag_subscribe = "<span class='subscribe col-sm-2'><button class='btn btn-primary btn-lg' type='button'>Subscribe</button><div class='sla'>" + sensor.sla + "</div>" + tag_subscribe + "</span>";
+            var tag_subscribe = "<span class='subscribe col-sm-2'><button class='btn btn-primary btn-lg' type='button'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
+            var tag_description = "<div class='description col-sm-10'>" + sensor.description + tag_subscribe + "</div>";
+            
             // var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title 
             //+ tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>";
 
