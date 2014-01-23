@@ -71,16 +71,18 @@ function registry_parsing(sensor_json) {
         var result = confirm(sla); //put SLA text there
         if (result == true) {
 
-            $(this).removeClass('btn-primary').addClass('btn-subscribed').text('Subscribed');
+            $(this).removeClass('btn-primary').addClass('btn-success').text('Subscribed');
             $('div.graph').show();
         }
     });
         //tooltip for buttons
-$('button.subscribe').tooltip({
-        title: 'Subscription to a service'
+    $('button.subscribe').tooltip({
+        title: 'Subscription to a service',
+        content:  sla
     });
     $('button.preview').tooltip({
-        title: 'Get a free preview'
+        title: 'Get a free preview',
+        content: sla
     });
 
 }
