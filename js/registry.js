@@ -38,7 +38,7 @@ function registry_parsing(sensor_json) {
             var tag_icon = "<span class='icon col-sm-2'><img width='20px' src='" + sensor.icon + "'></img></span>";
             var tag_title = "<span class='title col-md-2'><h3>" + sensor.title + "</h3></span>";
             var tag_description = "<span class='description col-md-12'>" + sensor.description + "</span>";
-            var tag_subscribe = "<span class='subscribe col-sm-4'><button class='btn btn-primary' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
+            var tag_subscribe = "<span class='subscribe col-sm-4'><button class='subscribe btn btn-primary' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
             
 
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
@@ -70,9 +70,9 @@ function registry_parsing(sensor_json) {
         var sla = $(this).next().text();
         var result = confirm(sla); //put SLA text there
         if (result == true) {
-            $(id).removeClass('btn-primary').addClass('btn-subscribed');
-            $('button.subscribe').text('Subscribed');
-
+            if (id == $(this).parent("div:first")){
+            $('button.subscribe').removeClass('btn-primary').addClass('btn-subscribed').text('Subscribed');
+            }
            // $('div.graph').show();
         }
     });
