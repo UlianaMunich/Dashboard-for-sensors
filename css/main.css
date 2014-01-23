@@ -43,3 +43,6 @@ hr {
 div.graph {
 	display: none;
 }
+.btn-lg{
+	font-size: 14px;
+}
