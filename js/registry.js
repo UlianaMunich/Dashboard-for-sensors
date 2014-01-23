@@ -15,10 +15,12 @@ jQuery(document).ready(function ($) {
     $('#update_list').click(getSensorsList);
     //tooltip for buttons
     $('button.subscribe').tooltip({
-        title: 'Subscription to a service'
+        title: 'Subscription to a service',
+        content: 'Subscription to a service'
     });
     $('button.preview').tooltip({
-        title: 'Subscription to a service'
+        title: 'Get a free preview',
+        content: 'Get a free preview'
     });
 
 });
