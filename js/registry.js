@@ -62,7 +62,7 @@ function registry_parsing(sensor_json) {
         var result = confirm(sla); //put SLA text there
         if (result == true) {
             alert("Successfuly subscribed");
-            $('button.subscribe').prop('val','Subscribed').addClass('btn-subscribed');
+            $('.subscribe>button').prop('val','Subscribed').removeClass('btn-primary btn-lg').addClass('btn-subscribed');
             $('div.graph').show();
         }
     });
