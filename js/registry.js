@@ -13,15 +13,8 @@ jQuery(document).ready(function ($) {
 
     //update sensor list by clicking on Sensor List in nav.bar
     $('#update_list').click(getSensorsList);
-    //tooltip for buttons
-    $('button.subscribe').tooltip({
-        title: 'Subscription to a service',
-        content: 'Subscription to a service'
-    });
-    $('button.preview').tooltip({
-        title: 'Get a free preview',
-        content: 'Get a free preview'
-    });
+
+    
 
 });
 //parsing of Registry data and creating html structure
@@ -32,6 +25,15 @@ function getSensorsList() {
         success: registry_parsing,
     });
 }
+    //tooltip for buttons
+$('button.subscribe').tooltip({
+        title: 'Subscription to a service',
+        content: 'Subscription to a service'
+    });
+    $('button.preview').tooltip({
+        title: 'Get a free preview',
+        content: 'Get a free preview'
+    });
 
 var json;
 
