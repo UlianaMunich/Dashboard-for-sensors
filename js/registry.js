@@ -13,6 +13,8 @@ jQuery(document).ready(function ($) {
 
     //update sensor list by clicking on Sensor List in nav.bar
     $('#update_list').click(getSensorsList);
+    //tooltip for buttons
+    $('button.subscribe').tooltip(animate);
 
 });
 //parsing of Registry data and creating html structure
@@ -38,7 +40,7 @@ function registry_parsing(sensor_json) {
             var tag_icon = "<span class='icon col-sm-2'><img width='20px' src='" + sensor.icon + "'></img></span>";
             var tag_title = "<span class='title col-md-2'><h3>" + sensor.title + "</h3></span>";
             var tag_description = "<span class='description col-md-12'>" + sensor.description + "</span>";
-            var tag_subscribe = "<span class='subscribe col-sm-4'><button class='subscribe btn btn-primary' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
+            var tag_subscribe = "<span class='subscribe col-sm-4'><button class='subscribe btn btn-primary' data-toggle='tooltip' data-placement='bottom' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
             
 
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
@@ -72,8 +74,7 @@ function registry_parsing(sensor_json) {
         if (result == true) {
 
             $(this).removeClass('btn-primary').addClass('btn-subscribed').text('Subscribed');
-
-           // $('div.graph').show();
+            $('div.graph').show();
         }
     });
 
