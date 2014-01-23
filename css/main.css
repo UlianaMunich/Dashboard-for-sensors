@@ -37,9 +37,6 @@ hr {
 	color:black;
 	height: 2px;
 }
-.sensor {
-    height: 120px;
-}
 div.graph {
 	display: none;
 }
