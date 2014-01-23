@@ -39,9 +39,6 @@ function registry_parsing(sensor_json) {
             var tag_title = "<span class='title col-sm-6'><h3>" + sensor.title + "</h3></span>";
             var tag_subscribe = "<span class='subscribe col-sm-2'><button class='btn btn-primary btn-lg' type='button'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
             var tag_description = "<div class='description col-sm-6'>" + sensor.description + "</div>";
-            
-            // var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title 
-            //+ tag_subscribe + "</div><div class='row'>" + tag_description + "</div></div>";
 
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
             if (sensor.preview !='') {
@@ -52,7 +49,7 @@ function registry_parsing(sensor_json) {
 
             } else {
                 var tag_icon = "<span class='icon col-sm-2'><img width='20px' src='" + sensor.icon + "'></img></span>";
-                var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title + "</div><div class='row'>" + tag_description + "</div></div>";
+                var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title + "</div><div class='row'>" + tag_description + tag_subscribe + "</div></div>";
 
             }
 
@@ -65,6 +62,7 @@ function registry_parsing(sensor_json) {
         var result = confirm(sla); //put SLA text there
         if (result == true) {
             alert("Successfuly subscribed");
+            $('btn.subscribe').text('Subscribed').css("color":"green");
             $('div.graph').show();
         }
     });
