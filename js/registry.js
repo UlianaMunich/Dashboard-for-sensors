@@ -12,7 +12,7 @@ jQuery(document).ready(function ($) {
     getSensorsList();
 
     //update sensor list by clicking on Sensor List in nav.bar
-    $('#update_list').click(getSensorsList);  
+    $('#update_list').click(getSensorsList);  \
 
 });
 //parsing of Registry data and creating html structure
