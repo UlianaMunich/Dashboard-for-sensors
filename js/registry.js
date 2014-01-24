@@ -28,9 +28,9 @@ function getSensorsList() {
 var num = 100; //number of pixels before modifying styles
 $(window).bind('scroll', function () {
     if ($(window).scrollTop() > num) {
-        $('.navigation').addClass('fixed');
+        $('.navigation row').addClass('fixed');
     } else {
-        $('.navigation').removeClass('fixed');
+        $('.navigation row').removeClass('fixed');
     }
 });
 

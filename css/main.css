@@ -2,21 +2,6 @@ body {
     padding-bottom: 20px;
     background-color: #eee;
 }
-
-/*.header {
-	padding: 0 1em 0 1em;
-
-}
-.content {
-	padding: 0 1em 0 1em;
-}  
-.sensor {
-	padding: 0 1em 1em 0em;
-}
-.sensor span {
-	padding-right: 1em;
-}*/
-
 div.sla {
 	display: none;
 }
@@ -52,5 +37,5 @@ div.graph {
 }*/
 .fixed {
     position:fixed;
-    top:0;
+    top:15px;
 }
