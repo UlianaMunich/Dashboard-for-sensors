@@ -17,9 +17,6 @@ jQuery(document).ready(function ($) {
     $('div.navigation').affix({
     offset: {
       top: 100
-    , bottom: function () {
-        return (this.bottom = $('.bs-footer').outerHeight(true))
-      }
     }
   })
 
