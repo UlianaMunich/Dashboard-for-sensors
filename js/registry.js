@@ -23,16 +23,25 @@ function getSensorsList() {
         success: registry_parsing,
     });
 }
-/* Dynamic top menu positioning*/
+/* Dynamic top menu positioning
 
 var num = 100; //number of pixels before modifying styles
+var nav = $('.navigation');
 $(window).bind('scroll', function () {
     if ($(window).scrollTop() > num) {
-        $('.navigation').addClass('fixed');
+       nav.addClass('fixed');
     } else {
-        $('.navigation').removeClass('fixed');
+        nav.removeClass('fixed');
     }
-});
+});*/
+  $('div.navigation').affix({
+    offset: {
+      top: 100
+    , bottom: function () {
+        return (this.bottom = $('.bs-footer').outerHeight(true))
+      }
+    }
+  })
 
 var json;
 function registry_parsing(sensor_json) {
