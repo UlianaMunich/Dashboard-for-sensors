@@ -39,3 +39,7 @@ div.graph {
     position:fixed;
     top:15px;
 }
+.content-fixed{
+	position: absolute;
+	z-index:-1;
+}
