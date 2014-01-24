@@ -23,18 +23,8 @@ function getSensorsList() {
         success: registry_parsing,
     });
 }
-/* Dynamic top menu positioning
 
-var num = 100; //number of pixels before modifying styles
-var nav = $('.navigation');
-$(window).bind('scroll', function () {
-    if ($(window).scrollTop() > num) {
-       nav.addClass('fixed');
-    } else {
-        nav.removeClass('fixed');
-    }
-});*/
-
+$('body').scrollspy({ target: '.sensros_wrapper' })
 var json;
 function registry_parsing(sensor_json) {
     json = sensor_json;

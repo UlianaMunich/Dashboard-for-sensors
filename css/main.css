@@ -28,14 +28,14 @@ div.graph {
 .btn-lg{
 	font-size: 14px;
 }
-/*.menu {
-    height:3em;
-    padding:.5em;
-    position:absolute;
-    top:50px;
-    width:100%;
-}*/
 .sensors_wrapper{
 	padding-top: 70px;
 
+}
+.navigation{
+	border-bottom: 1px solid #4679bd;
+    background: #ddd;
+    width: 100%;
+    top: 0;
+    position: fixed;
 }
