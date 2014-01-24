@@ -14,12 +14,6 @@ jQuery(document).ready(function ($) {
     //update sensor list by clicking on Sensor List in nav.bar
     $('#update_list').click(getSensorsList);  
 
-    $('div.navigation').affix({
-    offset: {
-      top: 100
-    }
-  });
-
 });
 //parsing of Registry data and creating html structure
 function getSensorsList() {
