@@ -25,7 +25,7 @@ function getSensorsList() {
 }
 /* Dynamic top menu positioning*/
 
-var num = 100; //number of pixels before modifying styles
+/*var num = 100; //number of pixels before modifying styles
 $(window).bind('scroll', function () {
     if ($(window).scrollTop() > num) {
         $('.navigation').addClass('fixed');
@@ -33,7 +33,7 @@ $(window).bind('scroll', function () {
         $('.navigation').removeClass('fixed');
     }
 });
-
+*/
 var json;
 
 function registry_parsing(sensor_json) {
