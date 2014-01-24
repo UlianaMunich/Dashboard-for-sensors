@@ -35,11 +35,6 @@ div.graph {
     top:50px;
     width:100%;
 }*/
-.fixed {
-    position:fixed;
-    top:15px;
-    z-index: 9999;
-    position: fixed;
-    left: 0;
-    width: 100%;
+.navigaion{
+	
 }

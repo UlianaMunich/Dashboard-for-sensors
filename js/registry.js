@@ -14,6 +14,11 @@ jQuery(document).ready(function ($) {
     //update sensor list by clicking on Sensor List in nav.bar
     $('#update_list').click(getSensorsList);  
 
+    $('div.navigation').affix({
+    offset: {
+      top: 100
+    }
+  });
 
 });
 //parsing of Registry data and creating html structure
@@ -69,8 +74,8 @@ function registry_parsing(sensor_json) {
             //limitation of symbols number in descrition field
             $("span.description").each(function (i) {
                 len = $(this).text().length;
-                if (len > 200) {
-                    $(this).text($(this).text().substr(0, 200) + '...');
+                if (len > 300) {
+                    $(this).text($(this).text().substr(0, 300) + '...');
                 }
             });
         }
