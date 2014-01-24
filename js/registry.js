@@ -18,7 +18,7 @@ jQuery(document).ready(function ($) {
     offset: {
       top: 100
     }
-  })
+  });
 
 });
 //parsing of Registry data and creating html structure
