@@ -12,7 +12,16 @@ jQuery(document).ready(function ($) {
     getSensorsList();
 
     //update sensor list by clicking on Sensor List in nav.bar
-    $('#update_list').click(getSensorsList);
+    $('#update_list').click(getSensorsList);  
+
+    $('div.navigation').affix({
+    offset: {
+      top: 100
+    , bottom: function () {
+        return (this.bottom = $('.bs-footer').outerHeight(true))
+      }
+    }
+  })
 
 });
 //parsing of Registry data and creating html structure
@@ -34,14 +43,6 @@ $(window).bind('scroll', function () {
         nav.removeClass('fixed');
     }
 });*/
-  $('div.navigation').affix({
-    offset: {
-      top: 100
-    , bottom: function () {
-        return (this.bottom = $('.bs-footer').outerHeight(true))
-      }
-    }
-  })
 
 var json;
 function registry_parsing(sensor_json) {
