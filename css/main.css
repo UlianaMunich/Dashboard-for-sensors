@@ -43,3 +43,16 @@ div.graph {
 .btn-lg{
 	font-size: 14px;
 }
+.menu {
+    background:#345;
+    color:#FFF;
+    height:2em;
+    padding:.5em;
+    position:absolute;
+    top:50px;
+    width:100%;
+}
+.fixed {
+    position:fixed;
+    top:0;
+}
