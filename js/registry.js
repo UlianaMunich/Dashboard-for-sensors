@@ -57,7 +57,7 @@ function registry_parsing(sensor_json) {
             var tag_title = "<div class='title col-md-10'><h3>" + sensor.title + "</h3></div>";
             var tag_description = "<span class='description col-md-12'>" + sensor.description + "</span>";
             var tag_sla = "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><h4>If you want to receive all data,please accept the next SLA:</h4><p>" + sensor.sla + "<p><button type='button' class='btn btn-danger>Decline</button><button type='button' class='btn btn-success'>Accept</button></p></div>"
-            var tag_subscribe = "<span class='subscribe col-sm-4'><button class='subscribe btn btn-primary' data-toggle='tooltip' data-placement='bottom' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button>" + tag_sla + "</span>";
+            var tag_subscribe = "<span class='subscribe col-sm-4'><button class='subscribe btn btn-primary' data-toggle='tooltip' data-placement='bottom' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe"  + tag_sla + "</button></span>";
 
 
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
@@ -90,15 +90,14 @@ function registry_parsing(sensor_json) {
 
     //accept SLA in alert window
       $('.subscribe>button').click(function (){
-        alert();
+        $(this).nextAll('div.alert').alert();
      //   var result = confirm(sla); //put SLA text there
      //   if (result == true) {
-      $('button.btn-default').click(function(){
-            $('div.alert').fadeOut();
+      //$('button.btn-default').click(function(){
+     //       $('div.alert').fadeOut();
             $(this).removeClass('btn-primary').addClass('btn-success').text('Subscribed');
             $('div.graph').show();
            });
-        });
 
        //tooltip for buttons
         $('button.subscribe').tooltip({
