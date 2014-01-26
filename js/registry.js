@@ -45,14 +45,15 @@ function registry_parsing(sensor_json) {
             if (sensor.preview != '') {
                 //Button that triggers modal
                 var tag_get_preview = "<span class='preview col-sm-4'><button type='button' class='preview btn btn-primary' data-toggle='modal' data-target='#myModal' style='margin-top:10px'>Preview</button></span>";
-                var tag_preview = "<span class='col-sm-4' width='20px' src='" + sensor.preview + "'></span>";
-                var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title + tag_description + "</div><div class='row'>" + tag_subscribe + tag_get_preview + "</div></div>";
+                var tag_preview = "<span class='col-sm-4' width='200px' src='" + sensor.preview + "'></span>";
+                var tag_sensor = "<div class='col-md-4' id='" + sensor.id + "'><div class='sensor'><div class='row'>" + tag_icon + tag_title + tag_description + "</div><div class='row'>" + tag_subscribe + tag_get_preview + "</div></div></div>";
 
             } else {
-                var tag_sensor = "<div class='sensor col-md-4' id='" + sensor.id + "'><div class='row'>" + tag_icon + tag_title + tag_description + "</div><div class='row'>" + tag_subscribe + "</div></div>";
+                var tag_sensor = "<div class='col-md-4' id='" + sensor.id + "'><div class='sensor'><div class='row'>" + tag_icon + tag_title + tag_description + "</div><div class='row'>" + tag_subscribe + "</div></div></div>";
 
             }
-
+            $('div.modal-body').append(tag_preview);
+            
             $('#sensor_list').append(tag_sensor);
             //limitation of symbols number in descrition field
             $("span.description").each(function (i) {
