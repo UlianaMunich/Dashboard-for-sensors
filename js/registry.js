@@ -90,7 +90,7 @@ function registry_parsing(sensor_json) {
 
     //accept SLA in alert window
       $('.subscribe>button.subscribe').click(function (){
-           $(this).nextAll('div.alert').alert();
+           $(this).parent().nextAll('div.alert').alert();
      //   var result = confirm(sla); //put SLA text there
      //   if (result == true) {
       //$('button.btn-default').click(function(){
