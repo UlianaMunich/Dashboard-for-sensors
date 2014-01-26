@@ -14,6 +14,24 @@ jQuery(document).ready(function ($) {
     //update sensor list by clicking on Sensor List in nav.bar
     $('#update_list').click(getSensorsList);
 
+    //Tabs
+    $('#update_list a').click(function (e) {
+          e.preventDefault()
+          $(this).tab('show')
+        })
+     $('#data_results a').click(function (e) {
+          e.preventDefault()
+          $(this).tab('show')
+        })
+       $('#favorites a').click(function (e) {
+          e.preventDefault()
+          $(this).tab('show')
+        })
+     $('#settings a').click(function (e) {
+          e.preventDefault()
+          $(this).tab('show')
+        })
+
 });
 //parsing of Registry data and creating html structure
 function getSensorsList() {
@@ -35,7 +53,7 @@ function registry_parsing(sensor_json) {
         if (json.sensor_list[i].availability == true) {
             var sensor = json.sensor_list[i];
 
-            var tag_icon = "<div class='icon col-md-2'><img width='20px' src='" + sensor.icon + "'></img></div>";
+            var tag_icon = "<div class='icon col-md-2'><img class='img-responsive' src='" + sensor.icon + "'></img></div>";
             var tag_title = "<div class='title col-md-10'><h3>" + sensor.title + "</h3></div>";
             var tag_description = "<span class='description col-md-12'>" + sensor.description + "</span>";
             var tag_subscribe = "<span class='subscribe col-sm-4'><button class='subscribe btn btn-primary' data-toggle='tooltip' data-placement='bottom' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button><div class='sla'>" + sensor.sla + "</div></span>";
@@ -45,15 +63,14 @@ function registry_parsing(sensor_json) {
             if (sensor.preview != '') {
                 //Button that triggers modal
                 var tag_get_preview = "<span class='preview col-sm-4'><button type='button' class='preview btn btn-primary' data-toggle='modal' data-target='#myModal' style='margin-top:10px'>Preview</button></span>";
-                var tag_preview = "<span class='col-sm-4' width='200px' src='" + sensor.preview + "'></span>";
-                var tag_sensor = "<div class='col-md-4' id='" + sensor.id + "'><div class='sensor'><div class='row'>" + tag_icon + tag_title + tag_description + "</div><div class='row'>" + tag_subscribe + tag_get_preview + "</div></div></div>";
+                var tag_preview_content = "<div class='preview_content'><p>Before you decide to subscribe to any type of service, you can review the information provided by the service.</p><img class='img-responsive' src='" + sensor.preview + "'/></div>";
+                var tag_sensor = "<div class='col-md-4' id='" + sensor.id + "'><div class='sensor'><div class='row'>" + tag_icon + tag_title + tag_description + "</div><div class='row'>" + tag_subscribe + tag_get_preview + tag_preview_content + "</div></div></div>";
 
             } else {
                 var tag_sensor = "<div class='col-md-4' id='" + sensor.id + "'><div class='sensor'><div class='row'>" + tag_icon + tag_title + tag_description + "</div><div class='row'>" + tag_subscribe + "</div></div></div>";
 
             }
-            $('div.modal-body').append(tag_preview);
-            
+
             $('#sensor_list').append(tag_sensor);
             //limitation of symbols number in descrition field
             $("span.description").each(function (i) {
@@ -64,6 +81,12 @@ function registry_parsing(sensor_json) {
             });
         }
     };
+    $('button.preview').click(function(){
+       console.log($(this));
+       var preview = $(this).parent().nextAll('div.preview_content').html();
+       $('div.modal-body').html(preview);
+       });
+
     //accept SLA in alert window
     $('.subscribe>button').click(function () {
         var sla = $(this).nextAll('div.sla').text();
@@ -82,6 +105,4 @@ function registry_parsing(sensor_json) {
         $('button.preview').tooltip({
             title: 'Get a free preview'
         });
-
-
 }

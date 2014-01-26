@@ -32,26 +32,26 @@
 
     <div class="content"> 
         <div class="navigation navbar-fixed-top box-style" style="z-index:1">
-        <div class="container">
-                <div class="col-md-3 col-sm-6 col-xs-12" data-section="sensors_list">
-                    <h2><a href="#" id="update_list">Sensors list</a></h2>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12" data-section="favorites">
-                    <h2><a href="#">Data Results</a> </h2>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12" data-section="favorites">
-                    <h2><a href="#">Favorites</a> </h2>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-12" data-section="settings">
-                    <h2><a href="#">Settings</a> </h2>
-                </div>
+            <div class="container">
+                <ul class="nav nav-pills nav-justified">
+                  <li class="active"><a href="#sensor_list" id="update_list" data-toggle="tab">Sensors list</a></li>
+                  <li><a href="#graphs" id="data_results" data-toggle="tab">Data Results</a></li>
+                  <li><a href="#favorites" id="favorites" data-toggle="tab">Favorites</a></li>
+                  <li><a href="#settings" id="settings" data-toggle="tab">Settings</a></li>
+                </ul>
             </div>
         </div>
-        <div id="sensor_list" class="sensors_wrapper" style="z-index:-1">
+        <div class="tab-content">
+        <div id="sensor_list" class="sensors_wrapper tab-pane active">
         </div>
-
-        <div id="graphs" class="row">
-            <div class="graph" id="graph_placeholder" style="width: 310px; height: 400px; margin: 0 auto"></div>
+       
+        
+        <div id="graphs" class="row tab-pane">
+        <div class="row">
+            <div class="graph col-md-4" id="graph_placeholder" style="width: 260px; height: 230px; margin: 0 auto"></div>
+            <div class="col-md-4"><img class="img-responsive" src="img/highcharts.png"/></div>
+            <div class="col-md-4"><img class="img-responsive" src="img/test.png"/></div>
+            </div>
         </div>
               <!-- Modal for preview -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -62,9 +62,7 @@
                      <h4 class="modal-title" id="myModalLabel">Preview</h4>
                      </div>
                         <div class="modal-body">
-                        <p>Before you decide to subscribe to any type of service, you can review the information provided by the service.</p>
-                        <img src="img/graph.png">
-                        <!--Here is a source of preview from registry.js-->
+                          <!--Here is a source of preview from registry.js-->
                         </div>
                     <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -80,6 +78,7 @@
             </div>
           <div class="tooltip-arrow"></div>
         </div>
+     </div>
 </div>
   
 </body>
