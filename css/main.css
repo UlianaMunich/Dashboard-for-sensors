@@ -63,4 +63,6 @@ div.graph {
 .preview_content{
  display: none;
 }
-
+div.alert{
+    display:none;
+}
