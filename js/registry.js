@@ -16,21 +16,21 @@ jQuery(document).ready(function ($) {
 
     //Tabs
     $('#update_list a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        })
+          e.preventDefault();
+          $(this).tab('show');
+        });
      $('#data_results a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        })
+          e.preventDefault();
+          $(this).tab('show');
+        });
        $('#favorites_1 a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        })
+          e.preventDefault();
+          $(this).tab('show');
+        });
      $('#settings_1 a').click(function (e) {
-          e.preventDefault()
-          $(this).tab('show')
-        })
+          e.preventDefault();
+          $(this).tab('show');
+        });
 
 });
 //parsing of Registry data and creating html structure
