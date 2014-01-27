@@ -23,11 +23,11 @@ jQuery(document).ready(function ($) {
           e.preventDefault()
           $(this).tab('show')
         })
-       $('#favorites a').click(function (e) {
+       $('#favorites_1 a').click(function (e) {
           e.preventDefault()
           $(this).tab('show')
         })
-     $('#settings a').click(function (e) {
+     $('#settings_1 a').click(function (e) {
           e.preventDefault()
           $(this).tab('show')
         })
