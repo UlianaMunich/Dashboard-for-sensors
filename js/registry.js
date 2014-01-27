@@ -54,11 +54,11 @@ function registry_parsing(sensor_json) {
             var sensor = json.sensor_list[i];
 
             var tag_icon = "<div class='icon col-md-2'><img class='img-responsive' src='" + sensor.icon + "'></img></div>";
-            var tag_title = "<div class='title col-md-10'><h3>" + sensor.title + "</h3>" + tag_favorites + "</div>";
+            var tag_title = "<div class='title col-md-8'><h3>" + sensor.title + "</h3>" + tag_favorites + "</div>";
             var tag_description = "<span class='description col-md-12'>" + sensor.description + "</span>";
             var tag_sla = "<div class='alert alert-success fade in'><h4>If you want to receive all data,please accept the next SLA:</h4><p>" + sensor.sla + "</p><p><button type='button' class='btn btn-danger'>Decline</button><button type='button' class='btn btn-success'>Accept</button></p></div>";
             var tag_subscribe = "<span class='subscribe col-sm-4'><button class='subscribe btn btn-primary' data-toggle='tooltip' data-placement='bottom' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button>" + tag_sla + "</span>";
-            var tag_favorites = "<button type='button' class='btn btn-default btn-lg'><span class='glyphicon glyphicon-star-empty'></span></button>"
+            var tag_favorites = "<div class='icon col-md-2'><button type='button' class='btn btn-default btn-lg'><span class='glyphicon glyphicon-star-empty'></span></button></div>";
             
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
             if (sensor.preview != '') {
