@@ -35,7 +35,7 @@
             <div class="container">
                 <ul class="nav nav-pills nav-justified">
                   <li class="active"><a href="#sensor_list" id="update_list" data-toggle="tab">Sensors list</a></li>
-                  <li><a href="#graphs" id="data_results" data-toggle="tab">Subscribed</a></li>
+                  <li><a href="#graphs" id="data_results" data-toggle="tab">Subscribed Sensors</a></li>
                   <li><a href="#favorites" id="favorites" data-toggle="tab">Favorites</a></li>
                   <li><a href="#settings" id="settings" data-toggle="tab">Settings</a></li>
                 </ul>
@@ -49,10 +49,12 @@
         <!--Subscribed Tab-->
         <div id="graphs" class="row tab-pane">
         <div class="row">
-            <div class="sensor graph col-md-4" id="graph_placeholder" style="width: 260px; height: 230px; margin: 0 auto">
-                <p>ensor Name</p>
-                <p>Provider:</p>
-                <p>Metadata</p>
+             <div class="sensor">
+                <div class="graph col-md-4" id="graph_placeholder" style="width: 260px; height: 230px; margin: 0 auto">
+                    <p>ensor Name</p>
+                    <p>Provider:</p>
+                    <p>Metadata</p>
+                </div>
             </div>
             <div class="sensor col-md-4">
             <h3>Sensor name</h3>
