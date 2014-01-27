@@ -54,18 +54,18 @@ function registry_parsing(sensor_json) {
             var sensor = json.sensor_list[i];
 
             var tag_icon = "<div class='icon col-md-2'><img class='img-responsive' src='" + sensor.icon + "'></img></div>";
-            var tag_title = "<div class='title col-md-10'><h3>" + sensor.title + "</h3></div>";
+            var tag_title = "<div class='title col-md-10'><h3>" + sensor.title + "</h3>" + tag_favorites + "</div>";
             var tag_description = "<span class='description col-md-12'>" + sensor.description + "</span>";
             var tag_sla = "<div class='alert alert-success fade in'><h4>If you want to receive all data,please accept the next SLA:</h4><p>" + sensor.sla + "</p><p><button type='button' class='btn btn-danger'>Decline</button><button type='button' class='btn btn-success'>Accept</button></p></div>";
             var tag_subscribe = "<span class='subscribe col-sm-4'><button class='subscribe btn btn-primary' data-toggle='tooltip' data-placement='bottom' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button>" + tag_sla + "</span>";
-            var tag_favorites = "<button type='button' class='btn btn-default btn-lg><span class=glyphicon glyphicon-star-empty'></span></button>"
+            var tag_favorites = "<button type='button' class='btn btn-default btn-lg'><span class='glyphicon glyphicon-star-empty'></span></button>"
             
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
             if (sensor.preview != '') {
                 //Button that triggers modal
                 var tag_get_preview = "<span class='preview col-sm-4'><button type='button' class='preview btn btn-primary' data-toggle='modal' data-target='#myModal' style='margin-top:10px'>Info</button></span>";
                 var tag_preview_content = "<div class='preview_content'><p>Before you decide to subscribe to any type of service, you can review the information provided by the service.</p><img class='img-responsive' src='" + sensor.preview + "'/></div>";
-                var tag_sensor = "<div class='col-md-4' id='" + sensor.id + "'><div class='sensor'><div class='row'>" + tag_icon + tag_title + tag_favorites + tag_description + "</div><div class='row'>" + tag_subscribe + tag_get_preview + tag_preview_content + "</div></div></div>";
+                var tag_sensor = "<div class='col-md-4' id='" + sensor.id + "'><div class='sensor'><div class='row'>" + tag_icon + tag_title + tag_description + "</div><div class='row'>" + tag_subscribe + tag_get_preview + tag_preview_content + "</div></div></div>";
 
             } else {
                 var tag_sensor = "<div class='col-md-4' id='" + sensor.id + "'><div class='sensor'><div class='row'>" + tag_icon + tag_title + tag_description + "</div><div class='row'>" + tag_subscribe + "</div></div></div>";
