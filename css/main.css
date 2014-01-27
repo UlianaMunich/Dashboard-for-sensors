@@ -44,6 +44,10 @@ div.graph {
        -moz-box-shadow: 0 8px 6px -6px gray;
             box-shadow: 0 8px 6px -6px gray;
 }
+.subscribed_sensor{
+  background-color: white;
+
+}
 .navigation{
     background: #ddd;
     width: 100%;
