@@ -35,22 +35,31 @@
             <div class="container">
                 <ul class="nav nav-pills nav-justified">
                   <li class="active"><a href="#sensor_list" id="update_list" data-toggle="tab">Sensors list</a></li>
-                  <li><a href="#graphs" id="data_results" data-toggle="tab">Data Results</a></li>
+                  <li><a href="#graphs" id="data_results" data-toggle="tab">Subscribed</a></li>
                   <li><a href="#favorites" id="favorites" data-toggle="tab">Favorites</a></li>
                   <li><a href="#settings" id="settings" data-toggle="tab">Settings</a></li>
                 </ul>
             </div>
         </div>
+        <!--Sensor list Tab-->
         <div class="tab-content">
         <div id="sensor_list" class="sensors_wrapper tab-pane active">
         </div>
        
-        
+        <!--Subscribed Tab-->
         <div id="graphs" class="row tab-pane">
         <div class="row">
-            <div class="graph col-md-4" id="graph_placeholder" style="width: 260px; height: 230px; margin: 0 auto"></div>
-            <div class="col-md-4"><img class="img-responsive" src="img/highcharts.png"/></div>
-            <div class="col-md-4"><img class="img-responsive" src="img/test.png"/></div>
+            <div class="sensor graph col-md-4" id="graph_placeholder" style="width: 260px; height: 230px; margin: 0 auto">
+                <p>ensor Name</p>
+                <p>Provider:</p>
+                <p>Metadata</p>
+            </div>
+            <div class="sensor col-md-4">
+            <h3>Sensor name</h3>
+            <p>Provider:</p>
+            <p>Metadata</p>
+            <img class="img-responsive" src="img/highcharts.png"/></div>
+            <div class="sensor col-md-4"><img class="img-responsive" src="img/test.png"/></div>
             </div>
         </div>
               <!-- Modal for preview -->
@@ -59,7 +68,7 @@
                 <div class="modal-content">
                 <div class="modal-header">
                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                     <h4 class="modal-title" id="myModalLabel">Preview</h4>
+                     <h4 class="modal-title" id="myModalLabel">Info</h4>
                      </div>
                         <div class="modal-body">
                           <!--Here is a source of preview from registry.js-->
