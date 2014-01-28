@@ -31,16 +31,8 @@ jQuery(document).ready(function ($) {
           e.preventDefault();
           $(this).tab('show');
         });
-
-     //Add to favorites sensors
-     $('button.favorit_star').on({
-            'click': function(){
-      $('button.favorit_star>img').attr('src','img/yellow+star.png');
-        }
-     });
-
-
-});
+  
+  });
 //parsing of Registry data and creating html structure
 function getSensorsList() {
     $.ajax({
@@ -50,7 +42,6 @@ function getSensorsList() {
     });
 }
 
-$('body').scrollspy({ target: '.sensros_wrapper' })
 var json;
 function registry_parsing(sensor_json) {
     json = sensor_json;
@@ -115,4 +106,10 @@ function registry_parsing(sensor_json) {
         $('button.preview').tooltip({
             title: 'Get a free preview'
         });
+
+       //Add icon favorites sensors
+     $('button.favorit_star').click(function(){
+             var $this = $(this);
+            $this.children('img').attr('src','img/yellow+star.png');
+     });
 }
