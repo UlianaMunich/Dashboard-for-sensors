@@ -23,7 +23,7 @@ jQuery(document).ready(function ($) {
           e.preventDefault();
           $(this).tab('show');
         });
-       $('#favorites_1 a').click(function (e) {
+      $('#favorites_1 a').click(function (e) {
           e.preventDefault();
           $(this).tab('show');
         });
@@ -31,6 +31,14 @@ jQuery(document).ready(function ($) {
           e.preventDefault();
           $(this).tab('show');
         });
+
+     //Add to favorites sensors
+     $('button.favorit_star').on({
+            'click': function(){
+      $('button.favorit_star>img').attr('src','img/yellow+star.png');
+        }
+     });
+
 
 });
 //parsing of Registry data and creating html structure
@@ -57,7 +65,7 @@ function registry_parsing(sensor_json) {
             var tag_description = "<span class='description col-md-12'>" + sensor.description + "</span>";
             var tag_sla = "<div class='alert alert-success fade in'><h4>If you want to receive all data,please accept the next SLA:</h4><p>" + sensor.sla + "</p><p><button type='button' class='btn btn-danger'>Decline</button><button type='button' class='btn btn-success'>Accept</button></p></div>";
             var tag_subscribe = "<span class='subscribe col-sm-4'><button class='subscribe btn btn-primary' data-toggle='tooltip' data-placement='bottom' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button>" + tag_sla + "</span>";
-            var tag_favorites = "<div class='favorites col-md-2'><button id='favorites' type='button' class='btn btn-default'><img class='img-responsive' src='img/star.png'/></button></div>";
+            var tag_favorites = "<div class='favorites col-md-2'><button id='favorites' type='button' class='btn btn-default favorit_star'><img class='star img-responsive' src='img/star.png'/></button></div>";
             var tag_title = "<div class='title col-md-8'><h3>" + sensor.title + "</h3></div>" + tag_favorites;
             
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
