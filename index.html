@@ -11,15 +11,16 @@
 
 <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 <link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/signin.css" rel="stylesheet">
+<!--<link href="css/signin.css" rel="stylesheet">-->
 <link href="css/main.css" rel="stylesheet">
 
 </head>
-<body data-spy="scroll" data-target=".content>.sensors_wrapper">
+<body>
 <!--<div class="header">
     <h1>Open Source SensDash</h1>
 </div>-->
  <div class="container">
+ <!--
   <form class="form-signin" role="form">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" id="jid" class="form-control" placeholder="JID" required="" autofocus="">
@@ -28,16 +29,16 @@
             <input type="checkbox" value="remember-me"> Remember me
         </label>
         <button id="connect" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
+    </form>-->
 
     <div class="content"> 
         <div class="navigation navbar-fixed-top box-style" style="z-index:1">
             <div class="container">
                 <ul class="nav nav-pills nav-justified">
-                  <li class="active"><a href="#sensor_list" id="update_list" data-toggle="tab">Sensors list</a></li>
-                  <li><a href="#graphs" id="data_results" data-toggle="tab">Subscribed Sensors</a></li>
-                  <li><a href="#favorites" id="favorites_1" data-toggle="tab">Favorites</a></li>
-                  <li><a href="#settings" id="settings_1" data-toggle="tab">Settings</a></li>
+                  <li class="active"><a href="#sensor_list" data-toggle="tab">Sensors list</a></li>
+                  <li><a href="#graphs" data-toggle="tab">Subscribed Sensors</a></li>
+                  <li><a href="#favorites_tab" data-toggle="tab">Favorites</a></li>
+                  <li><a href="#settings" data-toggle="tab">Settings</a></li>
                 </ul>
             </div>
         </div>
@@ -52,7 +53,7 @@
           <div class="row">
               <div class="graph col-md-4" id="graph_placeholder" style="width: 260px; height: 230px; margin: 0 auto">
                 <div class="subscribed_sensor">
-                    <p>ensor Name</p>
+                    <p>Sensor Name</p>
                     <p>Provider:</p>
                     <p>Metadata</p>
                 </div>
@@ -74,7 +75,7 @@
         </div>
         
          <!--Favorites Tab-->
-         <div id="favorites" class="row tab-pane">
+         <div id="favorites_tab" class="row tab-pane">
         <p>Test</p>
          <p>Test</p>
          <p>Test</p>
@@ -85,43 +86,60 @@
 
          <!--Settings Tab-->
          <div id="settings" class="row tab-pane">
-            <div class="row">
-                 <div class="col-md-6">
-                     <p>Name</p>
-                     <p>Familyname</p>
-                     <p>e-mail</p>
-                     <p>Password</p>
-                     <p>Subscriptions:</p>
-                 </div>
-                 <div class="col-md-6">
-                     <p>Max</p>
-                     <p>Musterman</p>
-                     <p>muster@muster.muster</p>
-                     <p>List of sensors</p>
-                 </div>
+         <div class="row btn-settings">
+             <div class=" btn-group col-md-12">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                      Actions
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Edit Profile</a></li>
+                      <li><a href="#">Edit Subscribtions</a></li>
+                      <li><a href="#">Edit Favorites</a></li>
+                      <li><a href="#">Log out</a></li>
+                    </ul>
             </div>
+        </div>
+        <div class="row">
+                  <div class="col-md-12">
+                     <div class="row">
+                          <div class="col-sm-4 col-md-6">
+                             <h4>Name</h4>
+                             <h4>Family Name</h4>
+                             <h4>e-mail</h4>
+                             <h4>Password</h4>
+                             <h4>Subscriptions:</h4>
+                             <h4>User rights:</h4>
+                         </div>
+                         <div class="col-sm-4 col-md-6">
+                             <p>Max</p>
+                             <p>Musterman</p>
+                             <p>muster@muster.muster</p>
+                             <p>List of sensors</p>
+                         </div>
+                    </div>
+               </div>
+         </div>
          </div>
 
-
-        <!-- Modal for preview -->
+        <!-- Modal for subscribe-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                     <h4 class="modal-title" id="myModalLabel">Info</h4>
-                     </div>
-                        <div class="modal-body">
-                          <!--Here is a source of preview from registry.js-->
-                        </div>
-                    <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-             </div>
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">If you want to receive all data, please accept the next SLA</h4>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
+                <button type="button" class="btn btn-success">Accept</button>
+              </div>
             </div><!-- /.modal-content -->
-           </div><!-- /.modal-dialog -->
+          </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-    </div>
          <div class="tooltip">
           <div class="tooltip-inner">
             Tooltip!

@@ -6,10 +6,6 @@ div.sla {
 	display: none;
 }
 
-div.content {
-	display: none;
-} 
-
 div#sensor_list {
     text-align: left;
 }
@@ -67,9 +63,31 @@ div.graph {
 .preview_content{
  display: none;
 }
-div.alert{
+div.sla{
     display:none;
 }
 .favorites{
   padding: 0px 10px 10px 0px;
+}
+#favorites_tab{
+    background-color: white;
+       -webkit-box-shadow: 0 8px 6px -6px gray;
+       -moz-box-shadow: 0 8px 6px -6px gray;
+            box-shadow: 0 8px 6px -6px gray;
+  padding-top: 70px;
+}
+#settings{
+  background-color: white;
+       -webkit-box-shadow: 0 8px 6px -6px gray;
+       -moz-box-shadow: 0 8px 6px -6px gray;
+            box-shadow: 0 8px 6px -6px gray;
+  padding-top: 70px;
+
+}
+.btn-settings{
+ float: right;
+ padding-right: 40px;
+}
+button.preview{
+  margin-top: 10px;
 }

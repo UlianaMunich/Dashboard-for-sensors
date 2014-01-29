@@ -1,36 +1,10 @@
 //self-defined anonymous function instead of onLoad()
 jQuery(document).ready(function ($) {
 
-    //Sign In button click and go to the sensor list with prevented Default()
-    $('form.form-signin').submit(function (event) {
-        event.preventDefault();
-    });
-    $('button:submit').click(function () {
-        $('form.form-signin').hide();
-        $('div.content').show();
-    });
     getSensorsList();
 
     //update sensor list by clicking on Sensor List in nav.bar
     $('#update_list').click(getSensorsList);
-
-    //Tabs
-    $('#update_list a').click(function (e) {
-          e.preventDefault();
-          $(this).tab('show');
-        });
-     $('#data_results a').click(function (e) {
-          e.preventDefault();
-          $(this).tab('show');
-        });
-      $('#favorites_1 a').click(function (e) {
-          e.preventDefault();
-          $(this).tab('show');
-        });
-     $('#settings_1 a').click(function (e) {
-          e.preventDefault();
-          $(this).tab('show');
-        });
   
   });
 //parsing of Registry data and creating html structure
@@ -54,15 +28,15 @@ function registry_parsing(sensor_json) {
 
             var tag_icon = "<div class='icon col-md-2'><img class='img-responsive' src='" + sensor.icon + "'></img></div>";
             var tag_description = "<span class='description col-md-12'>" + sensor.description + "</span>";
-            var tag_sla = "<div class='alert alert-success fade in'><h4>If you want to receive all data,please accept the next SLA:</h4><p>" + sensor.sla + "</p><p><button type='button' class='btn btn-danger'>Decline</button><button type='button' class='btn btn-success'>Accept</button></p></div>";
-            var tag_subscribe = "<span class='subscribe col-sm-4'><button class='subscribe btn btn-primary' data-toggle='tooltip' data-placement='bottom' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button>" + tag_sla + "</span>";
+            var tag_sla = "<div class='sla'><p>" + sensor.sla + "</p></div>";
+            var tag_subscribe = "<div class='subscribe col-sm-4'><button class='subscribe btn btn-primary' data-toggle='tooltip' data-placement='bottom' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button>" + tag_sla + "</div>";
             var tag_favorites = "<div class='favorites col-md-2'><button id='favorites' type='button' class='btn btn-default favorit_star'><img class='star img-responsive' src='img/star.png'/></button></div>";
             var tag_title = "<div class='title col-md-8'><h3>" + sensor.title + "</h3></div>" + tag_favorites;
             
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
             if (sensor.preview != '') {
                 //Button that triggers modal
-                var tag_get_preview = "<span class='preview col-sm-4'><button type='button' class='preview btn btn-primary' data-toggle='modal' data-target='#myModal' style='margin-top:10px'>Info</button></span>";
+                var tag_get_preview = "<span class='preview col-sm-4'><button type='button' class='preview btn btn-primary'>Info</button></span>";
                 var tag_preview_content = "<div class='preview_content'><p>Before you decide to subscribe to any type of service, you can review the information provided by the service.</p><img class='img-responsive' src='" + sensor.preview + "'/></div>";
                 var tag_sensor = "<div class='col-md-4' id='" + sensor.id + "'><div class='sensor'><div class='row'>" + tag_icon + tag_title + tag_description + "</div><div class='row'>" + tag_subscribe + tag_get_preview + tag_preview_content + "</div></div></div>";
 
@@ -81,19 +55,19 @@ function registry_parsing(sensor_json) {
             });
         }
     };
-    $('button.preview').click(function(){
-       console.log($(this));
-       var preview = $(this).parent().nextAll('div.preview_content').html();
-       $('div.modal-body').html(preview);
-       });
+   // $('button.preview').click(function(){
+   //    console.log($(this));
+   //    var preview = $(this).parent().nextAll('div.preview_content').html();
+   //   $('div.modal-body').html(preview);
+    //   });
+    $('button.subscribe').click(function(){
+       var sla_accept = $(this).nextAll('div.sla').find('p').html();
+      $('div.modal-body').html(sla_accept);
+      $('#myModal').modal('show');
+      });
 
     //accept SLA in alert window
       $('.subscribe>button.subscribe').click(function (){
-           $(this).parent().nextAll('div.alert').alert();
-     //   var result = confirm(sla); //put SLA text there
-     //   if (result == true) {
-      //$('button.btn-default').click(function(){
-     //       $('div.alert').fadeOut();
             $(this).removeClass('btn-primary').addClass('btn-success').text('Subscribed');
             $('div.graph').show();
            });
@@ -110,6 +84,6 @@ function registry_parsing(sensor_json) {
        //Add icon favorites sensors
      $('button.favorit_star').click(function(){
              var $this = $(this);
-            $this.children('img').attr('src','img/yellow+star.png');
+            $this.children('img').attr('src','img/star_yellow.png');
      });
 }
