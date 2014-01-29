@@ -55,15 +55,17 @@ function registry_parsing(sensor_json) {
             });
         }
     };
-   // $('button.preview').click(function(){
-   //    console.log($(this));
-   //    var preview = $(this).parent().nextAll('div.preview_content').html();
-   //   $('div.modal-body').html(preview);
-    //   });
+     $('button.preview').click(function(){
+        var preview = $(this).parent().nextAll('div.preview_content').html();
+       $('div.modal-body').html(preview);
+       $('#previewModal').modal('show');
+        });
+
     $('button.subscribe').click(function(){
        var sla_accept = $(this).nextAll('div.sla').find('p').html();
       $('div.modal-body').html(sla_accept);
-      $('#myModal').modal('show');
+      $('#subscribeModal').modal('show');
+
       });
 
     //accept SLA in alert window

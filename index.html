@@ -86,44 +86,63 @@
 
          <!--Settings Tab-->
          <div id="settings" class="row tab-pane">
-         <div class="row btn-settings">
-             <div class=" btn-group col-md-12">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                      Actions
-                      <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Edit Profile</a></li>
-                      <li><a href="#">Edit Subscribtions</a></li>
-                      <li><a href="#">Edit Favorites</a></li>
-                      <li><a href="#">Log out</a></li>
-                    </ul>
+             <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h3>Your Profile</h3>
+                </div>
+                <div class="btn-group col-md-offset-1 col-md-1">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                          Actions
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Edit Profile</a></li>
+                          <li><a href="#">Edit Subscribtions</a></li>
+                          <li><a href="#">Edit Favorites</a></li>
+                          <li><a href="#">Log out</a></li>
+                        </ul>
+                </div>
+            </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-sm-4 col-md-6 col-md-offset-3">
+                      <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                              <input type="email" class="form-control" id="inputEmail3" value="Max">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Surname</label>
+                            <div class="col-sm-10">
+                              <input type="email" class="form-control" id="inputEmail3" value="Musterman">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                              <input type="email" class="form-control" id="inputEmail3" value="max@musterman.de">
+                            </div>
+                        </div>
+                      <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" id="inputPassword3" placeholder="****">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10 col-md-offset-6">
+                          <button type="submit" class="btn btn-default">Save</button>
+                          <!--<button type="submit" class="btn btn-default">Save</button>-->
+                        </div>
+                      </div>
+                    </form>
             </div>
         </div>
-        <div class="row">
-                  <div class="col-md-12">
-                     <div class="row">
-                          <div class="col-sm-4 col-md-6">
-                             <h4>Name</h4>
-                             <h4>Family Name</h4>
-                             <h4>e-mail</h4>
-                             <h4>Password</h4>
-                             <h4>Subscriptions:</h4>
-                             <h4>User rights:</h4>
-                         </div>
-                         <div class="col-sm-4 col-md-6">
-                             <p>Max</p>
-                             <p>Musterman</p>
-                             <p>muster@muster.muster</p>
-                             <p>List of sensors</p>
-                         </div>
-                    </div>
-               </div>
-         </div>
-         </div>
-
+      </div>
         <!-- Modal for subscribe-->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -140,6 +159,25 @@
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+
+         <!-- Modal for preview-->
+          <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Sensor Information Details</h4>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
          <div class="tooltip">
           <div class="tooltip-inner">
             Tooltip!
