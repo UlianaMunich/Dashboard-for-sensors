@@ -26,11 +26,11 @@ function registry_parsing(sensor_json) {
         if (json.sensor_list[i].availability == true) {
             var sensor = json.sensor_list[i];
 
-            var tag_icon = "<div class='icon col-md-2'><img class='img-responsive' src='" + sensor.icon + "'></img></div>";
+            var tag_icon = "<div class='icon col-xs-4 col-sm-2 col-md-2'><img class='img-responsive' src='" + sensor.icon + "'></img></div>";
             var tag_description = "<span class='description col-md-12'>" + sensor.description + "</span>";
             var tag_sla = "<div class='sla'><p>" + sensor.sla + "</p></div>";
             var tag_subscribe = "<div class='subscribe col-sm-4'><button class='subscribe btn btn-primary' data-toggle='tooltip' data-placement='bottom' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button>" + tag_sla + "</div>";
-            var tag_favorites = "<div class='favorites col-md-2'><button id='favorites' type='button' class='btn btn-default favorit_star'><img class='star img-responsive' src='img/star.png'/></button></div>";
+            var tag_favorites = "<div class='favorites col-xs-2 col-sm-1 col-md-1'><button id='favorites' type='button' class='btn btn-default favorit_star'><img class='star img-responsive' src='img/star.png'/></button></div>";
             var tag_title = "<div class='title col-md-8'><h3>" + sensor.title + "</h3></div>" + tag_favorites;
             
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
@@ -68,8 +68,8 @@ function registry_parsing(sensor_json) {
 
       });
 
-    //accept SLA in alert window
-      $('.subscribe>button.subscribe').click(function (){
+    //accept change button color and text if SLA accepted
+      $('div.modal-footer>button.btn-success').click(function (){
             $(this).removeClass('btn-primary').addClass('btn-success').text('Subscribed');
             $('div.graph').show();
            });
