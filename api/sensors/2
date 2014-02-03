@@ -1,0 +1,42 @@
+{
+    "subtitle": {
+        "text": "Real-time updated"
+    },
+    "yAxis": {
+        "title": {
+            "text": "Temperature, C"
+        }
+    },
+    "series": [
+        {
+            "data": [
+                [
+                    1390225800697,
+                    0
+                ],
+                [
+                    1390225874691,
+                    1
+                ],
+                [
+                    1390225886827,
+                    0
+                ]
+            ],
+            "name": "Temperature in Dresden"
+        }
+    ],
+    "title": {
+        "text": "German weather"
+    },
+    "chart": {
+        "type": "spline",
+        "renderTo": "graph_placeholder"
+    },
+    "xAxis": {
+        "labels": {
+            "rotation": -45
+        },
+        "type": "datetime"
+    }
+}

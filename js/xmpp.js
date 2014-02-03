@@ -81,11 +81,12 @@ function onMessage(msg) {
 }
 
 $(document).ready(function () {
-    $('#connect').click(function(){
-	var button = $('#connect').get(0);
-	connection.connect($('#jid').get(0).value,
-			   $('#pass').get(0).value,
-                           onConnect);
+    $('form.form-signin').submit(function (event) {
+    event.preventDefault();
+    $this = $(this);
+    var jid = $this.find('input#jid').val()
+    var pass = $this.find('input#pass').val()
+	connection.connect(jid, pass, onConnect);
     });
     Highcharts.setOptions({
         global: {

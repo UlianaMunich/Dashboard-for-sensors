@@ -4,22 +4,20 @@ jQuery(document).ready(function ($) {
     getSensorsList();
 
     //update sensor list by clicking on Sensor List in nav.bar
-    $('#update_list').click(getSensorsList);
+    $('#sensor_list_link').click(getSensorsList);
   
   });
 //parsing of Registry data and creating html structure
 function getSensorsList() {
     $.ajax({
         dataType: "JSON",
-        url: "registry.txt",
+        url: "api/sensors/",
         success: registry_parsing,
     });
 }
 
-var json;
 function registry_parsing(sensor_json) {
-    json = sensor_json;
-    console.log(json);
+    var json = sensor_json;
     $('#sensor_list').empty();
 
     for (var i = 0; i < json.sensor_list.length; i++) {
@@ -30,7 +28,7 @@ function registry_parsing(sensor_json) {
             var tag_description = "<span class='description col-md-12'>" + sensor.description + "</span>";
             var tag_sla = "<div class='sla'><p>" + sensor.sla + "</p></div>";
             var tag_subscribe = "<div class='subscribe col-sm-4'><button class='subscribe btn btn-primary' data-toggle='tooltip' data-placement='bottom' type='button' style='margin-top:10px' id='" + sensor.id + "'>Subscribe</button>" + tag_sla + "</div>";
-            var tag_favorites = "<div class='favorites col-xs-2 col-sm-1 col-md-1'><button id='favorites' type='button' class='btn btn-default favorit_star'><img class='star img-responsive' src='img/star.png'/></button></div>";
+            var tag_favorites = "<div class='favorites col-md-2'><button id='favorites' type='button' class='btn btn-default favorit_star'><img class='star img-responsive' src='img/star.png'/></button></div>";
             var tag_title = "<div class='title col-md-8'><h3>" + sensor.title + "</h3></div>" + tag_favorites;
             
             //check availability of preview if yes then sho preview if not substitude to tag_preview to tag_icon
