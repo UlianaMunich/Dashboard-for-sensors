@@ -53,7 +53,7 @@ var Control = {
     Control.connection.pubsub.publish(
       Control.admin_jid,
       Control.pubsub_server,
-      Config.PUBSUB_NODE,
+      $('#channel').val(),
       [_d],
       Control.on_send
     );
@@ -122,17 +122,20 @@ $(document).bind('connect', function () {
 });
 
 $(document).bind('connected', function () {
-  Control.feedback('Connecting... (2 of 3)', '#00CC00');
+  $('#create_node').click(function(event) {
+      event.preventDefault();
+      Control.feedback('Connecting... (2 of 3)', '#00CC00');
 
-  // first we make sure the pubsub node exists
-  // buy trying to create it again
-  Control.connection.pubsub.createNode(
-    Control.admin_jid,
-    Control.pubsub_server,
-    Config.PUBSUB_NODE,
-    {},
-    Control.on_create_node
-  );
+      // first we make sure the pubsub node exists
+      // buy trying to create it again
+      Control.connection.pubsub.createNode(
+        Control.admin_jid,
+        Control.pubsub_server,
+        $('#channel').val(),
+        {},
+        Control.on_create_node
+      );
+  });
 });
 
 $(document).bind('disconnected', function () {

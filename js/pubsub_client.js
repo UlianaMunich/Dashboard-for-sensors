@@ -107,15 +107,7 @@ var Client = {
       Client.log("Almost done...");
       Client.feedback('Connecting... (2 of 2)', '#009900');
       Client.connection.send($pres().c('priority').t('-1'));
-      Client.connection.pubsub.subscribe(
-        Client.connection.jid,
-	'pubsub.' + Config.XMPP_SERVER,
-        Config.PUBSUB_NODE,
-        [],
-        Client.on_event,
-        Client.on_subscribe
-      );
-    }
+      }
     return true;
   }
 }
@@ -141,3 +133,15 @@ $(document).ready(function () {
     });
     //temp_chart = new Highcharts.Chart(temp_chart_settings);
 });
+
+function subscribe_to_sensor(id) {
+    console.log("Subscribing to #" + id);
+    Client.connection.pubsub.subscribe(
+        Client.connection.jid,
+	    'pubsub.' + Config.XMPP_SERVER,
+        Config.PUBSUB_NODE + '.' + id,
+        [],
+        Client.on_event,
+        Client.on_subscribe
+      );
+}
