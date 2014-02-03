@@ -81,3 +81,43 @@ button.preview{
 .star {
     width: 30px;
 }
+.description{
+
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media screen
+and (max-width : 319px) {
+    .sensors_wrapper{padding-top: 300px;background-color: dodgerblue;}
+    .tab_subscribed{padding-top: 220px;}
+    #favorites_tab{padding-top: 240px;}
+    #settings {padding-top: 220px;}
+    }
+/* Smartphones (portrait and landscape) ----------- */
+@media screen
+and (min-width : 320px)
+and (max-width : 480px) {
+    .sensors_wrapper{padding-top: 180px;background-color: dodgerblue;}
+    .tab_subscribed{padding-top: 220px;}
+    #favorites_tab{padding-top: 230px;}
+    #settings {padding-top: 210px;}
+  }
+/* Tablet (portrait and landscape) ----------- */
+@media screen
+and (min-width : 481px)
+and (max-width : 767px) {
+    .sensors_wrapper{padding-top: 150px; background-color: cornflowerblue;}
+    .tab_subscribed{padding-top: 180px;}
+    #favorites_tab{padding-top: 190px;}
+    #settings {padding-top: 130px;}
+   }
+
+/* iPads (portrait and landscape) ----------- */
+@media screen
+and (min-width : 768px)
+and (max-width : 1024px) {
+    .sensors_wrapper {padding-top: 80px; background-color: lightskyblue;}
+    .tab_subscribed{padding-top: 80px;}
+    #favorites_tab {padding-top: 70px;}
+    #settings {padding-top: 40px;}
+   }
