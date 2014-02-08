@@ -1,0 +1,182 @@
+body {
+    padding-bottom: 20px;
+    background-color: #EEEEEE;
+}
+
+.title {
+    color: #3276b1;
+}
+
+hr {
+    color: black;
+    height: 2px;
+}
+
+div.graph {
+    display: none;
+
+}
+
+#graphs {
+    padding: 70px 20px;
+}
+
+.btn-lg {
+    font-size: 14px;
+}
+
+.content {
+    padding-top: 70px;
+}
+
+.sensor {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 6px -6px gray;
+}
+
+.subscribed_sensor {
+    background-color: white;
+
+}
+
+.navigation {
+    background: #ddd;
+    width: 100%;
+    top: 0;
+    position: fixed;
+}
+
+.box-style {
+    box-shadow: 0 8px 6px -6px gray;
+}
+
+.nav {
+    padding: 0 15px;
+    font-size: 1.25em;
+}
+
+.preview_content {
+    display: none;
+}
+
+div.sla {
+    display: none;
+}
+
+.favorites {
+    padding: 0px 10px 10px 0px;
+}
+
+#favorites_tab, #settings {
+    background-color: white;
+    -webkit-box-shadow: 0 8px 6px -6px gray;
+    -moz-box-shadow: 0 8px 6px -6px gray;
+    box-shadow: 0 8px 6px -6px gray;
+    padding-top: 70px;
+}
+
+.btn-settings {
+    float: right;
+    padding-right: 40px;
+}
+
+button.preview {
+    margin-top: 10px;
+}
+
+.star {
+    width: 30px;
+}
+
+.description {
+
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media screen
+and (max-width: 319px) {
+    .sensors_wrapper {
+        padding-top: 300px;
+        background-color: dodgerblue;
+    }
+
+    .tab_subscribed {
+        padding-top: 220px;
+    }
+
+    #favorites_tab {
+        padding-top: 240px;
+    }
+
+    #settings {
+        padding-top: 220px;
+    }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media screen
+and (min-width: 320px)
+and (max-width: 480px) {
+    .sensors_wrapper {
+        padding-top: 180px;
+        background-color: dodgerblue;
+    }
+
+    .tab_subscribed {
+        padding-top: 220px;
+    }
+
+    #favorites_tab {
+        padding-top: 230px;
+    }
+
+    #settings {
+        padding-top: 210px;
+    }
+}
+
+/* Tablet (portrait and landscape) ----------- */
+@media screen
+and (min-width: 481px)
+and (max-width: 767px) {
+    .sensors_wrapper {
+        padding-top: 150px;
+        background-color: cornflowerblue;
+    }
+
+    .tab_subscribed {
+        padding-top: 180px;
+    }
+
+    #favorites_tab {
+        padding-top: 190px;
+    }
+
+    #settings {
+        padding-top: 130px;
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media screen
+and (min-width: 768px)
+and (max-width: 1024px) {
+    .sensors_wrapper {
+        padding-top: 80px;
+        background-color: lightskyblue;
+    }
+
+    .tab_subscribed {
+        padding-top: 80px;
+    }
+
+    #favorites_tab {
+        padding-top: 70px;
+    }
+
+    #settings {
+        padding-top: 40px;
+    }
+}

@@ -1,0 +1,52 @@
+'use strict';
+
+/* Controllers */
+
+var sensdash_controllers = angular.module('sensdash.controllers', []);
+
+sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Sensor',
+    function ($scope, Sensor) {
+        $scope.sensors = Sensor.query();
+    }]);
+
+sensdash_controllers.controller('SensorCtrl', ['$scope', '$routeParams',
+    function ($scope, $routeParams) {
+        $scope.mainImageUrl = "test";
+    }
+]);
+
+//Modal window controllers, check definition syntax
+function SensorModalCtrl($scope, $modal) {
+    $scope.open = function () {
+
+        var modalInstance = $modal.open({
+            templateUrl: 'partials/blocks/sensor_details_modal.html',
+            controller: SensorModalInstanceCtrl,
+            resolve: {
+                sensor: function () {
+                    return $scope.sensor;
+                }
+            }
+        });
+        modalInstance.result.then(function (accepted) {
+            console.log("User started subscription");
+            $scope.sensor.subscribed = true; // try to use '= accepted' here
+        }, function () {
+            console.log("User cancelled");
+        });
+    };
+};
+
+var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor) {
+
+    $scope.sensor = sensor;
+    $scope.accept_sla = false;
+
+    $scope.subscribe = function () {
+        $modalInstance.close($scope.accept_sla);  // why is accept_sla always false here?
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+};
