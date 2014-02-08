@@ -93,6 +93,9 @@ button.preview {
 .description {
 
 }
+.sensor-data{
+    height: 250px;
+}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media screen
