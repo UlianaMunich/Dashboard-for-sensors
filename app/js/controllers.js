@@ -4,9 +4,10 @@
 
 var sensdash_controllers = angular.module('sensdash.controllers', []);
 
-sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Sensor',
-    function ($scope, Sensor) {
+sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Sensor', 'XMPP',
+    function ($scope, Sensor, XMPP) {
         $scope.sensors = Sensor.query();
+        $scope.xmpp = XMPP;
     }]);
 
 sensdash_controllers.controller('StreamCtrl', ['$scope', 'Sensor',
