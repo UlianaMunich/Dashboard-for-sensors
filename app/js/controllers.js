@@ -11,7 +11,16 @@ sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Sensor',
 
 sensdash_controllers.controller('SensorCtrl', ['$scope', '$routeParams',
     function ($scope, $routeParams) {
-        $scope.mainImageUrl = "test";
+    }
+]);
+sensdash_controllers.controller('StreamCtrl', ['$scope', '$routeParams',
+    function ($scope, $routeParams) {
+        $scope.test = "Hello World";
+    }
+]);
+sensdash_controllers.controller('SettingsCtrl', ['$scope', '$routeParams',
+    function ($scope, $routeParams) {
+        $scope.test = "Hello World";
     }
 ]);
 

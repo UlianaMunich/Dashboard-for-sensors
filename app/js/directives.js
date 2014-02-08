@@ -14,5 +14,18 @@ sensdash_directives.directive('favorite', function () {
             }
         }
     };
-})
-;
+});
+
+sensdash_directives.directive('navbar', function ($location) {
+    return {
+        restrict: 'A',
+        templateUrl: 'partials/nav_bar.html',
+        link: function ($scope, element, attrs) {
+            $scope.isActive = function(x){
+
+                var result = (x == $location.path());
+                return result;
+            }
+        }
+    };
+});

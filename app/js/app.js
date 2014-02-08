@@ -11,7 +11,7 @@ angular.module('sensdash', [
     ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/registry', {templateUrl: 'partials/registry.html', controller: 'RegistryCtrl'});
-        $routeProvider.when('/stream', {templateUrl: 'partials/stream.html', controller: 'StreamCtrl'});
-        $routeProvider.when('/profile', {templateUrl: 'partials/profile.html', controller: 'ProfileCtrl'});
+        $routeProvider.when('/subscriptions', {templateUrl: 'partials/subscriptions.html', controller: 'StreamCtrl'});
+        $routeProvider.when('/settings', {templateUrl: 'partials/settings.html', controller: 'SettingsCtrl'});
         $routeProvider.otherwise({redirectTo: '/registry'});
     }]);
