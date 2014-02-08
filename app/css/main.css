@@ -35,6 +35,9 @@ div.graph {
     margin-bottom: 30px;
     box-shadow: 0 8px 6px -6px gray;
 }
+#sensor_list .sensor{
+    cursor: pointer;
+}
 
 .subscribed_sensor {
     background-color: white;
@@ -92,6 +95,9 @@ button.preview {
 
 .description {
 
+}
+.sensor-data{
+    height: 250px;
 }
 
 /* Smartphones (portrait and landscape) ----------- */
