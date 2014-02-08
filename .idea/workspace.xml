@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56c99257-7420-4b32-a72c-f5e7584a0a3d" name="Default" comment="added settings form&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/partials/nav_bar.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/partials/data.html" afterPath="$PROJECT_DIR$/app/partials/subscriptions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/app.js" afterPath="$PROJECT_DIR$/app/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers.js" afterPath="$PROJECT_DIR$/app/js/controllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/directives.js" afterPath="$PROJECT_DIR$/app/js/directives.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/partials/nav_bar.html" afterPath="$PROJECT_DIR$/app/partials/nav_bar.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/xmpp.js" afterPath="$PROJECT_DIR$/app/js/xmpp.js" />
     </list>
     <ignored path="strophe.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,14 +29,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="nav_bar.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="24" selection-start="1483" selection-end="1483" vertical-scroll-proportion="-18.074074" vertical-offset="88" max-vertical-offset="882">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav_bar.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/partials/nav_bar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="1088" selection-end="1088" vertical-scroll-proportion="0.732899" vertical-offset="0" max-vertical-offset="614">
+            <state line="22" column="11" selection-start="1141" selection-end="1141" vertical-scroll-proportion="-14.666667" vertical-offset="0" max-vertical-offset="558">
               <folding>
                 <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="xmpp.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/xmpp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="4" selection-start="1635" selection-end="1635" vertical-scroll-proportion="0.0" vertical-offset="428" max-vertical-offset="1044">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pubsub_client.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/pubsub_client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2754">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,10 +86,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="directives.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="directives.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/js/directives.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="27" selection-start="745" selection-end="753" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
+            <state line="16" column="3" selection-start="529" selection-end="529" vertical-scroll-proportion="0.24025974" vertical-offset="140" max-vertical-offset="810">
               <folding />
             </state>
           </provider>
@@ -121,17 +146,18 @@
         <option value="$PROJECT_DIR$/app/partials/blocks/sensor_details_modal.html" />
         <option value="$PROJECT_DIR$/app/partials/blocks/favorite_button_block.html" />
         <option value="$PROJECT_DIR$/app/partials/registry.html" />
-        <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/js/app.js" />
         <option value="$PROJECT_DIR$/app/js/controllers.js" />
-        <option value="$PROJECT_DIR$/app/js/directives.js" />
+        <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/js/xmpp.js" />
         <option value="$PROJECT_DIR$/app/partials/nav_bar.html" />
+        <option value="$PROJECT_DIR$/app/js/directives.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1984" />
-    <option name="y" value="-4" />
+    <option name="y" value="639" />
     <option name="width" value="1303" />
     <option name="height" value="773" />
   </component>
@@ -313,14 +339,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1984" y="-4" width="1303" height="773" extended-state="6" />
+    <frame x="1984" y="639" width="1303" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15833974" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2021522" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -514,13 +540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="40" selection-start="1458" selection-end="1458" vertical-scroll-proportion="0.5602606" vertical-offset="214" max-vertical-offset="864">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/registry.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="48" selection-start="517" selection-end="517" vertical-scroll-proportion="0.20521173" vertical-offset="0" max-vertical-offset="614">
@@ -531,13 +550,6 @@
     <entry file="file://$PROJECT_DIR$/app/partials/settings.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="59" column="6" selection-start="2594" selection-end="2594" vertical-scroll-proportion="-39.333332" vertical-offset="0" max-vertical-offset="1170">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="43" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
           <folding />
         </state>
       </provider>
@@ -556,20 +568,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/directives.js">
+    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="27" selection-start="745" selection-end="753" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
+        <state line="15" column="43" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1188">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/pubsub_client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2754">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="24" selection-start="1483" selection-end="1483" vertical-scroll-proportion="-18.074074" vertical-offset="88" max-vertical-offset="882">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/xmpp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="4" selection-start="1635" selection-end="1635" vertical-scroll-proportion="0.0" vertical-offset="428" max-vertical-offset="1044">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/partials/nav_bar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="1088" selection-end="1088" vertical-scroll-proportion="0.732899" vertical-offset="0" max-vertical-offset="614">
+        <state line="22" column="11" selection-start="1141" selection-end="1141" vertical-scroll-proportion="-14.666667" vertical-offset="0" max-vertical-offset="558">
           <folding>
             <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#form#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/directives.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="3" selection-start="529" selection-end="529" vertical-scroll-proportion="0.24025974" vertical-offset="140" max-vertical-offset="810">
+          <folding />
         </state>
       </provider>
     </entry>

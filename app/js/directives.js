@@ -21,10 +21,19 @@ sensdash_directives.directive('navbar', function ($location) {
         restrict: 'A',
         templateUrl: 'partials/nav_bar.html',
         link: function ($scope, element, attrs) {
+            $scope.connection = {'connected':false};
+            $scope.user = {
+                'jid': 'brunnhilde@likepro.co',
+                'pass': 'testpass'
+            }
             $scope.isActive = function(x){
-
                 var result = (x == $location.path());
                 return result;
+            }
+            $scope.login = function() {
+                var BOSH_SERVICE = 'http://likepro.co/http-bind/';
+                $scope.connection = new Strophe.Connection(BOSH_SERVICE);
+                $scope.connection.connect($scope.user.jid, $scope.user.pass, onConnect);
             }
         }
     };

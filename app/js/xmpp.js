@@ -1,35 +1,5 @@
-var BOSH_SERVICE = 'http://likepro.co/http-bind/';
 var connection = null;
-var temp_chart;
-var temp_chart_settings = {
-    "subtitle": {
-        "text": "Real-time updated"
-    },
-    "yAxis": {
-        "title": {
-            "text": "Temperature, C"
-        }
-    },
-    "series": [
-        {
-            "data": [[1390225800697, 0],[1390225874691, 1], [1390225886827, 0]],
-            "name": "Temperature in Dresden"
-        }
-    ],
-    "title": {
-        "text": "German weather"
-    },
-    "chart": {
-        "type": "spline",
-	"renderTo": "graph_placeholder"
-    },
-    "xAxis": {
-        "labels": {
-            "rotation": -45
-        },
-        "type": "datetime"
-    }
-}
+var BOSH_SERVICE = 'http://likepro.co/http-bind/';
 
 function draw_graph(data) {
     console.log("New data: " + data);
@@ -74,25 +44,10 @@ function onMessage(msg) {
 	// Create a graph with received data
 	draw_graph(data);
     }
-    
-    // we must return true to keep the handler alive.  
-    // returning false would remove it after it finishes.
     return true;
 }
 
-$(document).ready(function () {
-    $('form.form-signin').submit(function (event) {
-    event.preventDefault();
-    $this = $(this);
-    var jid = $this.find('input#jid').val()
-    var pass = $this.find('input#pass').val()
-	connection.connect(jid, pass, onConnect);
-    });
-    Highcharts.setOptions({
-        global: {
-            useUTC: false
-        }
-    });
-    temp_chart = new Highcharts.Chart(temp_chart_settings);
+function connect_xmpp(jid, pass) {
     connection = new Strophe.Connection(BOSH_SERVICE);
-});
+    connection.connect(jid, pass, onConnect);
+}
