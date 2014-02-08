@@ -7,7 +7,7 @@
     </ul>
 
     <form ng-submit="login()" class="navbar-form navbar-right form-signin" role="login" style="
-              ">
+              " ng-hide="user.signedIn">
         <div class="form-group">
             <input  ng-model="user.jid" type="text" id="jid" class="form-control" placeholder="JID" required=""
                    value="brunnhilde@likepro.co">
@@ -21,5 +21,8 @@
                  ">Sign in
         </button>
     </form>
+    <div class="navbar-right" ng-show="user.signedIn">
+        <h4>{{user.jid.split('@')[0]}}</h4>
+    </div>
 </div>
 

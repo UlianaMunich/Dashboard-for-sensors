@@ -24,7 +24,8 @@ sensdash_directives.directive('navbar', function ($location) {
             $scope.connection = {'connected':false};
             $scope.user = {
                 'jid': 'brunnhilde@likepro.co',
-                'pass': 'testpass'
+                'pass': 'testpass',
+                'signedIn': false
             }
             $scope.isActive = function(x){
                 var result = (x == $location.path());
@@ -34,6 +35,7 @@ sensdash_directives.directive('navbar', function ($location) {
                 var BOSH_SERVICE = 'http://likepro.co/http-bind/';
                 $scope.connection = new Strophe.Connection(BOSH_SERVICE);
                 $scope.connection.connect($scope.user.jid, $scope.user.pass, onConnect);
+                $scope.user.signedIn = true;
             }
         }
     };
