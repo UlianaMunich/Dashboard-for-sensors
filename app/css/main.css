@@ -35,7 +35,23 @@ div.graph {
     margin-bottom: 30px;
     box-shadow: 0 8px 6px -6px gray;
 }
-#sensor_list .sensor{
+
+.icon {
+    padding-bottom: 5px;
+}
+.icon > .sensor-icon {
+    padding: 2px 8px 4px 0;
+}
+
+.icon > h4 {
+    display: inline;
+}
+
+.sensor-picture {
+    padding: 5px 0 10px 0;
+}
+
+#sensor_list .sensor {
     cursor: pointer;
 }
 
@@ -96,7 +112,8 @@ button.preview {
 .description {
 
 }
-.sensor-data{
+
+.sensor-data {
     height: 250px;
 }
 

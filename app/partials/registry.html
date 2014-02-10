@@ -1,12 +1,17 @@
 <div masonry preserve-order id="sensor_list">
     <div class="grid-sizer col-xs-6 col-sm-4 col-lg-3"></div>
-    <div class="masonry-brick sensor-wrapper col-xs-6 col-sm-4 col-lg-3" id="{{sensor.id}}" ng-repeat="sensor in sensors">
+    <div class="masonry-brick sensor-wrapper col-xs-6 col-sm-4 col-lg-3" id="{{sensor.id}}"
+         ng-repeat="sensor in sensors">
         <div class="sensor" ng-controller="SensorModalCtrl" ng-click="open()">
-            <div class="row">
-                <div class="icon col-md-4"><img class="img-responsive" ng-src="{{sensor.icon}}"></div>
-                <div class="title col-md-8"><h4>{{sensor.title}}</h4></div>
-                <span class="description col-md-12">{{sensor.description}}</span>
+            <div class="icon">
+                <img width="24px" class="img-responsive pull-left sensor-icon" ng-src="{{sensor.icon}}">
+                <h4>{{sensor.title}}</h4>
             </div>
+            <div ng-show="sensor.picture">
+                <img class="img-responsive sensor-picture" ng-src="{{sensor.picture}}">
+            </div>
+            <span class="description">{{sensor.description}}</span>
+
         </div>
     </div>
 </div>
