@@ -78,7 +78,10 @@ Strophe.addConnectionPlugin('private',
           break;
         }
       }
-
+      try {
+        data = JSON.parse(data.textContent);
+      } catch (e) {
+      }
       success( data, iq );
 
     }, error );
@@ -109,9 +112,21 @@ Strophe.addConnectionPlugin('private',
 
       if( this._isNode(c) || this._isElement(c) ){
         return c;
+      } else {
+        text = JSON.stringify(c);
+        var dom = this._textToXml( text );
+
+        if( dom !== null ){
+          return dom
+        } else {
+          return Strophe.xmlTextNode( text + '' );
+        }
+
+
       }
     }
     return null;
+
   },
 
    /**
