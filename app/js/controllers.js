@@ -61,17 +61,3 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor) {
         $modalInstance.dismiss('cancel');
     };
 };
-function CarouselDemoCtrl($scope) {
-    $scope.myInterval = 5000;
-    var slides = $scope.slides = [];
-    $scope.addSlide = function() {
-        var newWidth = 600 + slides.length;
-        slides.push({
-            image: 'http://placekitten.com/' + newWidth + '/300',
-            text: ''
-        });
-    };
-    for (var i=0; i<4; i++) {
-        $scope.addSlide();
-    }
-}
