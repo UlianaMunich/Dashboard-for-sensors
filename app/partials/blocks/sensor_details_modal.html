@@ -2,7 +2,6 @@
     <h3>{{sensor.title}}</h3>
 </div>
 <div class="modal-body">
-    <p>{{sensor.description}}</p>
     <p><strong>Access:</strong>{{sensor.access}}</p>
     <p><strong>Provider:</strong><a href="{{sensor.provider_www}}">{{sensor.provider_name}}</a></p>
     <div class="div_sla" ng-show="sensor.sla">
@@ -20,6 +19,6 @@
     </carousel>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="subscribe()" ng-disabled="!accept_sla">Subscribe</button>
+    <button class="btn btn-primary" ng-click="subscribe()" ng-disabled="!accept_sla && sensor.sla">Subscribe</button>
     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 </div>

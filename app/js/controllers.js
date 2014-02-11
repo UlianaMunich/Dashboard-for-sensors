@@ -54,7 +54,8 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor) {
     $scope.accept_sla = false;
 
     $scope.subscribe = function () {
-        $modalInstance.close($scope.accept_sla);  // why is accept_sla always false here?
+        $modalInstance.close($scope.accept_sla);
+         // alert($scope.sensor.id);//added to subscriptions tab
     };
 
     $scope.cancel = function () {
