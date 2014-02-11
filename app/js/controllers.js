@@ -20,6 +20,11 @@ sensdash_controllers.controller('SettingsCtrl', ['$scope', '$routeParams',
         $scope.test = "Hello World";
     }
 ]);
+sensdash_controllers.controller('preview_slideshow', ['$scope', '$routeParams',
+    function ($scope, $routeParams) {
+        $scope.test = "Hello World";
+    }
+]);
 
 //Modal window controllers, check definition syntax
 function SensorModalCtrl($scope, $modal) {
@@ -56,3 +61,17 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor) {
         $modalInstance.dismiss('cancel');
     };
 };
+function CarouselDemoCtrl($scope) {
+    $scope.myInterval = 5000;
+    var slides = $scope.slides = [];
+    $scope.addSlide = function() {
+        var newWidth = 600 + slides.length;
+        slides.push({
+            image: 'http://placekitten.com/' + newWidth + '/300',
+            text: ''
+        });
+    };
+    for (var i=0; i<4; i++) {
+        $scope.addSlide();
+    }
+}

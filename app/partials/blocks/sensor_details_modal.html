@@ -5,11 +5,26 @@
     <h4>Before you start using data from {{sensor.title}} sensor, take a look on information below:</h4>
     <p>{{sensor.description}}</p>
     <p><strong>Access:</strong>{{sensor.access}}</p>
-    <p><strong>Provider:</strong><a href="#">{{sensor.provider_name}}</a></p>
-    <h4>Please read and accept the SLA to subscribe</h4>
-    <p>{{sensor.sla}}</p>
-    <label for="accept_sla">I hereby accept the SLA as stated above</label>
-    <input type="checkbox" ng-model="accept_sla" id="accept_sla">
+    <p><strong>Provider:</strong><a href="{{sensor.provider_www}}">{{sensor.provider_name}}</a></p>
+    <div class="div_sla">
+        <p>Please read and accept the SLA to subscribe</p>
+        <p>{{sensor.sla}}</p>
+        <label for="accept_sla">I hereby accept the SLA as stated above</label>
+        <input type="checkbox" ng-model="accept_sla" id="accept_sla">
+     </div>
+</div>
+<div ng-controller="CarouselDemoCtrl">
+    <div style="height: 305px">
+        <carousel interval="myInterval">
+            <slide ng-repeat="slide in slides" active="slide.active">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <div class="carousel-caption">
+                    <p>Slide {{$index}}</p>
+                    <p>{{slide.text}}</p>
+                </div>
+            </slide>
+        </carousel>
+    </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" ng-click="subscribe()" ng-disabled="!accept_sla">Subscribe</button>
