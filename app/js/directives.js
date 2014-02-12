@@ -16,12 +16,13 @@ sensdash_directives.directive('favorite', function () {
     };
 });
 
-sensdash_directives.directive('navbar', function ($location, XMPP) {
+sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, User) {
     return {
         restrict: 'A',
         templateUrl: 'partials/nav_bar.html',
         link: function ($scope, element, attrs) {
             $scope.xmpp = XMPP;
+            $scope.process = "";
             $scope.user = {
                 'jid': 'brunnhilde@likepro.co',
                 'pass': 'testpass',
@@ -36,9 +37,19 @@ sensdash_directives.directive('navbar', function ($location, XMPP) {
                 var BOSH_SERVICE = 'http://likepro.co/http-bind/';
                 $scope.xmpp.connection = new Strophe.Connection(BOSH_SERVICE);
                 $scope.xmpp.connection.connect($scope.user.jid, $scope.user.pass, onConnect);
-                $scope.user.name = $scope.user.jid.split('@')[0];
-                $scope.user.signedIn = true;
+                $scope.process = "connecting...";
+                $timeout(update_connection, 1000);
             }
+            var update_connection = function() {
+                $scope.xmpp = XMPP;
+                if ($scope.xmpp.connection.connected) {
+                    $scope.process = "";
+                    User.load();
+                } else {
+                    $scope.process = "connection failed"
+                }
+            }
+
         }
     };
 });

@@ -15,3 +15,20 @@ sensdash_services.factory('XMPP', function () {
     };
     return xmpp
 })
+
+sensdash_services.factory('User', ['XMPP', function(xmpp) {
+    var user = {
+        favorites: {},
+        profile: {},
+        save: function() {
+            xmpp.connection.private.set("profile", "profile:ns", user.profile, function(data){ console.log("Data saved: ", data)}, console.log)
+        },
+        load: function() {
+            xmpp.connection.private.get("profile", "profile:ns", function(data){ user.profile = data}, console.log)
+        }
+    };
+    if (xmpp.connection.connected) {
+        user.load();
+    }
+    return user
+}]);

@@ -10,14 +10,14 @@ sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Sensor', 'XMPP',
         $scope.xmpp = XMPP;
     }]);
 
-sensdash_controllers.controller('StreamCtrl', ['$scope', 'Sensor',
-    function ($scope, Sensor) {
+sensdash_controllers.controller('StreamCtrl', ['$scope', 'Sensor', 'User',
+    function ($scope, Sensor, User) {
         $scope.sensors = Sensor.query();
     }
 ]);
-sensdash_controllers.controller('SettingsCtrl', ['$scope', '$routeParams',
-    function ($scope, $routeParams) {
-        $scope.test = "Hello World";
+sensdash_controllers.controller('SettingsCtrl', ['$scope', '$routeParams', 'User',
+    function ($scope, $routeParams, User) {
+        $scope.user = User;
     }
 ]);
 sensdash_controllers.controller('preview_slideshow', ['$scope', '$routeParams',

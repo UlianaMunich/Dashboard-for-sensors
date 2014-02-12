@@ -2,8 +2,8 @@
     <h3>{{sensor.title}}</h3>
 </div>
 <div class="modal-body">
-    <p><strong>Access:</strong>{{sensor.access}}</p>
-    <p><strong>Provider:</strong><a href="{{sensor.provider_www}}">{{sensor.provider_name}}</a></p>
+    <p><strong>Access: </strong>{{sensor.access}}</p>
+    <p><strong>Provider: </strong><a href="{{sensor.provider_www}}">{{sensor.provider_name}}</a></p>
     <div class="div_sla" ng-show="sensor.sla">
         <p>Please read and accept the SLA to subscribe</p>
         <textarea class="form-control" disabled>{{sensor.sla}}</textarea>
