@@ -27,7 +27,7 @@ sensdash_controllers.controller('preview_slideshow', ['$scope', '$routeParams',
 ]);
 
 //Modal window controllers, check definition syntax
-function SensorModalCtrl($scope, $modal) {
+function SensorModalCtrl($scope, $modal, User) {
     $scope.open = function () {
 
         var modalInstance = $modal.open({
@@ -39,9 +39,11 @@ function SensorModalCtrl($scope, $modal) {
                 }
             }
         });
-        modalInstance.result.then(function (accepted) {
+        modalInstance.result.then(function () {
             console.log("User started subscription");
-            $scope.sensor.subscribed = true; // try to use '= accepted' here
+            User.subscribe($scope.sensor, function () {
+                $scope.sensor.subscribed = true;
+            });
         }, function () {
             console.log("User cancelled");
         });
@@ -54,8 +56,7 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor) {
     $scope.accept_sla = false;
 
     $scope.subscribe = function () {
-        $modalInstance.close($scope.accept_sla);
-         // alert($scope.sensor.id);//added to subscriptions tab
+        $modalInstance.close();
     };
 
     $scope.cancel = function () {

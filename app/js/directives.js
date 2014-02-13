@@ -34,9 +34,7 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
                 return result;
             }
             $scope.login = function() {
-                var BOSH_SERVICE = 'http://likepro.co/http-bind/';
-                $scope.xmpp.connection = new Strophe.Connection(BOSH_SERVICE);
-                $scope.xmpp.connection.connect($scope.user.jid, $scope.user.pass, onConnect);
+                $scope.xmpp.connect($scope.user.jid, $scope.user.pass, onConnect);
                 $scope.process = "connecting...";
                 $timeout(update_connection, 1000);
             }
