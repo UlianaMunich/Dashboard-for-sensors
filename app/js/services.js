@@ -52,7 +52,7 @@ sensdash_services.factory('XMPP', function () {
     return xmpp
 })
 
-sensdash_services.factory('User', ['XMPP', function (xmpp) {
+sensdash_services.factory('User', ['XMPP',  '$rootScope', function (xmpp,  $rootScope) {
     var user = {
         favorites: [],
         subscriptions: [],
@@ -70,18 +70,23 @@ sensdash_services.factory('User', ['XMPP', function (xmpp) {
                 console.log);
             xmpp.connection.private.get("subscriptions", "subscriptions:ns", function (data) {
                     user.subscriptions = data;
+                    $rootScope.$apply();
                 },
                 console.log)
         },
-        subscribe: function (node) {
+        subscribe: function (node, callback) {
             xmpp.subscribe(node, function () {
-                user.subscriptions.push(node);
-                console.log("subscribed to", node.id)
+                if (user.subscriptions.indexOf(node.id)<0) {
+                    user.subscriptions.push(node.id);
+                    user.save('subscriptions');
+                    callback();
+                }
             });
         }
     };
     if (xmpp.connection.connected) {
-        user.load();
+        user.load('profile');
+        user.load('subscriptions');
     }
     return user
 }]);

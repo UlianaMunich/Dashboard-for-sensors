@@ -3,10 +3,10 @@
     <div class="masonry-brick sensor-wrapper col-xs-6 col-sm-4 col-lg-3" id="{{sensor.id}}"
          ng-repeat="sensor in sensors">
         <div class="sensor" ng-controller="SensorModalCtrl" ng-click="open()">
-            <div class="icon">
+            <div class="icon">{{test}}
                 <img width="24px" class="img-responsive pull-left sensor-icon" ng-src="{{sensor.icon}}">
                 <h4>{{sensor.title}}</h4>
-                <span class="label label-success" ng-show="sensor.subscribed">Subscribed</span>
+                <span class="label label-success" ng-show="(user.subscriptions.indexOf(sensor.id) >= 0)">Subscribed</span>
             </div>
             <div ng-show="sensor.picture">
                 <img class="img-responsive sensor-picture" ng-src="{{sensor.picture}}">
