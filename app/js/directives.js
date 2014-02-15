@@ -16,6 +16,16 @@ sensdash_directives.directive('favorite', function () {
     };
 });
 
+sensdash_directives.directive('chart', function () {
+    return {
+        restrict: 'A',
+        template: '<div id="chart-sensor-{{sensor.id}}"></div>',
+        link: function ($scope, element, attrs) {
+            element.highcharts($scope.sensor.template);
+            }
+    };
+});
+
 sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, User) {
     return {
         restrict: 'A',
