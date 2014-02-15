@@ -23,6 +23,7 @@ sensdash_controllers.controller('StreamCtrl', ['$scope', 'Sensor', 'User',
         });
     }
 ]);
+
 sensdash_controllers.controller('SettingsCtrl', ['$scope', '$routeParams', 'User',
     function ($scope, $routeParams, User) {
         $scope.user = User;

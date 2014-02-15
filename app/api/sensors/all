@@ -1,0 +1,239 @@
+[
+    {
+        "id": "1",
+        "title": "Temperature in DSE Server Room",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "DSE students received a rack of older-generation IBM servers for experiments. Tempreture in temporary server room should be monitored carefully. This sensor provides temperature updates with 5-second frequency.",
+        "sla": "Chinese sensors 'TMPR-42' guarantee measurement accuracy up to 0.1 Celicus Degree. Sensor proxy works with 99% uptime.",
+        "icon": "img/icon/server_rack.jpg",
+        "preview": "",
+        "picture": "img/sensor_images/datacenterTemper.jpg",
+        "access": "private",
+        "provider_name": "Provider TU Dresden",
+        "provider_www": "http://www.inf.tu-dresden.de/",
+        "volume": "",
+        "velocity": "",
+        "trust_level": "",
+        "variety": "",
+        "value": "",
+        "type": "chart",
+        "template": {
+            "subtitle": {
+                "text": "Real-timeupdated"
+            },
+            "yAxis": {
+                "title": {
+                    "text": "Temperature, C"
+                }
+            },
+            "series": [
+                {
+                    "data": [
+                        [
+                            1390225800697,
+                            0
+                        ],
+                        [
+                            1390225874691,
+                            1
+                        ],
+                        [
+                            1390225886827,
+                            0
+                        ]
+                    ],
+                    "name": "Temperature in Dresden"
+                }
+            ],
+            "title": {
+                "text": "German weather"
+            },
+            "chart": {
+                "type": "spline",
+                "renderTo": "graph_placeholder"
+            },
+            "xAxis": {
+                "labels": {
+                    "rotation": -45
+                },
+                "type": "datetime"
+            }
+        }
+    },
+    {
+        "id": "2",
+        "title": "Temperature in Student Lab",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "This sensor monitors and ensures perfect working conditions for students: 24-26 Celcius Degree. Whatever the weather is outside, student lab is always nice an cozy.",
+        "sla": "Sensor resolution is 0.5 °C, measurements taken every 10 seconds. Uptime 95% from 6:00 till 22:00.",
+        "icon": "img/icon/temper_outside.png",
+        "picture": "img/sensor_images/temper.jpg",
+        "access": "private",
+        "provider_name": "Provider TU Dresden",
+        "provider_www": "http://www.inf.tu-dresden.de/",
+        "preview": "",
+        "volume": "",
+        "velocity": "",
+        "trust_level": "",
+        "variety": "",
+        "value": ""
+    },
+    {
+        "id": "3",
+        "title": "Queue in Mensa",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "This data stream reflects mensa-overload status, showing approximate amout of people inside.",
+        "sla": "This is a hobby-project, and data is provided 'as is'. Should be around 80% accurate. Should be enough to know when is a good time to go for lunch.",
+        "icon": "img/icon/restaurant-icon.png",
+        "preview": "",
+        "picture": "img/sensor_images/mensa_queue.jpg",
+        "access": "public",
+        "provider_name": "Provider TU Dresden",
+        "provider_www": "http://www.inf.tu-dresden.de/",
+        "volume": "",
+        "velocity": "",
+        "trust_level": "",
+        "variety": "",
+        "value": ""
+    },
+    {
+        "id": "4",
+        "title": "City Traffic",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Provides an overview of current traffic jams level in the city my using googlemap",
+        "sla": "",
+        "icon": "img/icon/traffic_icon.png",
+        "picture": "img/sensor_images/dresdentraffic.jpg",
+        "preview": "",
+        "access": "public",
+        "provider_name": "Google",
+        "provider_www": "www.google.com",
+        "volume": "",
+        "velocity": "",
+        "trust_level": "",
+        "variety": "",
+        "value": ""
+    },
+    {
+        "id": "5",
+        "title": "Bitcoin price monitor",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Unser Bitcoin Chart zeigt Ihnen den aktuellen Bitcoin Kurs sowie die Bitcoin Kursentwicklung. Der Bitcoin Preis wird Ihnen wahlweise in Bitcoin Kurs Euro angezeigt. Der Wert des Bitcoins wird aus den aktuellen Handelspreisen und Bitcoin Charts verschiedener Marktplätze und Börsen ermittelt.",
+        "sla": "",
+        "icon": "img/icon/bitcoin_icon.jpg",
+        "preview": [
+            "img/sensor_images/bitcoin/bitcoinKaufen.png",
+            "img/sensor_images/bitcoin/bitcoinPreview.png",
+            "img/sensor_images/bitcoin/bitcoinVerkaufen.png"
+        ],
+        "picture": "img/sensor_images/bitcoinPreview.jpg",
+        "access": "private",
+        "provider_name": "bitcoin Deutschland",
+        "provider_www": "https://www.bitcoin.de/de",
+        "volume": "",
+        "velocity": "",
+        "trust_level": "",
+        "variety": "",
+        "value": ""
+    },
+    {
+        "id": "6",
+        "title": "Light sensor TU-Dresden campus",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Light intensity outside, updated every minute",
+        "sla": "Sensor resolution is 5 Lumen, calculated on 30-seconds average. 99% uptime.",
+        "icon": "img/icon/light_icon.png",
+        "preview": "img/icon/light_icon.png",
+        "picture": "img/sensor_images/brightness.jpg",
+        "access": "private",
+        "provider_name": "Provider TU Dresden",
+        "provider_www": "http://www.inf.tu-dresden.de/",
+        "volume": "",
+        "velocity": "",
+        "trust_level": "",
+        "variety": "",
+        "value": ""
+    },
+    {
+        "id": "7",
+        "title": "RN Robot charge level",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Robot reports battery charge level changes in realtime",
+        "sla": "Battery charge level is measured with up to 80% accuracy; can degrade over a time.",
+        "icon": "img/icon/Battery-Icon.png",
+        "picture": "img/sensor_images/robotBattery4.jpg",
+        "preview": "",
+        "access": "private",
+        "provider_name": "Provider TU Dresden",
+        "provider_www": "http://www.inf.tu-dresden.de/",
+        "volume": "",
+        "velocity": "",
+        "trust_level": "",
+        "variety": "",
+        "value": ""
+    },
+    {
+        "id": "8",
+        "title": "Weather in Dresden",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Gives a detailed overview of weather forecast for current day and next few days inclusive: temperature, humidity, wind etc. ",
+        "sla": "",
+        "icon": "img/icon/TemperatureOutside.jpg",
+        "picture": "img/sensor_images/weather.jpg",
+        "preview": "",
+        "access": "public",
+        "provider_name": "Google",
+        "provider_www": "www.google.com",
+        "volume": "",
+        "velocity": "",
+        "trust_level": "",
+        "variety": "",
+        "value": ""
+    },
+    {
+        "id": "9",
+        "title": "RSS Sport",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Provides an overview of current news in sport",
+        "sla": "",
+        "icon": "img/icon/rss.png",
+        "picture": "img/sensor_images/rssSport.jpg",
+        "preview": "",
+        "access": "public",
+        "provider_name": "Sky Sports RSS Feeds",
+        "provider_www": "http://www.skysports.com/",
+        "volume": "",
+        "velocity": "",
+        "trust_level": "",
+        "variety": "",
+        "value": ""
+    },
+    {
+        "id": "10",
+        "title": "Rain sensor TU Dresden campus",
+        "availability": false,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Don't leave your bike in heavy rain, subscribe to instant updates of TU-Dresden rain sensors and react fast!",
+        "sla": "Sensor runs in a loop, pushing updates whenever rain state changes. Possible states are: no rain, light rain, medium rain, heavy rain.",
+        "icon": "img/icon/humidity_icon.png",
+        "picture": "img/sensor_images/rain.jpg",
+        "preview": "img/graph.png",
+        "access": "private",
+        "provider_name": "Provider TU Dresden",
+        "provider_www": "http://www.inf.tu-dresden.de/",
+        "volume": "",
+        "velocity": "",
+        "trust_level": "",
+        "variety": "",
+        "value": ""
+    }
+]
