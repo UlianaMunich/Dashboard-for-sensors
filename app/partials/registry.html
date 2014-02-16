@@ -6,7 +6,7 @@
             <div class="icon">
                 <img width="24px" class="img-responsive pull-left sensor-icon" ng-src="{{sensor.icon}}">
                 <h4>{{sensor.title}}</h4>
-                <span class="label label-success" ng-show="(user.subscriptions.indexOf(sensor.id) >= 0)">Subscribed</span>
+                <span class="label label-success" ng-show="user.check_subscribe(sensor.id)">Subscribed</span>
             </div>
             <div ng-show="sensor.picture">
                 <img class="img-responsive sensor-picture" ng-src="{{sensor.picture}}">

@@ -58,8 +58,8 @@ function SensorModalCtrl($scope, $modal, User) {
     };
 };
 
-var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor) {
-
+var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
+    $scope.user = User;
     $scope.sensor = sensor;
     $scope.accept_sla = false;
 
