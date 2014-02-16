@@ -2,16 +2,29 @@
 
 var sensdash_directives = angular.module('sensdash.directives', []);
 
-sensdash_directives.directive('favorite', function () {
+sensdash_directives.directive('favorite', function (User) {
     return {
         restrict: 'A',
         templateUrl: 'partials/blocks/favorite_button_block.html',
         link: function ($scope, element, attrs) {
-            $scope.favorite = false;
-            $scope.toggle_favorite = function () {
-                $scope.favorite = !$scope.favorite;
-                console.log("favorite: " + $scope.favorite);
-            }
+            $scope.user = User;
+            $scope.add_to_favorite = function (sensor) {
+                if($scope.user.favorites.indexOf(sensor.id) == -1){
+                    $scope.user.favorites.push(sensor.id);
+                    $scope.user.save('favorites');
+                    console.log($scope.user.favorites);
+                }
+            };
+            $scope.delete_from_favorite = function (sensor) {
+                if($scope.user.favorites.indexOf(sensor.id) != -1){
+                    $scope.user.favorites.splice($scope.user.favorites.indexOf(sensor.id),1);
+                    $scope.user.save('favorites');
+                    console.log($scope.user.favorites);
+                }
+            };
+            $scope.check_favorite = function (x) {
+                return ($scope.user.favorites.indexOf(x) != -1);
+            };
         }
     };
 });
@@ -31,6 +44,7 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
         restrict: 'A',
         templateUrl: 'partials/nav_bar.html',
         link: function ($scope, element, attrs) {
+            $scope.user = User;
             $scope.xmpp = XMPP;
             $scope.process = "";
             $scope.user = {

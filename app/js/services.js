@@ -103,7 +103,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
                     callback();
                 }
             });
-        },
+        }
     };
     if (xmpp.connection.connected) {
         user.load('profile');

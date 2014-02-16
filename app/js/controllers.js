@@ -24,6 +24,21 @@ sensdash_controllers.controller('StreamCtrl', ['$scope', 'Sensor', 'User',
     }
 ]);
 
+sensdash_controllers.controller('FavoritesCtrl', ['$scope', '$routeParams', 'Sensor', 'User',
+    function ($scope, $routeParams, Sensor, User) {
+        var all_sensors = Sensor.query();
+        var user_favorites = User.favorites;
+        $scope.result_favorites = [];
+        all_sensors.$promise.then(function (all_sensors) {
+            for (var i = 0; i < all_sensors.length; i++) {
+                if (user_favorites.indexOf(all_sensors[i].id) != -1) {
+                    $scope.result_favorites.push(all_sensors[i]);
+                }
+            }
+        });
+    }
+]);
+
 sensdash_controllers.controller('SettingsCtrl', ['$scope', '$routeParams', 'User',
     function ($scope, $routeParams, User) {
         $scope.user = User;
@@ -48,7 +63,8 @@ function SensorModalCtrl($scope, $modal, User) {
                 }
             }
         });
-        modalInstance.result.then(function () {}, function () {
+        modalInstance.result.then(function () {
+        }, function () {
             console.log("Modal closed");
         });
     };
@@ -66,7 +82,7 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
         $modalInstance.close();
     };
 
-    $scope.unsubscribe = function(){
+    $scope.unsubscribe = function () {
         User.unsubscribe($scope.sensor, function () {
             console.log("user unsubscribed from sensor", $scope.sensor.id);
         });

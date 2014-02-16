@@ -3,6 +3,8 @@
         <li ng-class="{active: isActive('/registry')}"><a href="#/registry" id="sensor_list_link">Sensors list</a></li>
         <li ng-show="xmpp.connection.connected" ng-class="{active: isActive('/subscriptions')}"><a
                 href="#/subscriptions">Subscriptions</a></li>
+        <li ng-show="xmpp.connection.connected" ng-class="{active: isActive('/favorites')}"><a
+                href="#/favorites">Favorites</a></li>
         <li ng-show="xmpp.connection.connected" ng-class="{active: isActive('/settings')}"><a
                 href="#/settings">Settings</a></li>
     </ul>
