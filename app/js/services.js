@@ -19,6 +19,9 @@ sensdash_services.factory('XMPP', function () {
             xmpp.connection = new Strophe.Connection(BOSH_SERVICE);
             xmpp.connection.connect(jid, pwd, callback);
         },
+        on_connect: function() {
+
+        },
         subscribe: function (node, on_subscribe) {
             xmpp.connection.pubsub.subscribe(
                 xmpp.connection.jid,

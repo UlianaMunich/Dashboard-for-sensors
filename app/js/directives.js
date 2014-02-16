@@ -35,7 +35,7 @@ sensdash_directives.directive('chart', function () {
         template: '',
         link: function ($scope, element, attrs) {
             element.highcharts($scope.sensor.template);
-            }
+        }
     };
 });
 
@@ -53,22 +53,30 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
                 'name': '',
                 'signedIn': false
             }
-            $scope.isActive = function(x){
+            $scope.isActive = function (x) {
                 var result = (x == $location.path());
                 return result;
             }
-            $scope.login = function() {
-                $scope.xmpp.connect($scope.user.jid, $scope.user.pass, onConnect);
+            $scope.login = function () {
+                $scope.xmpp.connect($scope.user.jid, $scope.user.pass, update_connection);
                 $scope.process = "connecting...";
                 $timeout(update_connection, 1000);
             }
-            var update_connection = function() {
-                $scope.xmpp = XMPP;
-                if ($scope.xmpp.connection.connected) {
+            var update_connection = function (status) {
+                if (status == Strophe.Status.CONNECTING) {
+                    console.log('connecting.');
+                } else if (status == Strophe.Status.CONNFAIL) {
+                    console.log('XMPP failed to connect.');
+                    $scope.process = "connection failed";
+                } else if (status == Strophe.Status.DISCONNECTING) {
+                    console.log('XMPP is disconnecting.');
+                } else if (status == Strophe.Status.DISCONNECTED) {
+                    console.log('XMPP disconnected.');
+                } else if (status == Strophe.Status.CONNECTED) {
+                    console.log('XMPP connection established.');
+                    $scope.xmpp.connection.send($pres().tree());
                     $scope.process = "";
                     User.load();
-                } else {
-                    $scope.process = "connection failed"
                 }
             }
 
