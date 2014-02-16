@@ -48,22 +48,28 @@ function SensorModalCtrl($scope, $modal, User) {
                 }
             }
         });
-        modalInstance.result.then(function () {
-            User.subscribe($scope.sensor, function () {
-                console.log("user subscribed to sensor", $scope.sensor.id);
-            });
-        }, function () {
-            console.log("User cancelled");
+        modalInstance.result.then(function () {}, function () {
+            console.log("Modal closed");
         });
     };
 };
 
-var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor) {
-
+var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
+    $scope.user = User;
     $scope.sensor = sensor;
     $scope.accept_sla = false;
 
     $scope.subscribe = function () {
+        User.subscribe($scope.sensor, function () {
+            console.log("user subscribed to sensor", $scope.sensor.id);
+        });
+        $modalInstance.close();
+    };
+
+    $scope.unsubscribe = function(){
+        User.unsubscribe($scope.sensor, function () {
+            console.log("user unsubscribed from sensor", $scope.sensor.id);
+        });
         $modalInstance.close();
     };
 

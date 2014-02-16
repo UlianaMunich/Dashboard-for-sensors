@@ -20,6 +20,7 @@
     </carousel>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="subscribe()" ng-disabled="!accept_sla && sensor.sla">Subscribe</button>
+    <button class="btn btn-primary" ng-click="subscribe()" ng-disabled="!accept_sla && sensor.sla" ng-hide="user.check_subscribe(sensor.id)">Subscribe</button>
+    <button class="btn btn-info" ng-click="unsubscribe()" ng-hide="!user.check_subscribe(sensor.id)">Unsubscribe</button>
     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 </div>

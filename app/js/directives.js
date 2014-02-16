@@ -19,7 +19,7 @@ sensdash_directives.directive('favorite', function () {
 sensdash_directives.directive('chart', function () {
     return {
         restrict: 'A',
-        template: '<div id="chart-sensor-{{sensor.id}}"></div>',
+        template: '',
         link: function ($scope, element, attrs) {
             element.highcharts($scope.sensor.template);
         }

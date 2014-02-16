@@ -31,6 +31,10 @@ sensdash_services.factory('XMPP', function () {
                 xmpp.handle_incoming,
                 on_subscribe);
         },
+        unsubscribe: function (node) {
+            xmpp.connection.pubsub.unsubscribe(
+                PUBSUB_NODE + '.' + node.id);
+        },
         handle_incoming: function (message) {
             if (!xmpp.connection.connected) {
                 return true;
@@ -55,7 +59,7 @@ sensdash_services.factory('XMPP', function () {
     return xmpp
 })
 
-sensdash_services.factory('User', ['XMPP',  '$rootScope', function (xmpp,  $rootScope) {
+sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootScope) {
     var user = {
         favorites: [],
         subscriptions: [],
@@ -79,13 +83,30 @@ sensdash_services.factory('User', ['XMPP',  '$rootScope', function (xmpp,  $root
         },
         subscribe: function (node, callback) {
             xmpp.subscribe(node, function () {
-                if (user.subscriptions.indexOf(node.id)<0) {
+                if (!user.check_subscribe(node.id)) {
                     user.subscriptions.push(node.id);
                     user.save('subscriptions');
                     callback();
                 }
             });
-        }
+        },
+        check_subscribe: function (x) {
+            if (user.subscriptions.indexOf(x) == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        },
+
+        unsubscribe: function (node, callback) {
+            xmpp.subscribe(node, function () {
+                if (user.check_subscribe(node.id)) {
+                    user.subscriptions.splice(user.subscriptions.indexOf(node.id),1);
+                    user.save('subscriptions');
+                    callback();
+                }
+            });
+        },
     };
     if (xmpp.connection.connected) {
         user.load('profile');
