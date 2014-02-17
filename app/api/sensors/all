@@ -18,6 +18,9 @@
         "variety": "",
         "value": "",
         "type": "chart",
+        "credits" : {
+            "enabled" : false
+        },
         "template": {
             "subtitle": {
                 "text": "Real-timeupdated"
@@ -29,20 +32,7 @@
             },
             "series": [
                 {
-                    "data": [
-                        [
-                            1390225800697,
-                            0
-                        ],
-                        [
-                            1390225874691,
-                            1
-                        ],
-                        [
-                            1390225886827,
-                            0
-                        ]
-                    ],
+                    "data": [],
                     "name": "Temperature in Dresden"
                 }
             ],
@@ -90,28 +80,7 @@
             },
             "series": [
                 {
-                    "data": [
-                        [
-                            1390225800697,
-                            3
-                        ],
-                        [
-                            1390225874691,
-                            2
-                        ],
-                        [
-                            1390225886827,
-                            5
-                        ],
-                        [
-                            1390225874345,
-                            2
-                        ],
-                        [
-                            1390225886856,
-                            5
-                        ]
-                    ],
+                    "data": [],
                     "name": "Temperature in Student La"
                 }
             ],

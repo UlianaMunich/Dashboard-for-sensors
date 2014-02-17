@@ -9,17 +9,17 @@ sensdash_directives.directive('favorite', function (User) {
         link: function ($scope, element, attrs) {
             $scope.user = User;
             $scope.add_to_favorite = function (sensor) {
-                if($scope.user.favorites.indexOf(sensor.id) == -1){
+                if ($scope.user.favorites.indexOf(sensor.id) == -1) {
                     $scope.user.favorites.push(sensor.id);
                     $scope.user.save('favorites');
-                    console.log($scope.user.favorites);
+                    console.log("Added to favorites:", sensor.id);
                 }
             };
             $scope.delete_from_favorite = function (sensor) {
-                if($scope.user.favorites.indexOf(sensor.id) != -1){
-                    $scope.user.favorites.splice($scope.user.favorites.indexOf(sensor.id),1);
+                if ($scope.user.favorites.indexOf(sensor.id) != -1) {
+                    $scope.user.favorites.splice($scope.user.favorites.indexOf(sensor.id), 1);
                     $scope.user.save('favorites');
-                    console.log($scope.user.favorites);
+                    console.log("Removed from favorites:", sensor.id);
                 }
             };
             $scope.check_favorite = function (x) {
@@ -29,12 +29,14 @@ sensdash_directives.directive('favorite', function (User) {
     };
 });
 
-sensdash_directives.directive('chart', function () {
+sensdash_directives.directive('chart', function (Graph) {
     return {
         restrict: 'A',
         template: '',
         link: function ($scope, element, attrs) {
-            element.highcharts($scope.sensor.template);
+            var chart = $(element).highcharts($scope.sensor.template, function (chart) {
+                Graph.addChart($scope.sensor.id, chart)
+            });
         }
     };
 });
@@ -76,7 +78,7 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
                     console.log('XMPP connection established.');
                     $scope.xmpp.connection.send($pres().tree());
                     $scope.process = "";
-                    User.load();
+                    User.reload();
                 }
             }
 
