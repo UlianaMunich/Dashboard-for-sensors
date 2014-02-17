@@ -134,7 +134,57 @@
         "velocity": "",
         "trust_level": "",
         "variety": "",
-        "value": ""
+        "value": "",
+         "type": "chart",
+         "template": {
+                    "subtitle": {
+                        "text": "Real-timeupdated"
+                    },
+                    "yAxis": {
+                        "title": {
+                            "text": "Temperature, C"
+                        }
+                    },
+                    "series": [
+                        {
+                            "data": [
+                                [
+                                    1390225800697,
+                                    3
+                                ],
+                                [
+                                    1390225874691,
+                                    2
+                                ],
+                                [
+                                    1390225886827,
+                                    5
+                                ],
+                                [
+                                    1390225874345,
+                                    2
+                                ],
+                                [
+                                    1390225886856,
+                                    5
+                                ]
+                            ],
+                            "name": "Temperature in Student La"
+                        }
+                    ],
+                    "title": {
+                        "text": "Temperature in Student La"
+                    },
+                    "chart": {
+                        "type": "spline"
+                    },
+                    "xAxis": {
+                        "labels": {
+                            "rotation": -45
+                        },
+                        "type": "datetime"
+                    }
+         }
     },
     {
         "id": "5",
@@ -157,7 +207,9 @@
         "velocity": "",
         "trust_level": "",
         "variety": "",
-        "value": ""
+        "value": "",
+        "type":"chart",
+        "template": "img/sensor_images/bitcoin/bitcoinPreview.png"
     },
     {
         "id": "6",
