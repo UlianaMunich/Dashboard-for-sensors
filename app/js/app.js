@@ -7,7 +7,8 @@ angular.module('sensdash', [
         'sensdash.services',
         'sensdash.directives',
         'ui.bootstrap',
-        'wu.masonry'
+        'wu.masonry',
+        'ngCookies'
     ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/registry', {templateUrl: 'partials/registry.html', controller: 'RegistryCtrl'});

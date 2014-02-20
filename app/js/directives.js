@@ -41,7 +41,7 @@ sensdash_directives.directive('chart', function (Graph) {
     };
 });
 
-sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, User) {
+sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookies) {
     return {
         restrict: 'A',
         templateUrl: 'partials/nav_bar.html',
@@ -50,8 +50,8 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
             $scope.xmpp = XMPP;
             $scope.process = "";
             $scope.user = {
-                'jid': 'brunnhilde@likepro.co',
-                'pass': 'testpass',
+                'jid': $cookies.myID ,
+                'pass': $cookies.myToken,
                 'name': '',
                 'signedIn': false
             }
@@ -62,7 +62,9 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
             $scope.login = function () {
                 $scope.xmpp.connect($scope.user.jid, $scope.user.pass, update_connection);
                 $scope.process = "connecting...";
-                $timeout(update_connection, 1000);
+                $cookies.myID = $scope.user.jid;
+                $cookies.myToken = $scope.user.pass;
+
             }
             var update_connection = function (status) {
                 if (status == Strophe.Status.CONNECTING) {

@@ -34,6 +34,7 @@ sensdash_services.factory('XMPP', ['Graph', function (Graph) {
         connect: function (jid, pwd, callback) {
             xmpp.connection = new Strophe.Connection(BOSH_SERVICE);
             xmpp.connection.connect(jid, pwd, callback);
+
         },
         subscribe: function (node_id, on_subscribe) {
             xmpp.connection.pubsub.subscribe(
@@ -80,6 +81,7 @@ sensdash_services.factory('XMPP', ['Graph', function (Graph) {
 
 sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootScope) {
     var user = {
+        registryArray: [],
         favorites: [],
         subscriptions: [],
         profile: {},
@@ -124,7 +126,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
                 xmpp.unsubscribe(node.id, function () {
                     user.subscriptions.splice(user.subscriptions.indexOf(node.id), 1);
                     user.save('subscriptions');
-                    callback();
+                    callback();brunnhilde
                 });
             }
         }
