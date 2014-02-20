@@ -82,6 +82,7 @@ sensdash_services.factory('XMPP', ['Graph', function (Graph) {
 sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootScope) {
     var user = {
         init: function () {
+            user.registries = [];
             user.favorites = [];
             user.subscriptions = [];
             user.profile = {};
@@ -127,7 +128,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
                 xmpp.unsubscribe(node.id, function () {
                     user.subscriptions.splice(user.subscriptions.indexOf(node.id), 1);
                     user.save('subscriptions');
-                    callback();brunnhilde
+                    callback();
                 });
             }
         }

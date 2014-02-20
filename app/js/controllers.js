@@ -39,11 +39,12 @@ sensdash_controllers.controller('FavoritesCtrl', ['$scope', '$routeParams', 'Sen
     }
 ]);
 
-sensdash_controllers.controller('SettingsCtrl', ['$scope', 'User', function ($scope, $routeParams, User) {
+sensdash_controllers.controller('SettingsCtrl', ['$scope', 'User', function ($scope, User) {
         $scope.user = User;
 
         $scope.registryAdd = function (){
-            console.log($scope.inputRegistryURL);
+            $scope.user.registries.push($scope.inputRegistryURL);
+            console.log($scope.user.registries);
     };
    }
 ]);
