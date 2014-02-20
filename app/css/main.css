@@ -129,6 +129,13 @@ button.preview {
     font-size: 1.1em;
     padding-right: 5px;
 }
+div.registry_edit{
+    background-color: whitesmoke;
+}
+#addedRegistry{
+    margin: 0 5px 5px 5px;
+}
+
 
 /* Smartphones (portrait and landscape) ----------- */
 @media screen

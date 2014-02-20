@@ -109,6 +109,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
             user.load('profile');
             user.load('subscriptions');
             user.load('favorites');
+            user.load('registries');
         },
         subscribe: function (node, callback) {
             if (!user.check_subscribe(node.id)) {

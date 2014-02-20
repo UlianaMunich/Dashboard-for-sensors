@@ -64,6 +64,11 @@
                     </div>
                 </div>
             </form>
+            <div class="registry_edit" ng-hide="user.registries.length == 0">
+                <p><strong>List of Registries URL</strong></p>
+                <p ng-repeat="registry in user.registries"><button id="addedRegistry" class="btn btn-default" ng-click="registryDelete(registry)">Delete</button>
+                    {{registry}}</p>
+            </div>
         </div>
     </div>
 </div>

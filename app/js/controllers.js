@@ -40,13 +40,22 @@ sensdash_controllers.controller('FavoritesCtrl', ['$scope', '$routeParams', 'Sen
 ]);
 
 sensdash_controllers.controller('SettingsCtrl', ['$scope', 'User', function ($scope, User) {
-        $scope.user = User;
+    $scope.user = User;
 
-        $scope.registryAdd = function (){
+    $scope.registryAdd = function () {
+        if ($scope.user.registries.indexOf($scope.inputRegistryURL) == -1) {
             $scope.user.registries.push($scope.inputRegistryURL);
+            $scope.user.save('registries');
             console.log($scope.user.registries);
+            $scope.inputRegistryURL = '';
+        }
     };
-   }
+    $scope.registryDelete = function (x) {
+            var r = $scope.user.registries;
+            r.splice(r.indexOf(x), 1);
+            $scope.user.save('registries');
+    }
+}
 ]);
 sensdash_controllers.controller('preview_slideshow', ['$scope', '$routeParams',
     function ($scope, $routeParams) {
