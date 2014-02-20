@@ -76,6 +76,14 @@ div.graph {
     font-size: 1.25em;
 }
 
+.navbar-right button {
+    margin: 0;
+}
+
+.status {
+    padding-top: 5px;
+}
+
 .preview_content {
     display: none;
 }
@@ -115,6 +123,11 @@ button.preview {
 
 .sensor-data {
     height: 250px;
+}
+
+.status>span {
+    font-size: 1.1em;
+    padding-right: 5px;
 }
 
 /* Smartphones (portrait and landscape) ----------- */

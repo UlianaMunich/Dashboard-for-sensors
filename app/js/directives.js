@@ -59,6 +59,10 @@ sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookie
                 var result = (x == $location.path());
                 return result;
             }
+            $scope.disconnect = function() {
+                $scope.xmpp.connection.flush();
+                $scope.xmpp.connection.disconnect();
+            };
             $scope.login = function () {
                 $scope.xmpp.connect($scope.user.jid, $scope.user.pass, update_connection);
                 $scope.process = "connecting...";
@@ -76,6 +80,11 @@ sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookie
                     console.log('XMPP is disconnecting.');
                 } else if (status == Strophe.Status.DISCONNECTED) {
                     console.log('XMPP disconnected.');
+                    User.init();
+                    $scope.xmpp.connection.connected = false;
+                    $scope.$apply(function() {
+                        $location.path("/registry");
+                    });
                 } else if (status == Strophe.Status.CONNECTED) {
                     console.log('XMPP connection established.');
                     $scope.xmpp.connection.send($pres().tree());

@@ -12,7 +12,7 @@ sensdash_services.factory('Sensor', ['$resource',
 sensdash_services.factory('Graph', function () {
     var graph = {
         charts: {},
-        addChart: function(node_id, chart_obj) {
+        addChart: function (node_id, chart_obj) {
             graph.charts[node_id] = chart_obj;
         },
         update: function (json_obj, node_id) {
@@ -64,7 +64,7 @@ sensdash_services.factory('XMPP', ['Graph', function (Graph) {
                     .children('item')
                     .children('entry').text();
                 var _node = $(message).children('event').children('items').first().attr('node')
-                var node_id = _node.replace(PUBSUB_NODE+'.', '')
+                var node_id = _node.replace(PUBSUB_NODE + '.', '')
 
                 if (_data) {
                     // Data is a tag, try to extract JSON from inner text
@@ -81,10 +81,11 @@ sensdash_services.factory('XMPP', ['Graph', function (Graph) {
 
 sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootScope) {
     var user = {
-        registryArray: [],
-        favorites: [],
-        subscriptions: [],
-        profile: {},
+        init: function () {
+            user.favorites = [];
+            user.subscriptions = [];
+            user.profile = {};
+        },
         save: function (property) {
             xmpp.connection.private.set(property, property + ":ns", user[property], function (data) {
                     console.log(property + " saved: ", data);
@@ -93,7 +94,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
         },
         load: function (property) {
             xmpp.connection.private.get(property, property + ":ns", function (data) {
-                    user[property] = data;
+                    user[property] = data != undefined ? data : [];
                     if (property == 'subscriptions') {
                         for (var i = 0; i < user.subscriptions.length; i++) {
                             xmpp.subscribe(user.subscriptions[i]);
@@ -131,6 +132,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
             }
         }
     };
+    user.init();
     if (xmpp.connection.connected) {
         user.reload();
     }
