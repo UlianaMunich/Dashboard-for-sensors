@@ -21,7 +21,7 @@ sensdash_services.factory('Graph', function () {
             return true;
         }
     };
-    return graph
+    return graph;
 })
 
 sensdash_services.factory('XMPP', ['Graph', function (Graph) {
@@ -44,7 +44,7 @@ sensdash_services.factory('XMPP', ['Graph', function (Graph) {
                 [],
                 xmpp.handle_incoming,
                 on_subscribe);
-            console.log("Subscription request sent,", node_id)
+            console.log("Subscription request sent,", node_id);
         },
         unsubscribe: function (node_id, on_unsubscribe) {
             xmpp.connection.pubsub.unsubscribe(
@@ -63,8 +63,8 @@ sensdash_services.factory('XMPP', ['Graph', function (Graph) {
                     .children('items')
                     .children('item')
                     .children('entry').text();
-                var _node = $(message).children('event').children('items').first().attr('node')
-                var node_id = _node.replace(PUBSUB_NODE + '.', '')
+                var _node = $(message).children('event').children('items').first().attr('node');
+                var node_id = _node.replace(PUBSUB_NODE + '.', '');
 
                 if (_data) {
                     // Data is a tag, try to extract JSON from inner text
@@ -76,7 +76,7 @@ sensdash_services.factory('XMPP', ['Graph', function (Graph) {
             return true;
         }
     };
-    return xmpp
+    return xmpp;
 }]);
 
 sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootScope) {
@@ -103,7 +103,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
                     }
                     $rootScope.$apply();
                 },
-                console.log)
+                console.log);
         },
         reload: function () {
             user.load('profile');
@@ -138,5 +138,5 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
     if (xmpp.connection.connected) {
         user.reload();
     }
-    return user
+    return user;
 }]);

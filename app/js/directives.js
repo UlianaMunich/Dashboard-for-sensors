@@ -50,26 +50,27 @@ sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookie
             $scope.xmpp = XMPP;
             $scope.process = "";
             $scope.user = {
-                'jid': $cookies.myID ,
+                'jid': $cookies.myID,
                 'pass': $cookies.myToken,
                 'name': '',
                 'signedIn': false
-            }
+            };
             $scope.isActive = function (x) {
                 var result = (x == $location.path());
                 return result;
-            }
-            $scope.disconnect = function() {
+            };
+            $scope.disconnect = function () {
                 $scope.xmpp.connection.flush();
                 $scope.xmpp.connection.disconnect();
             };
             $scope.login = function () {
-                $scope.xmpp.connect($scope.user.jid, $scope.user.pass, update_connection);
-                $scope.process = "connecting...";
-                $cookies.myID = $scope.user.jid;
-                $cookies.myToken = $scope.user.pass;
-
-            }
+                if ($scope.user.jid != '') {
+                    $scope.xmpp.connect($scope.user.jid, $scope.user.pass, update_connection);
+                    $scope.process = "connecting...";
+                    $cookies.myID = $scope.user.jid;
+                    $cookies.myToken = $scope.user.pass;
+                }
+            };
             var update_connection = function (status) {
                 if (status == Strophe.Status.CONNECTING) {
                     console.log('connecting.');
@@ -82,7 +83,7 @@ sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookie
                     console.log('XMPP disconnected.');
                     User.init();
                     $scope.xmpp.connection.connected = false;
-                    $scope.$apply(function() {
+                    $scope.$apply(function () {
                         $location.path("/registry");
                     });
                 } else if (status == Strophe.Status.CONNECTED) {
@@ -91,8 +92,8 @@ sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookie
                     $scope.process = "";
                     User.reload();
                 }
-            }
-
+            };
+                $scope.login();
         }
     };
 });

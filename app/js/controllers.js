@@ -8,6 +8,7 @@ sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Sensor', 'User',
     function ($scope, Sensor, User) {
         $scope.sensors = Sensor.query();
         $scope.user = User;
+
     }]);
 
 sensdash_controllers.controller('StreamCtrl', ['$scope', 'Sensor', 'User',

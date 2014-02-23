@@ -30,12 +30,25 @@
                     "text": "Temperature, C"
                 }
             },
-            "series": [
-                {
-                    "data": [],
-                    "name": "Temperature in Dresden"
-                }
-            ],
+            "series":  [
+                                              {
+                                                  "data": [
+                                                      [
+                                                          1390225800697,
+                                                          3
+                                                      ],
+                                                      [
+                                                          1390225874691,
+                                                          2
+                                                      ],
+                                                      [
+                                                          1390225886827,
+                                                          5
+                                                      ]
+                                                  ],
+                                                  "name": "Temperature in Student La"
+                                              }
+             ],
             "title": {
                 "text": "German weather"
             },
