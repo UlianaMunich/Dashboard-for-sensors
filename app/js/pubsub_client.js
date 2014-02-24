@@ -43,7 +43,7 @@ var Client = {
         Client.show_html(_message);
         break;
       default:
-        Client.log("Oh dear! I don't understand");
+        Client.log("test");
     }
   },
 

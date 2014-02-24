@@ -6,10 +6,16 @@
     <p><strong>Access: </strong>{{sensor.access}}</p>
     <p><strong>Provider: </strong><a href="{{sensor.provider_www}}">{{sensor.provider_name}}</a></p>
     <div class="div_sla" ng-show="sensor.sla">
-        <p>Please read and accept the SLA to subscribe</p>
-        <textarea class="form-control" disabled>{{sensor.sla}}</textarea>
-        <label for="accept_sla">I hereby accept the SLA as stated above</label>
-        <input type="checkbox" ng-model="accept_sla" id="accept_sla">
+        <p ng-hide="user.check_subscribe(sensor.id)">Please read and accept the SLA to subscribe</p>
+        <strong>SLA: </strong><textarea class="form-control" disabled>{{sensor.sla}}</textarea>
+        <label for="accept_sla" ng-hide="user.check_subscribe(sensor.id)">I hereby accept the SLA as stated above</label>
+        <input type="checkbox" ng-model="accept_sla" id="accept_sla" ng-hide="user.check_subscribe(sensor.id)">
+    </div>
+    <div class="dev_description" ng-show="sensor.dev_details">
+        <p>You can take a look on technical description of this sensor and download all available information</p>
+        <p><strong>Responsible Team: </strong>{{sensor.responsible_team}}</p>
+        <p><strong>Administrator: </strong>{{sensor.administrator}}</p>
+        <p><strong>End-Point configuration: </strong>{{sensor.EPConfig}}</p>
     </div>
 </div>
 <div ng-show="sensor.preview" style="height: 305px">

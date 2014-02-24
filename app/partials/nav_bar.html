@@ -12,8 +12,7 @@
     <form ng-submit="login()" class="navbar-form navbar-right form-signin" role="login"
           ng-hide="xmpp.connection.connected">
         <div class="form-group">
-            <input ng-model="user.jid" type="text" id="jid" class="form-control" placeholder="JID" required=""
-                   ng-disabled="process">
+            <input ng-model="user.jid" type="text" id="jid" class="form-control" placeholder="JID" ng-disabled="process">
         </div>
         <div class="form-group">
             <input ng-model="user.pass" type="password" id="pass" class="form-control" placeholder="Password"

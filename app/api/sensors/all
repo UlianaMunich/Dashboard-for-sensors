@@ -17,6 +17,10 @@
         "trust_level": "",
         "variety": "",
         "value": "",
+        "dev_details": "true",
+        "responsible_team": "DSE",
+        "administrator": "Max Mustermann",
+        "EPConfig": "1.pdf",
         "type": "chart",
         "credits" : {
             "enabled" : false
