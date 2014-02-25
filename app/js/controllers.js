@@ -107,3 +107,38 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
         $modalInstance.dismiss('cancel');
     };
 };
+
+//Modal for registry view
+function RegistryModalCtrl($scope, $modal, User) {
+    $scope.open = function () {
+
+        var modalInstance = $modal.open({
+            templateUrl: 'partials/blocks/registry_details_modal.html',
+            controller: RegistryModalInstanceCtrl,
+            resolve: {
+                sensor: function () {
+                    return $scope.sensor;
+                }
+            }
+        });
+        modalInstance.result.then(function () {
+        }, function () {
+            console.log("Modal closed");
+        });
+    };
+};
+var RegistryModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
+    $scope.user = User;
+    $scope.sensor = sensor;
+
+    $scope.viewRegistry = function () {
+        User.viewRegistry($scope.sensor, function () {
+            console.log("User saw JSON file", $scope.sensor.id);
+        });
+        $modalInstance.close();
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+};

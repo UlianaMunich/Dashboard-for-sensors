@@ -68,7 +68,7 @@
                 <p><strong>List of Registries URL</strong></p>
                 <p id="list_of_registries" ng-repeat="registry in user.registries">
                     <button id="addedRegistry" class="btn btn-default" ng-click="registryDelete(registry)">Delete</button>
-                    <button id="viewRegistry" class="btn btn-default" ng-click="registryView(registry)">View</button>
+                    <button id="viewRegistry" class="btn btn-default" ng-controller="RegistryModalCtrl" ng-click="open()">View</button>
                     {{registry}}</p>
             </div>
         </div>
