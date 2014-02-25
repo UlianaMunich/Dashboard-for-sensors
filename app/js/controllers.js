@@ -108,7 +108,7 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
     };
 };
 
-//Modal for registry view
+//Modal for registry view in Settings Tab
 function RegistryModalCtrl($scope, $modal, User) {
     $scope.open = function () {
 

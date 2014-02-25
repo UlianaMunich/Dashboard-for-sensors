@@ -97,5 +97,24 @@
                 "type": "datetime"
             }
         }
-    }
+    },
+    {
+            "id": "3",
+            "title": "Queue in Mensa",
+            "availability": true,
+            "last_update": "2013-08-07T11:14:34.000+02:00",
+            "description": "This data stream reflects mensa-overload status, showing approximate amount of people inside.",
+            "sla": "This is a hobby-project, and data is provided 'as is'. Should be around 80% accurate. Should be enough to know when is a good time to go for lunch.",
+            "icon": "img/icon/restaurant-icon.png",
+            "preview": "",
+            "picture": "img/sensor_images/mensa_queue.jpg",
+            "access": "public",
+            "provider_name": "Provider TU Dresden",
+            "provider_www": "http://www.inf.tu-dresden.de/",
+            "volume": "",
+            "velocity": "",
+            "trust_level": "",
+            "variety": "",
+            "value": ""
+        }
 ]

@@ -123,4 +123,7 @@ div.registry_edit{
 #addedRegistry{
     margin: 0 5px 5px 5px;
 }
+div.dev_description pre{
+    height: 350px;
+}
 

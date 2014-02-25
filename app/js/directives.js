@@ -64,6 +64,14 @@ sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookie
                 $scope.xmpp.connection.disconnect();
             };
             $scope.login = function () {
+               // $scope.timeInMs = 0;
+
+               // var countUp = function() {
+               //     $scope.timeInMs+=1000;
+               //     $timeout(countUp, 1000);
+               // }
+               // $timeout(countUp, 1000);
+
                 if ($scope.user.jid != '') {
                     $scope.xmpp.connect($scope.user.jid, $scope.user.pass, update_connection);
                     $scope.process = "connecting...";
@@ -93,7 +101,8 @@ sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookie
                     User.reload();
                 }
             };
-                $scope.login();
+            $scope.login();
+
         }
     };
 });
