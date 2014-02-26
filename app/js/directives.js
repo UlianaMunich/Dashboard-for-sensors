@@ -41,7 +41,7 @@ sensdash_directives.directive('chart', function (Graph) {
     };
 });
 
-sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookies) {
+sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, User, $cookies) {
     return {
         restrict: 'A',
         templateUrl: 'partials/nav_bar.html',
@@ -49,6 +49,7 @@ sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookie
             $scope.user = User;
             $scope.xmpp = XMPP;
             $scope.process = "";
+            $scope.in_progress = false;
             $scope.user = {
                 'jid': $cookies.myID,
                 'pass': $cookies.myToken,
@@ -56,39 +57,39 @@ sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookie
                 'signedIn': false
             };
             $scope.isActive = function (x) {
-                var result = (x == $location.path());
-                return result;
+                return (x == $location.path());
             };
             $scope.disconnect = function () {
                 $scope.xmpp.connection.flush();
                 $scope.xmpp.connection.disconnect();
+                $scope.process = "";
             };
             $scope.login = function () {
-               // $scope.timeInMs = 0;
-
-               // var countUp = function() {
-               //     $scope.timeInMs+=1000;
-               //     $timeout(countUp, 1000);
-               // }
-               // $timeout(countUp, 1000);
-
-                if ($scope.user.jid != '') {
+                if ($scope.user.jid) {
                     $scope.xmpp.connect($scope.user.jid, $scope.user.pass, update_connection);
                     $scope.process = "connecting...";
-                    $cookies.myID = $scope.user.jid;
-                    $cookies.myToken = $scope.user.pass;
                 }
             };
             var update_connection = function (status) {
                 if (status == Strophe.Status.CONNECTING) {
-                    console.log('connecting.');
+                    $scope.in_progress = true;
+                    console.log('connecting...');
                 } else if (status == Strophe.Status.CONNFAIL) {
                     console.log('XMPP failed to connect.');
                     $scope.process = "connection failed";
+                    $scope.in_progress = false;
                 } else if (status == Strophe.Status.DISCONNECTING) {
-                    console.log('XMPP is disconnecting.');
+                    $scope.in_progress = true;
+                    console.log('XMPP is disconnecting...');
+                } else if (status == Strophe.Status.AUTHFAIL) {
+                    console.log('XMPP authentication failed');
+                    $scope.process = "Authentication failed";
+                    $scope.xmpp.connection.flush();
+                    $scope.xmpp.connection.disconnect();
+
                 } else if (status == Strophe.Status.DISCONNECTED) {
                     console.log('XMPP disconnected.');
+                    $scope.in_progress = false;
                     User.init();
                     $scope.xmpp.connection.connected = false;
                     $scope.$apply(function () {
@@ -97,7 +98,11 @@ sensdash_directives.directive('navbar', function ($location, XMPP, User, $cookie
                 } else if (status == Strophe.Status.CONNECTED) {
                     console.log('XMPP connection established.');
                     $scope.xmpp.connection.send($pres().tree());
+                    // Login was successful, save cookies
                     $scope.process = "";
+                    $scope.in_progress = false;
+                    $cookies.myID = $scope.user.jid;
+                    $cookies.myToken = $scope.user.pass;
                     User.reload();
                 }
             };
