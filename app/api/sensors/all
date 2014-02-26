@@ -23,9 +23,6 @@
         "administrator": "Max Mustermann",
         "EPConfig": "1.pdf",
         "type": "chart",
-        "credits" : {
-            "enabled" : false
-        },
         "template": {
             "subtitle": {
                 "text": "Real-timeupdated"
@@ -65,7 +62,10 @@
                     "rotation": -45
                 },
                 "type": "datetime"
-            }
+            },
+             "credits" : {
+                        "enabled" : false
+                    }
         }
     },
     {
@@ -114,7 +114,10 @@
                     "rotation": -45
                 },
                 "type": "datetime"
-            }
+            },
+            "credits": {
+                  "enabled": false
+                }
         }
     },
     {
