@@ -8,8 +8,7 @@ sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Sensor', 'User',
     function ($scope, Sensor, User) {
         $scope.sensors = Sensor.query();
         $scope.user = User;
-
-    }]);
+}]);
 
 sensdash_controllers.controller('StreamCtrl', ['$scope', 'Sensor', 'User',
     function ($scope, Sensor, User) {
@@ -58,11 +57,11 @@ sensdash_controllers.controller('SettingsCtrl', ['$scope', 'User', function ($sc
     }
 }
 ]);
-sensdash_controllers.controller('preview_slideshow', ['$scope', '$routeParams',
-    function ($scope, $routeParams) {
+
+sensdash_controllers.controller('ReferencesCtrl', ['$scope',
+    function ($scope) {
         $scope.test = "Hello World";
-    }
-]);
+    }]);
 
 //Modal window controllers, check definition syntax
 function SensorModalCtrl($scope, $modal, User) {
@@ -104,7 +103,7 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
     };
 
     $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
+        $modalInstance.dismiss("cancel");
     };
 };
 

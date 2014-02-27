@@ -83,7 +83,7 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
                     console.log('XMPP is disconnecting...');
                 } else if (status == Strophe.Status.AUTHFAIL) {
                     console.log('XMPP authentication failed');
-                    $scope.process = "Authentication failed";
+                    $scope.process = 'Authentication failed';
                     $scope.xmpp.connection.flush();
                     $scope.xmpp.connection.disconnect();
 
@@ -92,6 +92,7 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
                     $scope.in_progress = false;
                     User.init();
                     $scope.xmpp.connection.connected = false;
+                    $scope.xmpp.connection.disconnected = true;
                     $scope.$apply(function () {
                         $location.path("/registry");
                     });
@@ -99,7 +100,7 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
                     console.log('XMPP connection established.');
                     $scope.xmpp.connection.send($pres().tree());
                     // Login was successful, save cookies
-                    $scope.process = "";
+                    $scope.process = '';
                     $scope.in_progress = false;
                     $cookies.myID = $scope.user.jid;
                     $cookies.myToken = $scope.user.pass;

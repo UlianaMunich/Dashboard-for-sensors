@@ -206,8 +206,9 @@
         "access": "private",
         "provider_name": "bitcoin Deutschland",
         "provider_www": "https://www.bitcoin.de/de",
+        "dev_details": "false",
         "location": "Frankfurt",
-        "reliability": "Level 1",
+        "reliability": "",
         "trust_level": "",
         "type": "chart",
         "template": "img/sensor_images/bitcoin/bitcoinPreview.png"
@@ -227,6 +228,7 @@
         "provider_www": "http://www.inf.tu-dresden.de/",
         "location": "Dresden",
         "reliability": "Level 3",
+        "dev_details": "true",
         "trust_level": ""
     },
     {
@@ -244,6 +246,7 @@
         "provider_www": "http://www.inf.tu-dresden.de/",
         "location": "Dresden",
         "reliability": "Level 2",
+        "dev_details": "true",
         "trust_level": ""
     },
     {
@@ -260,7 +263,8 @@
         "provider_name": "Google",
         "provider_www": "www.google.com",
         "location": "Dresden",
-        "reliability": "Level 1",
+        "reliability": "",
+        "dev_details": "false",
         "trust_level": ""
     },
     {
@@ -277,7 +281,8 @@
         "provider_name": "Sky Sports RSS Feeds",
         "provider_www": "http://www.skysports.com/",
         "location": "Dresden",
-        "reliability": "Level 3",
+        "reliability": "",
+        "dev_details": "false",
         "trust_level": ""
     },
     {
@@ -295,6 +300,7 @@
         "provider_www": "http://www.inf.tu-dresden.de/",
         "location": "Dresden",
         "reliability": "Level 1",
+        "dev_details": "true",
         "trust_level": ""
     }
 ]
