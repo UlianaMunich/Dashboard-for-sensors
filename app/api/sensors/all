@@ -11,13 +11,10 @@
         "picture": "img/sensor_images/datacenterTemper.jpg",
         "access": "private",
         "provider_name": "Provider TU Dresden",
-        "location":"Dresden",
+        "location": "Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
-        "volume": "",
-        "velocity": "",
+        "reliability": "Level 3",
         "trust_level": "",
-        "variety": "",
-        "value": "",
         "dev_details": "true",
         "responsible_team": "DSE",
         "administrator": "Max Mustermann",
@@ -32,25 +29,25 @@
                     "text": "Temperature, C"
                 }
             },
-            "series":  [
-                                              {
-                                                  "data": [
-                                                      [
-                                                          1390225800697,
-                                                          3
-                                                      ],
-                                                      [
-                                                          1390225874691,
-                                                          2
-                                                      ],
-                                                      [
-                                                          1390225886827,
-                                                          5
-                                                      ]
-                                                  ],
-                                                  "name": "Temperature in Student La"
-                                              }
-             ],
+            "series": [
+                {
+                    "data": [
+                        [
+                            1390225800697,
+                            3
+                        ],
+                        [
+                            1390225874691,
+                            2
+                        ],
+                        [
+                            1390225886827,
+                            5
+                        ]
+                    ],
+                    "name": "Temperature in Student La"
+                }
+            ],
             "title": {
                 "text": "German weather"
             },
@@ -63,9 +60,9 @@
                 },
                 "type": "datetime"
             },
-             "credits" : {
-                        "enabled" : false
-                    }
+            "credits": {
+                "enabled": false
+            }
         }
     },
     {
@@ -79,15 +76,16 @@
         "picture": "img/sensor_images/temper.jpg",
         "access": "private",
         "provider_name": "Provider TU Dresden",
-        "location":"Dresden",
+        "location": "Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
         "preview": "",
-        "volume": "",
-        "velocity": "",
+        "reliability": "Level 3",
         "trust_level": "",
-        "variety": "",
-        "value": "",
         "type": "chart",
+        "dev_details": "true",
+        "responsible_team": "DSE",
+        "administrator": "Max Mustermann",
+        "EPConfig": "1.pdf",
         "template": {
             "subtitle": {
                 "text": "Real-timeupdated"
@@ -116,8 +114,8 @@
                 "type": "datetime"
             },
             "credits": {
-                  "enabled": false
-                }
+                "enabled": false
+            }
         }
     },
     {
@@ -133,62 +131,63 @@
         "access": "public",
         "provider_name": "Google",
         "provider_www": "www.google.com",
-        "location":"Dresden",
-        "volume": "",
-        "velocity": "",
+        "location": "Dresden",
+        "dev_details": "true",
+        "reliability": "Level 3",
         "trust_level": "",
-        "variety": "",
-        "value": "",
-         "type": "chart",
-         "template": {
-                    "subtitle": {
-                        "text": "Real-timeupdated"
-                    },
-                    "yAxis": {
-                        "title": {
-                            "text": "Temperature, C"
-                        }
-                    },
-                    "series": [
-                        {
-                            "data": [
-                                [
-                                    1390225800697,
-                                    3
-                                ],
-                                [
-                                    1390225874691,
-                                    2
-                                ],
-                                [
-                                    1390225886827,
-                                    5
-                                ],
-                                [
-                                    1390225874345,
-                                    2
-                                ],
-                                [
-                                    1390225886856,
-                                    5
-                                ]
-                            ],
-                            "name": "Temperature in Student La"
-                        }
+        "type": "chart",
+        "template": {
+            "subtitle": {
+                "text": "Real-timeupdated"
+            },
+            "yAxis": {
+                "title": {
+                    "text": "Temperature, C"
+                }
+            },
+            "series": [
+                {
+                    "data": [
+                        [
+                            1390225800697,
+                            3
+                        ],
+                        [
+                            1390225874691,
+                            2
+                        ],
+                        [
+                            1390225886827,
+                            5
+                        ],
+                        [
+                            1390225874345,
+                            2
+                        ],
+                        [
+                            1390225886856,
+                            5
+                        ]
                     ],
-                    "title": {
-                        "text": "Temperature in Student La"
-                    },
-                    "chart": {
-                        "type": "spline"
-                    },
-                    "xAxis": {
-                        "labels": {
-                            "rotation": -45
-                        },
-                        "type": "datetime"
-                    }
-         }
+                    "name": "Temperature in Student La"
+                }
+            ],
+            "title": {
+                "text": "Temperature in Student La"
+            },
+            "chart": {
+                "type": "spline"
+            },
+            "xAxis": {
+                "labels": {
+                    "rotation": -45
+                },
+                "type": "datetime"
+            },
+            "credits": {
+                "enabled": false
+            }
+        }
     },
     {
         "id": "5",
@@ -207,13 +206,10 @@
         "access": "private",
         "provider_name": "bitcoin Deutschland",
         "provider_www": "https://www.bitcoin.de/de",
-        "location":"Frankfurt",
-        "volume": "",
-        "velocity": "",
+        "location": "Frankfurt",
+        "reliability": "Level 1",
         "trust_level": "",
-        "variety": "",
-        "value": "",
-        "type":"chart",
+        "type": "chart",
         "template": "img/sensor_images/bitcoin/bitcoinPreview.png"
     },
     {
@@ -224,17 +220,14 @@
         "description": "Light intensity outside, updated every minute",
         "sla": "Sensor resolution is 5 Lumen, calculated on 30-seconds average. 99% uptime.",
         "icon": "img/icon/light_icon.png",
-        "preview": "img/icon/light_icon.png",
+        "preview": "",
         "picture": "img/sensor_images/brightness.jpg",
         "access": "private",
         "provider_name": "Provider TU Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
-        "location":"Dresden",
-        "volume": "",
-        "velocity": "",
-        "trust_level": "",
-        "variety": "",
-        "value": ""
+        "location": "Dresden",
+        "reliability": "Level 3",
+        "trust_level": ""
     },
     {
         "id": "7",
@@ -249,12 +242,9 @@
         "access": "private",
         "provider_name": "Provider TU Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
-        "location":"Dresden",
-        "volume": "",
-        "velocity": "",
-        "trust_level": "",
-        "variety": "",
-        "value": ""
+        "location": "Dresden",
+        "reliability": "Level 2",
+        "trust_level": ""
     },
     {
         "id": "8",
@@ -269,12 +259,9 @@
         "access": "public",
         "provider_name": "Google",
         "provider_www": "www.google.com",
-        "location":"Dresden",
-        "volume": "",
-        "velocity": "",
-        "trust_level": "",
-        "variety": "",
-        "value": ""
+        "location": "Dresden",
+        "reliability": "Level 1",
+        "trust_level": ""
     },
     {
         "id": "9",
@@ -289,12 +276,9 @@
         "access": "public",
         "provider_name": "Sky Sports RSS Feeds",
         "provider_www": "http://www.skysports.com/",
-        "location":"Dresden",
-        "volume": "",
-        "velocity": "",
-        "trust_level": "",
-        "variety": "",
-        "value": ""
+        "location": "Dresden",
+        "reliability": "Level 3",
+        "trust_level": ""
     },
     {
         "id": "10",
@@ -309,11 +293,8 @@
         "access": "private",
         "provider_name": "Provider TU Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
-        "location":"Dresden",
-        "volume": "",
-        "velocity": "",
-        "trust_level": "",
-        "variety": "",
-        "value": ""
+        "location": "Dresden",
+        "reliability": "Level 1",
+        "trust_level": ""
     }
 ]
