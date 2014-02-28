@@ -7,8 +7,8 @@
                 href="#/favorites">Favorites</a></li>
         <li ng-show="xmpp.connection.connected" ng-class="{active: isActive('/settings')}"><a
                 href="#/settings">Settings</a></li>
-        <li ng-show="xmpp.connection.disconnected" ng-class="{active: isActive('/references')}"><a
-                href="#/references">References</a></li>
+        <li ng-class="{active: isActive('/reference')}"><a
+                href="#/reference">Reference</a></li>
     </ul>
 
     <form ng-submit="login()" class="navbar-form navbar-right form-signin" role="login"
