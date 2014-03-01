@@ -108,7 +108,6 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
                 }
             };
             $scope.login();
-
         }
     };
 });

@@ -24,10 +24,14 @@ sensdash_services.factory('Graph', function () {
     return graph;
 })
 
-sensdash_services.factory('XMPP', ['Graph', function (Graph) {
-    var BOSH_SERVICE = 'http://likepro.co/http-bind/';
-    var PUBSUB_SERVER = 'pubsub.likepro.co';
-    var PUBSUB_NODE = 'pubsub.sensors';
+sensdash_services.factory('XMPP', ['$location', 'Graph', function ($location, Graph) {
+    if (typeof Config === 'undefined') {
+        console.log("Config is missing or broken, redirecting to setup reference page");
+        $location.path("/reference");
+    }
+    var BOSH_SERVICE = Config.BOSH_SERVER;
+    var PUBSUB_SERVER = Config.PUBSUB_SERVER;
+    var PUBSUB_NODE = Config.PUBSUB_NODE;
     var xmpp = {
         connection: {connected: false},
         received_message_ids: [],
