@@ -56,6 +56,7 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', function ($location, Gr
             on_unsubscribe();
         },
         handle_incoming: function (message) {
+            //console.log(message);
             if (!xmpp.connection.connected) {
                 return true;
             }
@@ -102,7 +103,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
                     user[property] = data != undefined ? data : [];
                     if (property == 'subscriptions') {
                         for (var i = 0; i < user.subscriptions.length; i++) {
-                            xmpp.subscribe(user.subscriptions[i]);
+                            //xmpp.subscribe(user.subscriptions[i]);
                         }
                     }
                     $rootScope.$apply();
