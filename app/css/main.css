@@ -89,14 +89,16 @@ div.sla {
     padding: 0px 10px 10px 0px;
 }
 
-#favorites_tab, #settings {
+#favorites_tab, #settings, #dev_ref {
     background-color: white;
     -webkit-box-shadow: 0 8px 6px -6px gray;
     -moz-box-shadow: 0 8px 6px -6px gray;
     box-shadow: 0 8px 6px -6px gray;
     padding-top: 70px;
 }
-
+#dev_ref{
+    padding-bottom: 30px;
+}
 .btn-settings {
     float: right;
     padding-right: 40px;
