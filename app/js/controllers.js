@@ -60,7 +60,7 @@ sensdash_controllers.controller('SettingsCtrl', ['$scope', 'User', function ($sc
 
 sensdash_controllers.controller('ReferencesCtrl', ['$scope',
     function ($scope) {
-        $scope.test = "Hello World";
+        $scope.test = "Test references";
     }]);
 
 //Modal window controllers, check definition syntax
