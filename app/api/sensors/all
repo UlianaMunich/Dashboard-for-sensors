@@ -13,13 +13,22 @@
         "provider_name": "Provider TU Dresden",
         "location": "Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
-        "reliability": "",
-        "trust_level": "",
         "dev_details": "true",
         "responsible_team": "RN",
         "administrator": "Philipp Grubitzsch",
         "EPConfig": "config.pdf",
-        "end_points":["EP1", "EP2"],
+        "end_points":[
+                         {
+                             "type":"muc",
+                             "name": "chat2@conference.likepro.co",
+                             "pwd": null
+                         },
+                         {
+                             "type":"muc",
+                             "name": "chat2@conference.likepro.co",
+                             "pwd": null
+                         }
+                     ],
         "type": "chart",
         "template": {
             "subtitle": {

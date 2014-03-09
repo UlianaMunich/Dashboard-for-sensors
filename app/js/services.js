@@ -36,7 +36,7 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', function ($location, Gr
         connection: {connected: false},
         received_message_ids: [],
         // logging IO for debug
-        raw_input: function (data)  {
+        raw_input: function (data) {
             console.log('RECV: ' + data);
         },
         // logging IO for debug
@@ -49,20 +49,39 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', function ($location, Gr
             xmpp.connection.rawInput = xmpp.raw_input;
             xmpp.connection.rawOutput = xmpp.raw_output;
         },
-        subscribe: function (node_id, on_subscribe) {
-            xmpp.connection.pubsub.subscribe(
-                xmpp.connection.jid,
-                PUBSUB_SERVER,
-                PUBSUB_NODE + '.' + node_id,
-                [],
-                xmpp.handle_incoming,
-                on_subscribe);
-            console.log("Subscription request sent,", node_id);
+        subscribe: function (end_points, on_subscribe) {
+            var end_point = end_points[0];
+            var jid = xmpp.connection.jid;
+            if (end_point.type == "pubsub") {
+                xmpp.connection.pubsub.subscribe(
+                    jid,
+                    PUBSUB_SERVER,
+                    PUBSUB_NODE + '.' + sensor_map,
+                    [],
+                    xmpp.handle_incoming,
+                    on_subscribe);
+                console.log("Subscription request sent,", end_point);
+            } else if (end_point.type == "muc") {
+                xmpp.connection.muc.join(end_point.name, jid.split("@")[0], xmpp.get_message);
+                on_subscribe();
+            } else {
+                console.log("End point protocol not supported");
+            }
         },
-        unsubscribe: function (node_id, on_unsubscribe) {
-            xmpp.connection.pubsub.unsubscribe(
-                PUBSUB_NODE + '.' + node_id);
-            on_unsubscribe();
+        get_message: function(x, y){
+            console.log("our function");
+            console.log(x, y);
+        },
+        unsubscribe: function (end_points, on_unsubscribe) {
+            var end_point = end_points[0];
+            var jid = xmpp.connection.jid;
+            if (end_point.type == "pubsub") {
+                xmpp.connection.pubsub.unsubscribe(
+                    PUBSUB_NODE + '.' + end_points);
+                on_unsubscribe();
+            } else if (end_point.type == "muc") {
+                xmpp.connection.muc.leave(end_point.name, jid.split("@")[0], on_unsubscribe);
+            }
         },
         handle_incoming: function (message) {
             //console.log(message);
@@ -98,7 +117,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
         init: function () {
             user.registries = [];
             user.favorites = [];
-            user.subscriptions = [];
+            user.subscriptions = {};
             user.profile = {};
         },
         save: function (property) {
@@ -111,8 +130,8 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
             xmpp.connection.private.get(property, property + ":ns", function (data) {
                     user[property] = data != undefined ? data : [];
                     if (property == 'subscriptions') {
-                        for (var i = 0; i < user.subscriptions.length; i++) {
-                            //xmpp.subscribe(user.subscriptions[i]);
+                        for (var key in user.subscriptions) {
+                            xmpp.subscribe(user.subscriptions[key]);
                         }
                     }
                     $rootScope.$apply();
@@ -125,25 +144,34 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
             user.load('favorites');
             user.load('registries');
         },
-        subscribe: function (node, callback) {
-            if (!user.check_subscribe(node.id)) {
-                xmpp.subscribe(node.id, function () {
-                    user.subscriptions.push(node.id);
+        subscribe: function (sensor, callback) {
+            if (!user.check_subscribe(sensor.id)) {
+                xmpp.subscribe(sensor.end_points, function () {
+                    user.subscriptions[sensor.id] = sensor.end_points;
                     user.save('subscriptions');
                     callback();
                 });
             }
         },
-        check_subscribe: function (x) {
-            return (user.subscriptions.indexOf(x) != -1);
+        check_subscribe: function (id) {
+            for (var key in user.subscriptions) {
+                if (key == id) {
+                    return true;
+                }
+            }
+            return false;
         },
 
-        unsubscribe: function (node, callback) {
-            if (user.check_subscribe(node.id)) {
-                xmpp.unsubscribe(node.id, function () {
-                    user.subscriptions.splice(user.subscriptions.indexOf(node.id), 1);
-                    user.save('subscriptions');
-                    callback();
+        unsubscribe: function (sensor, callback) {
+            if (user.check_subscribe(sensor.id)) {
+                xmpp.unsubscribe(sensor.end_points, function () {
+                    for (var key in user.subscriptions) {
+                        if (key == sensor.id) {
+                            delete user.subscriptions[key];
+                            user.save('subscriptions');
+                            callback();
+                        }
+                    }
                 });
             }
         }
