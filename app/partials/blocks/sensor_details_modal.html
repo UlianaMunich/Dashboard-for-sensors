@@ -1,18 +1,20 @@
 <div class="modal-header">
-    <h3>{{sensor.title}}</h3>
+    <h3>{{sensor.title}}
+    <abbr title="High Secure"><span class="glyphicon glyphicon-lock" ng-show="sensor.end_points.length > 1"></span></abbr>
+    </h3>
 </div>
 <div class="modal-body">
     <p><strong>Description: </strong>{{sensor.description}}</p>
     <p><strong>Access: </strong>{{sensor.access}}</p>
     <p><strong>Provider: </strong><a href="{{sensor.provider_www}}">{{sensor.provider_name}}</a></p>
     <div class="dev_description" ng-show="sensor.dev_details">
-        <p>You can take a look on technical description of this sensor and download all available information</p>
+        <p>You can take a look on technical description of this
         <p><strong>Location: </strong>{{sensor.location}}</p>
         <p ng-show="sensor.responsible_team"><strong>Responsible Team: </strong>{{sensor.responsible_team}}</p>
         <p ng-show="sensor.administrator"><strong>Administrator: </strong>{{sensor.administrator}}</p>
-        <p tooltip="Has >= 3 end-points"  tooltip-trigger="mouseenter" tooltip-placement="left"><strong>Reliability: </strong>{{sensor.reliability}}</p>
+        <p><strong>Reliability: </strong>Has {{sensor.end_points.length}} end points</p>
         <p ng-show="sensor.EPConfig"><strong>End-Point configuration: </strong>{{sensor.EPConfig}}
-        <a href="#" >Download configuration file</a></p>
+        <a href="#" >Download</a></p>
     </div>
     <div class="div_sla" ng-show="sensor.sla">
         <p ng-hide="user.check_subscribe(sensor.id)">Please read and accept the SLA to subscribe</p>
