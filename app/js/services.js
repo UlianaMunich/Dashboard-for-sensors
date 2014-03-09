@@ -35,10 +35,19 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', function ($location, Gr
     var xmpp = {
         connection: {connected: false},
         received_message_ids: [],
+        // logging IO for debug
+        raw_input: function (data)  {
+            console.log('RECV: ' + data);
+        },
+        // logging IO for debug
+        raw_output: function (data) {
+            console.log('SENT: ' + data);
+        },
         connect: function (jid, pwd, callback) {
             xmpp.connection = new Strophe.Connection(BOSH_SERVICE);
             xmpp.connection.connect(jid, pwd, callback);
-
+            xmpp.connection.rawInput = xmpp.raw_input;
+            xmpp.connection.rawOutput = xmpp.raw_output;
         },
         subscribe: function (node_id, on_subscribe) {
             xmpp.connection.pubsub.subscribe(
