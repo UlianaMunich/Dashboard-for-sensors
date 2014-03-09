@@ -1,24 +1,25 @@
 [
     {
         "id": "1",
-        "title": "Temperature in DSE Server Room",
+        "title": "Ambient Temperature INF3084",
         "availability": true,
         "last_update": "2013-08-07T11:14:34.000+02:00",
         "description": "DSE students received a rack of older-generation IBM servers for experiments. Tempreture in temporary server room should be monitored carefully. This sensor provides temperature updates with 5-second frequency.",
         "sla": "Chinese sensors 'TMPR-42' guarantee measurement accuracy up to 0.1 Celicus Degree. Sensor proxy works with 99% uptime.",
         "icon": "img/icon/server_rack.jpg",
-        "preview": "",
+        "preview": ["img/sensor_images/preview/id_1_1.png","img/sensor_images/bitcoin/bitcoinPreview.png","img/sensor_images/bitcoin/bitcoinVerkaufen.png"],
         "picture": "img/sensor_images/datacenterTemper.jpg",
         "access": "private",
         "provider_name": "Provider TU Dresden",
         "location": "Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
-        "reliability": "Level 3",
+        "reliability": "",
         "trust_level": "",
         "dev_details": "true",
-        "responsible_team": "DSE",
-        "administrator": "Max Mustermann",
-        "EPConfig": "1.pdf",
+        "responsible_team": "RN",
+        "administrator": "Philipp Grubitzsch",
+        "EPConfig": "config.pdf",
+        "end_points":["EP1", "EP2"],
         "type": "chart",
         "template": {
             "subtitle": {
@@ -34,22 +35,22 @@
                     "data": [
                         [
                             1390225800697,
-                            3
+                            24
                         ],
                         [
                             1390225874691,
-                            2
+                            22
                         ],
                         [
                             1390225886827,
-                            5
+                           25
                         ]
                     ],
-                    "name": "Temperature in Student La"
+                    "name": "Ambient Temperature INF3084"
                 }
             ],
             "title": {
-                "text": "German weather"
+                "text": "Ambient Temperature INF3084"
             },
             "chart": {
                 "type": "spline"
@@ -79,13 +80,13 @@
         "location": "Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
         "preview": "",
-        "reliability": "Level 3",
         "trust_level": "",
         "type": "chart",
         "dev_details": "true",
         "responsible_team": "DSE",
         "administrator": "Max Mustermann",
-        "EPConfig": "1.pdf",
+        "EPConfig": "config.pdf",
+        "end_points":["EP1","EP2","EP3"],
         "template": {
             "subtitle": {
                 "text": "Real-timeupdated"
@@ -133,7 +134,8 @@
         "provider_www": "www.google.com",
         "location": "Dresden",
         "dev_details": "true",
-        "reliability": "Level 3",
+        "EPConfig": "config.pdf",
+        "end_points":["EP1", "EP3"],
         "trust_level": "",
         "type": "chart",
         "template": {
@@ -154,18 +156,10 @@
                         ],
                         [
                             1390225874691,
-                            2
+                            7
                         ],
                         [
                             1390225886827,
-                            5
-                        ],
-                        [
-                            1390225874345,
-                            2
-                        ],
-                        [
-                            1390225886856,
                             5
                         ]
                     ],
@@ -208,7 +202,9 @@
         "provider_www": "https://www.bitcoin.de/de",
         "dev_details": "false",
         "location": "Frankfurt",
-        "reliability": "",
+        "administrator": "Max Mustermann",
+        "EPConfig": "config.pdf",
+        "end_points":["EP2","EP3","EP4"],
         "trust_level": "",
         "type": "chart",
         "template": "img/sensor_images/bitcoin/bitcoinPreview.png"
@@ -227,7 +223,9 @@
         "provider_name": "Provider TU Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
         "location": "Dresden",
-        "reliability": "Level 3",
+        "administrator": "Max Mustermann",
+        "EPConfig": "config.pdf",
+        "end_points":["EP1","EP3","EP5"],
         "dev_details": "true",
         "trust_level": ""
     },
@@ -245,7 +243,9 @@
         "provider_name": "Provider TU Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
         "location": "Dresden",
-        "reliability": "Level 2",
+        "administrator": "Max Mustermann",
+        "EPConfig": "config.pdf",
+        "end_points":["EP3"],
         "dev_details": "true",
         "trust_level": ""
     },
@@ -263,25 +263,9 @@
         "provider_name": "Google",
         "provider_www": "www.google.com",
         "location": "Dresden",
-        "reliability": "",
-        "dev_details": "false",
-        "trust_level": ""
-    },
-    {
-        "id": "9",
-        "title": "RSS Sport",
-        "availability": true,
-        "last_update": "2013-08-07T11:14:34.000+02:00",
-        "description": "Provides an overview of current news in sport",
-        "sla": "",
-        "icon": "img/icon/rss.png",
-        "picture": "img/sensor_images/rssSport.jpg",
-        "preview": "",
-        "access": "public",
-        "provider_name": "Sky Sports RSS Feeds",
-        "provider_www": "http://www.skysports.com/",
-        "location": "Dresden",
-        "reliability": "",
+        "administrator": "Max Mustermann",
+        "EPConfig": "config.pdf",
+        "end_points":["EP1","EP2","EP3"],
         "dev_details": "false",
         "trust_level": ""
     },
@@ -299,7 +283,9 @@
         "provider_name": "Provider TU Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
         "location": "Dresden",
-        "reliability": "Level 1",
+        "administrator": "Max Mustermann",
+        "EPConfig": "config.pdf",
+        "end_points":["EP2","EP4","EP6"],
         "dev_details": "true",
         "trust_level": ""
     }

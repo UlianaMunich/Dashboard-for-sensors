@@ -128,4 +128,10 @@ div.registry_edit{
 div.dev_description pre{
     height: 350px;
 }
+.carousel-inner{
+    max-height: 320px;
+}
+.glyphicon{
+    color: mediumseagreen;
+}
 

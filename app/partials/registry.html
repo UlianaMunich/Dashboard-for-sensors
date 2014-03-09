@@ -12,9 +12,11 @@
          ng-repeat="sensor in sensors | filter:{title: query}">
         <div class="sensor" ng-controller="SensorModalCtrl" ng-click="open()">
             <div class="icon">
-                <img width="24px" class="img-responsive pull-left sensor-icon" ng-src="{{sensor.icon}}">
+                <img width="40px" class="img-responsive pull-left sensor-icon" ng-src="{{sensor.icon}}">
                 <h4>{{sensor.title}}</h4>
+                <abbr title="High Secure"><span class="glyphicon glyphicon-lock" ng-show="sensor.end_points.length > 1"></span></abbr>
                 <span class="label label-success" ng-show="user.check_subscribe(sensor.id)">Subscribed</span>
+                <abbr title="High Reliable"><span class="label label-info" ng-show="sensor.end_points.length > 2">Reliable</span></abbr>
             </div>
             <div ng-show="sensor.picture">
                 <img class="img-responsive sensor-picture" ng-src="{{sensor.picture}}">
