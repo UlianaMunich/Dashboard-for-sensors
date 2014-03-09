@@ -98,7 +98,7 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
                     });
                 } else if (status == Strophe.Status.CONNECTED) {
                     console.log('XMPP connection established.');
-                    $scope.xmpp.connection.addHandler(console.log, null, 'message', null, null,  null);
+                    //$scope.xmpp.connection.addHandler($scope.xmpp.get_message, null, 'message', null, null,  null);
                     $scope.xmpp.connection.send($pres().tree());
                     // Login was successful, save cookies
                     $scope.process = '';

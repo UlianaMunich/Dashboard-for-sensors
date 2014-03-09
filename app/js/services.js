@@ -68,9 +68,11 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', function ($location, Gr
                 console.log("End point protocol not supported");
             }
         },
-        get_message: function(x, y){
-            console.log("our function");
-            console.log(x, y);
+        get_message: function(message){
+            console.log("-- MESSAGE RECEIVED: --");
+            var text =  Strophe.getText(message.getElementsByTagName('body')[0]);
+            console.log(text);
+            return true;
         },
         unsubscribe: function (end_points, on_unsubscribe) {
             var end_point = end_points[0];
@@ -139,6 +141,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
                 console.log);
         },
         reload: function () {
+            console.log("Loading user data");
             user.load('profile');
             user.load('subscriptions');
             user.load('favorites');
