@@ -134,4 +134,9 @@ div.dev_description pre{
 .glyphicon{
     color: mediumseagreen;
 }
+h3.sens_dash{
+    margin-top: 0;
+    margin-left: 20px;
+    color: steelblue;
+}
 

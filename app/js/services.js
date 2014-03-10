@@ -156,10 +156,11 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
                 });
             }
         },
-        check_subscribe: function (id) {
+        check_subscribe: function (sensor_id) {
             for (var key in user.subscriptions) {
-                if (key == id) {
+                if (key == sensor_id) {
                     return true;
+                    console.log(this);
                 }
             }
             return false;
@@ -173,6 +174,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
                             delete user.subscriptions[key];
                             user.save('subscriptions');
                             callback();
+                            console.log("user unsubscribed from sensor id = " + key );
                         }
                     }
                 });

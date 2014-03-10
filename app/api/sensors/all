@@ -7,7 +7,11 @@
         "description": "DSE students received a rack of older-generation IBM servers for experiments. Tempreture in temporary server room should be monitored carefully. This sensor provides temperature updates with 5-second frequency.",
         "sla": "Chinese sensors 'TMPR-42' guarantee measurement accuracy up to 0.1 Celicus Degree. Sensor proxy works with 99% uptime.",
         "icon": "img/icon/server_rack.jpg",
-        "preview": ["img/sensor_images/preview/id_1_1.png","img/sensor_images/bitcoin/bitcoinPreview.png","img/sensor_images/bitcoin/bitcoinVerkaufen.png"],
+        "preview": [
+            "img/sensor_images/preview/id_1_1.png",
+            "img/sensor_images/bitcoin/bitcoinPreview.png",
+            "img/sensor_images/bitcoin/bitcoinVerkaufen.png"
+        ],
         "picture": "img/sensor_images/datacenterTemper.jpg",
         "access": "private",
         "provider_name": "Provider TU Dresden",
@@ -17,18 +21,18 @@
         "responsible_team": "RN",
         "administrator": "Philipp Grubitzsch",
         "EPConfig": "config.pdf",
-        "end_points":[
-                         {
-                             "type":"muc",
-                             "name": "chat2@conference.likepro.co",
-                             "pwd": null
-                         },
-                         {
-                             "type":"muc",
-                             "name": "chat2@conference.likepro.co",
-                             "pwd": null
-                         }
-                     ],
+        "end_points": [
+            {
+                "type": "muc",
+                "name": "chat2@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "name": "chat2@conference.likepro.co",
+                "pwd": null
+            }
+        ],
         "type": "chart",
         "template": {
             "subtitle": {
@@ -52,7 +56,7 @@
                         ],
                         [
                             1390225886827,
-                           25
+                            25
                         ]
                     ],
                     "name": "Ambient Temperature INF3084"
@@ -95,7 +99,18 @@
         "responsible_team": "DSE",
         "administrator": "Max Mustermann",
         "EPConfig": "config.pdf",
-        "end_points":["EP1","EP2","EP3"],
+        "end_points": [
+            {
+                "type": "muc",
+                "name": "chat2@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "name": "chat2@conference.likepro.co",
+                "pwd": null
+            }
+        ],
         "template": {
             "subtitle": {
                 "text": "Real-timeupdated"
@@ -144,7 +159,23 @@
         "location": "Dresden",
         "dev_details": "true",
         "EPConfig": "config.pdf",
-        "end_points":["EP1", "EP3"],
+        "end_points": [
+            {
+                "type": "muc",
+                "name": "chat2@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "name": "chat3@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "name": "chat1@conference.likepro.co",
+                "pwd": null
+            }
+        ],
         "trust_level": "",
         "type": "chart",
         "template": {
@@ -213,7 +244,13 @@
         "location": "Frankfurt",
         "administrator": "Max Mustermann",
         "EPConfig": "config.pdf",
-        "end_points":["EP2","EP3","EP4"],
+        "end_points": [
+            {
+                "type": "muc",
+                "name": "chat2@conference.likepro.co",
+                "pwd": null
+            }
+        ],
         "trust_level": "",
         "type": "chart",
         "template": "img/sensor_images/bitcoin/bitcoinPreview.png"
@@ -234,7 +271,13 @@
         "location": "Dresden",
         "administrator": "Max Mustermann",
         "EPConfig": "config.pdf",
-        "end_points":["EP1","EP3","EP5"],
+        "end_points": [
+            {
+                "type": "muc",
+                "name": "chat2@conference.likepro.co",
+                "pwd": null
+            }
+        ],
         "dev_details": "true",
         "trust_level": ""
     },
@@ -254,7 +297,23 @@
         "location": "Dresden",
         "administrator": "Max Mustermann",
         "EPConfig": "config.pdf",
-        "end_points":["EP3"],
+        "end_points": [
+            {
+                "type": "muc",
+                "name": "chat2@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "name": "chat1@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "name": "chat3@conference.likepro.co",
+                "pwd": null
+            }
+        ],
         "dev_details": "true",
         "trust_level": ""
     },
@@ -274,7 +333,18 @@
         "location": "Dresden",
         "administrator": "Max Mustermann",
         "EPConfig": "config.pdf",
-        "end_points":["EP1","EP2","EP3"],
+        "end_points": [
+            {
+                "type": "muc",
+                "name": "chat2@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "name": "chat2@conference.likepro.co",
+                "pwd": null
+            }
+        ],
         "dev_details": "false",
         "trust_level": ""
     },
@@ -294,7 +364,13 @@
         "location": "Dresden",
         "administrator": "Max Mustermann",
         "EPConfig": "config.pdf",
-        "end_points":["EP2","EP4","EP6"],
+        "end_points": [
+            {
+                "type": "muc",
+                "name": "chat2@conference.likepro.co",
+                "pwd": null
+            }
+        ],
         "dev_details": "true",
         "trust_level": ""
     }
