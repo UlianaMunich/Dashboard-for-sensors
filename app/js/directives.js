@@ -46,7 +46,6 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
         restrict: 'A',
         templateUrl: 'partials/nav_bar.html',
         link: function ($scope, element, attrs) {
-            $scope.user = User;
             $scope.xmpp = XMPP;
             $scope.process = "";
             $scope.in_progress = false;

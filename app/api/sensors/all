@@ -24,7 +24,7 @@
         "end_points": [
             {
                 "type": "muc",
-                "name": "chat2@conference.likepro.co",
+                "name": "chat1@conference.likepro.co",
                 "pwd": null
             },
             {
@@ -45,20 +45,7 @@
             },
             "series": [
                 {
-                    "data": [
-                        [
-                            1390225800697,
-                            24
-                        ],
-                        [
-                            1390225874691,
-                            22
-                        ],
-                        [
-                            1390225886827,
-                            25
-                        ]
-                    ],
+                    "data": [],
                     "name": "Ambient Temperature INF3084"
                 }
             ],
@@ -107,7 +94,7 @@
             },
             {
                 "type": "muc",
-                "name": "chat2@conference.likepro.co",
+                "name": "chat3@conference.likepro.co",
                 "pwd": null
             }
         ],

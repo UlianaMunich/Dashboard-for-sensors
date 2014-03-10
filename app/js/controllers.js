@@ -8,24 +8,38 @@ sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Sensor', 'User',
     function ($scope, Sensor, User) {
         $scope.sensors = Sensor.query();
         $scope.user = User;
-}]);
+    }]);
 
-sensdash_controllers.controller('StreamCtrl', ['$scope', 'Sensor', 'User',
-    function ($scope, Sensor, User) {
+sensdash_controllers.controller('StreamCtrl', ['$scope', 'Sensor', 'User', 'XMPP',
+    function ($scope, Sensor, User, XMPP) {
         $scope.sensors = [];
         var registry_sensors = Sensor.query();
         registry_sensors.$promise.then(function (registry_sensors) {
             for (var i = 0; i < registry_sensors.length; i++) {
-                if (User.subscriptions.indexOf(registry_sensors[i].id) >= 0) {
+                if (User.check_subscribe(registry_sensors[i].id)) {
                     $scope.sensors.push(registry_sensors[i]);
                 }
+            }
+        });
+        for (var key in User.subscriptions) {
+            var ep = User.subscriptions[key];
+            XMPP.subscribe(ep, function () {
+                console.log("Rooms joined");
+            });
+        }
+        $scope.$on('$destroy', function(){
+            for (var key in User.subscriptions) {
+                var ep = User.subscriptions[key];
+                XMPP.unsubscribe(ep, function () {
+                    console.log("Rooms left");
+                });
             }
         });
     }
 ]);
 
-sensdash_controllers.controller('FavoritesCtrl', ['$scope', '$routeParams', 'Sensor', 'User',
-    function ($scope, $routeParams, Sensor, User) {
+sensdash_controllers.controller('FavoritesCtrl', ['$scope', '$routeParams', 'Sensor', 'User', 'XMPP',
+    function ($scope, $routeParams, Sensor, User, XMPP) {
         var all_sensors = Sensor.query();
         var user_favorites = User.favorites;
         $scope.result_favorites = [];
@@ -34,6 +48,20 @@ sensdash_controllers.controller('FavoritesCtrl', ['$scope', '$routeParams', 'Sen
                 if (user_favorites.indexOf(all_sensors[i].id) != -1) {
                     $scope.result_favorites.push(all_sensors[i]);
                 }
+            }
+        });
+        for (var key in User.subscriptions) {
+            var ep = User.subscriptions[key];
+            XMPP.subscribe(ep, function () {
+                console.log("Rooms joined");
+            });
+        }
+        $scope.$on('$destroy', function(){
+            for (var key in User.subscriptions) {
+                var ep = User.subscriptions[key];
+                XMPP.unsubscribe(ep, function () {
+                    console.log("Rooms left");
+                });
             }
         });
     }
@@ -51,9 +79,9 @@ sensdash_controllers.controller('SettingsCtrl', ['$scope', 'User', function ($sc
         }
     };
     $scope.registryDelete = function (x) {
-            var r = $scope.user.registries;
-            r.splice(r.indexOf(x), 1);
-            $scope.user.save('registries');
+        var r = $scope.user.registries;
+        r.splice(r.indexOf(x), 1);
+        $scope.user.save('registries');
     }
 }
 ]);
@@ -88,9 +116,7 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
     $scope.accept_sla = false;
 
     $scope.subscribe = function () {
-        User.subscribe($scope.sensor, function () {
-            console.log("user subscribed to sensor", $scope.sensor.id);
-        });
+        User.subscribe($scope.sensor);
         $modalInstance.close();
     };
 
