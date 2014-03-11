@@ -36,7 +36,7 @@
         "type": "chart",
         "template": {
             "subtitle": {
-                "text": "Real-timeupdated"
+                "text": "Real-time updated"
             },
             "yAxis": {
                 "title": {

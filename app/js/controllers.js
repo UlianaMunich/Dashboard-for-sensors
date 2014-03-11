@@ -1,7 +1,5 @@
 'use strict';
 
-/* Controllers */
-
 var sensdash_controllers = angular.module('sensdash.controllers', []);
 
 sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Sensor', 'User',
