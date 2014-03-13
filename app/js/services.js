@@ -16,17 +16,28 @@ sensdash_services.factory('Graph', function () {
             graph.charts[node_id] = chart_obj;
         },
         update: function (json_obj, node_id) {
-            if(node_id in graph.charts){
-                var shift = (graph.charts[1].series[0].data.length>10);
-            graph.charts[node_id].series[0].addPoint(json_obj,true,shift);
-            console.log("Chart updated:", node_id, json_obj);
-            }return true;
+            if (node_id in graph.charts) {
+                var shift = (graph.charts[1].series[0].data.length > 10);
+                graph.charts[node_id].series[0].addPoint(json_obj, true, shift);
+                console.log("Chart updated:", node_id, json_obj);
+            }
+            return true;
         }
     };
     return graph;
 });
+sensdash_services.factory('Text', function () {
+    var text = {
+        text_blocks_map: {},
+        updateTextBlock: function (new_text, sensor_id) {
+            var element_for_text = text.text_blocks_map[sensor_id];
+            element_for_text.append("<p>" + new_text + "</p>");
+        }
+    };
+    return text;
+});
 
-sensdash_services.factory('XMPP', ['$location', 'Graph', function ($location, Graph) {
+sensdash_services.factory('XMPP', ['$location', 'Graph', 'Text', function ($location, Graph, Text) {
     if (typeof Config === 'undefined') {
         console.log("Config is missing or broken, redirecting to setup reference page");
         $location.path("/reference");
@@ -38,18 +49,18 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', function ($location, Gr
         connection: {connected: false},
         received_message_ids: [],
         // logging IO for debug
-           //raw_input: function (data) {
-           //    console.log('RECV: ' + data);
-           //  },
-           // logging IO for debug
-           // raw_output: function (data) {
-           //     console.log('SENT: ' + data);
-           // },
+        //raw_input: function (data) {
+        //    console.log('RECV: ' + data);
+        //  },
+        // logging IO for debug
+        // raw_output: function (data) {
+        //     console.log('SENT: ' + data);
+        // },
         connect: function (jid, pwd, callback) {
             xmpp.connection = new Strophe.Connection(BOSH_SERVICE);
             xmpp.connection.connect(jid, pwd, callback);
-           //xmpp.connection.rawInput = xmpp.raw_input;
-           // xmpp.connection.rawOutput = xmpp.raw_output;
+            //xmpp.connection.rawInput = xmpp.raw_input;
+            // xmpp.connection.rawOutput = xmpp.raw_output;
         },
         subscribe: function (end_points, on_subscribe) {
             var end_point = end_points[0];
@@ -82,29 +93,41 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', function ($location, Gr
                 on_unsubscribe();
             }
         },
+        find_sensor: function (message) {
+            return {"id": 4, "type": "text"};
+        },
         handle_incoming_muc: function (message) {
+            var sensor = xmpp.find_sensor(message);
             var text = Strophe.getText(message.getElementsByTagName('body')[0]);
-            try{
-                text = text.replace(/&quot;/g,'"');
-                var msg_object = JSON.parse(text);
-                console.log("JSON message parsed: ", msg_object);
-                //creating a new array from received map for Graph.update in format [timestamp, value], e.g. [1390225874697, 23]
-                if ('sensorevent' in msg_object) {
-                var time_UTC = msg_object.sensorevent.timestamp;
-                var time_UNIX = (new Date(time_UTC.split(".").join("-")).getTime())/1000;
-                var data_array = new Array();
-                data_array[0] = time_UNIX;
-                data_array[1] = msg_object.sensorevent.values[0];
-                }else{
-                    var data_array = msg_object;
+            if (sensor.type == "text") {
+                if (typeof text == "string"){
+                    Text.updateTextBlock(text, sensor["id"]);
+                } else {
+                    console.log("Message is not a Text");
                 }
-                console.log(data_array);
-            }catch(e){
-                console.log("message is not valid JSON", text);
-                return true;
-            }
-            if (Array.isArray(data_array)){
-            Graph.update(data_array, '1');
+            } else if (sensor.type == "chart") {
+                try {
+                    text = text.replace(/&quot;/g, '"');
+                    var msg_object = JSON.parse(text);
+                    console.log("JSON message parsed: ", msg_object);
+                    //creating a new array from received map for Graph.update in format [timestamp, value], e.g. [1390225874697, 23]
+                    if ('sensorevent' in msg_object) {
+                        var time_UTC = msg_object.sensorevent.timestamp;
+                        var time_UNIX = (new Date(time_UTC.split(".").join("-")).getTime()) / 1000;
+                        var data_array = new Array();
+                        data_array[0] = time_UNIX;
+                        data_array[1] = msg_object.sensorevent.values[0];
+                    } else {
+                        var data_array = msg_object;
+                    }
+                    console.log(data_array);
+                } catch (e) {
+                    console.log("message is not valid JSON", text);
+                    return true;
+                }
+                if (Array.isArray(data_array)) {
+                    Graph.update(data_array, '1');
+                }
             }
             return true;
         },
@@ -167,8 +190,8 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
         },
         subscribe: function (sensor) {
             if (!user.check_subscribe(sensor.id)) {
-                    user.subscriptions[sensor.id] = sensor.end_points;
-                    user.save('subscriptions');
+                user.subscriptions[sensor.id] = sensor.end_points;
+                user.save("subscriptions");
             }
         },
         check_subscribe: function (sensor_id) {
@@ -184,7 +207,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
             if (user.check_subscribe(sensor.id)) {
                 xmpp.unsubscribe(sensor.end_points, function () {
                     delete user.subscriptions[sensor.id];
-                    user.save('subscriptions');
+                    user.save("subscriptions");
                     callback();
                     console.log("user unsubscribed from sensor id = " + sensor.id);
                 });

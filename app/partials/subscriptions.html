@@ -1,4 +1,4 @@
-<div id="subscriptions" ng-hide="">
+<div id="subscriptions">
     <div class="row">
         <div class="col-md-6  sensor-data" id="{{sensor.id}}" ng-repeat="sensor in sensors">
             <div class="sensor">
@@ -9,8 +9,9 @@
                     <span class="description col-md-12">{{sensor.description.slice(0,300)}}</span>
                 </div>
                 <div class="row">
-                    <div class="stream_data col-md-12">
-                        <div class="chart-content" chart id="chart-{{sensor.id}}"></div>
+                    <div class="stream_data col-md-12"  ng-switch on="sensor.type">
+                        <div class="chart-content" chart ng-switch-when="chart"></div>
+                        <div class="text-content" text ng-switch-when="text"></div>
                     </div>
                 </div>
             </div>

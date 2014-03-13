@@ -33,13 +33,24 @@ sensdash_directives.directive('chart', function (Graph) {
     return {
         restrict: 'A',
         template: '',
-        link: function ($scope, element, attrs) {
-            var chart = $(element).highcharts($scope.sensor.template, function (chart) {
+        link: function ($scope, element) {
+            $(element).highcharts($scope.sensor.template, function (chart) {
                 Graph.addChart($scope.sensor.id, chart)
             });
         }
     };
 });
+
+sensdash_directives.directive('text', function (Text) {
+    return {
+        restrict: 'A',
+        template: '',
+        link: function ($scope, element) {
+            Text.text_blocks_map[$scope.sensor.id] = element;
+        }
+    };
+});
+
 
 sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, User, $cookies) {
     return {

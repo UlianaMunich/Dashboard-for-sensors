@@ -155,66 +155,23 @@
         "end_points": [
             {
                 "type": "muc",
-                "name": "chat2@conference.likepro.co",
-                "pwd": null
-            },
-            {
-                "type": "muc",
                 "name": "chat3@conference.likepro.co",
                 "pwd": null
             },
             {
                 "type": "muc",
-                "name": "chat1@conference.likepro.co",
+                "name": "chat6@conference.likepro.co",
+                "pwd": null
+            },
+            {
+                "type": "muc",
+                "name": "chat7@conference.likepro.co",
                 "pwd": null
             }
         ],
         "trust_level": "",
-        "type": "chart",
-        "template": {
-            "subtitle": {
-                "text": "Real-timeupdated"
-            },
-            "yAxis": {
-                "title": {
-                    "text": "Temperature, C"
-                }
-            },
-            "series": [
-                {
-                    "data": [
-                        [
-                            1390225800697,
-                            3
-                        ],
-                        [
-                            1390225874691,
-                            7
-                        ],
-                        [
-                            1390225886827,
-                            5
-                        ]
-                    ],
-                    "name": "Temperature in Student La"
-                }
-            ],
-            "title": {
-                "text": "Temperature in Student La"
-            },
-            "chart": {
-                "type": "spline"
-            },
-            "xAxis": {
-                "labels": {
-                    "rotation": -45
-                },
-                "type": "datetime"
-            },
-            "credits": {
-                "enabled": false
-            }
-        }
+        "type": "text",
+        "template": ""
     },
     {
         "id": "5",
@@ -245,8 +202,8 @@
             }
         ],
         "trust_level": "",
-        "type": "chart",
-        "template": "img/sensor_images/bitcoin/bitcoinPreview.png"
+        "type": "text",
+        "template": ""
     },
     {
         "id": "6",
