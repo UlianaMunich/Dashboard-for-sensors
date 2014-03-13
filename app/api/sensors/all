@@ -24,7 +24,7 @@
         "end_points": [
             {
                 "type": "muc",
-                "name": "chat1@conference.likepro.co",
+                "name": "inf3084@conference.mobilis-dev.inf.tu-dresden.de",
                 "pwd": null
             },
             {
@@ -60,6 +60,12 @@
                     "rotation": -45
                 },
                 "type": "datetime"
+            },
+            "plotOptions": {
+                "area": {
+
+                     "turboThreshold": 20
+                }
             },
             "credits": {
                 "enabled": false
