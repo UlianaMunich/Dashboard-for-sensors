@@ -9,6 +9,28 @@ sensdash_services.factory('Sensor', ['$resource',
         });
     }]);
 
+sensdash_services.factory('Registry', ['$http', '$q', 'User', function ($http, $q, User) {
+    var registry = {
+        load: function () {
+            var requests = []
+            var all_registries = User.registries.concat(Config.REGISTRIES);
+            for(var i=0; i<all_registries.length; i++) {
+                requests.push($http.get(all_registries[i]));
+            }
+            var q = $q.all(requests);
+            var flat_list = q.then(function(result){
+                var list = [];
+                for(var i=0; i<result.length; i++) {
+                    list = list.concat(result[i].data);
+                }
+                return list;
+            })
+            return flat_list;
+        }
+    }
+    return registry;
+}])
+
 sensdash_services.factory('Graph', function () {
     var graph = {
         charts: {},
@@ -31,6 +53,10 @@ sensdash_services.factory('Text', function () {
         text_blocks_map: {},
         updateTextBlock: function (new_text, sensor_id) {
             var element_for_text = text.text_blocks_map[sensor_id];
+            var messages = element_for_text.children('p');
+            if (messages.length > 10) {
+                messages[0].remove();
+            }
             element_for_text.append("<p>" + new_text + "</p>");
         }
     };
@@ -191,7 +217,7 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
         subscribe: function (sensor) {
             if (!user.check_subscribe(sensor.id)) {
                 user.subscriptions[sensor.id] = sensor.end_points;
-                user.save("subscriptions");
+                user.save('subscriptions');
             }
         },
         check_subscribe: function (sensor_id) {

@@ -140,3 +140,11 @@ h3.sens_dash{
     color: steelblue;
 }
 
+table.table.registry-list>tbody>tr>td {
+    vertical-align: middle;
+}
+
+.table.registry-list .btn {
+    margin: 0 5px;
+    float: left;
+}

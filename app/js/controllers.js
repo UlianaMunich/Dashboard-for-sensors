@@ -2,17 +2,18 @@
 
 var sensdash_controllers = angular.module('sensdash.controllers', []);
 
-sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Sensor', 'User',
-    function ($scope, Sensor, User) {
-        $scope.sensors = Sensor.query();
+sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Registry', 'User',
+    function ($scope, Registry, User) {
+        Registry.load().then(function(sensors){
+            $scope.sensors = sensors;
+        });
         $scope.user = User;
     }]);
 
-sensdash_controllers.controller('StreamCtrl', ['$scope', 'Sensor', 'User', 'XMPP',
-    function ($scope, Sensor, User, XMPP) {
+sensdash_controllers.controller('StreamCtrl', ['$scope', 'Registry', 'User', 'XMPP',
+    function ($scope, Registry, User, XMPP) {
         $scope.sensors = [];
-        var registry_sensors = Sensor.query();
-        registry_sensors.$promise.then(function (registry_sensors) {
+        Registry.load().then(function (registry_sensors) {
             for (var i = 0; i < registry_sensors.length; i++) {
                 if (User.check_subscribe(registry_sensors[i].id)) {
                     $scope.sensors.push(registry_sensors[i]);
@@ -36,12 +37,11 @@ sensdash_controllers.controller('StreamCtrl', ['$scope', 'Sensor', 'User', 'XMPP
     }
 ]);
 
-sensdash_controllers.controller('FavoritesCtrl', ['$scope', '$routeParams', 'Sensor', 'User', 'XMPP',
-    function ($scope, $routeParams, Sensor, User, XMPP) {
-        var all_sensors = Sensor.query();
+sensdash_controllers.controller('FavoritesCtrl', ['$scope', '$routeParams', 'Registry', 'User', 'XMPP',
+    function ($scope, $routeParams, Registry, User, XMPP) {
         var user_favorites = User.favorites;
         $scope.result_favorites = [];
-        all_sensors.$promise.then(function (all_sensors) {
+        Registry.load().then(function (all_sensors) {
             for (var i = 0; i < all_sensors.length; i++) {
                 if (user_favorites.indexOf(all_sensors[i].id) != -1) {
                     $scope.result_favorites.push(all_sensors[i]);
@@ -67,6 +67,7 @@ sensdash_controllers.controller('FavoritesCtrl', ['$scope', '$routeParams', 'Sen
 
 sensdash_controllers.controller('SettingsCtrl', ['$scope', 'User', function ($scope, User) {
     $scope.user = User;
+    $scope.preinstalled_registries = Config.REGISTRIES;
 
     $scope.registryAdd = function () {
         if ($scope.user.registries.indexOf($scope.inputRegistryURL) == -1) {
