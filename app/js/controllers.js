@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-var sensdash_controllers = angular.module('sensdash.controllers', []);
+var sensdash_controllers = angular.module("sensdash.controllers", []);
 
-sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Registry', 'User',
+sensdash_controllers.controller("RegistryCtrl", ["$scope", "Registry", "User",
     function ($scope, Registry, User) {
         Registry.load().then(function(sensors){
             $scope.sensors = sensors;
@@ -10,7 +10,7 @@ sensdash_controllers.controller('RegistryCtrl', ['$scope', 'Registry', 'User',
         $scope.user = User;
     }]);
 
-sensdash_controllers.controller('StreamCtrl', ['$scope', 'Registry', 'User', 'XMPP',
+sensdash_controllers.controller("StreamCtrl", ["$scope", "Registry", "User", "XMPP",
     function ($scope, Registry, User, XMPP) {
         $scope.sensors = [];
         Registry.load().then(function (registry_sensors) {
@@ -26,7 +26,7 @@ sensdash_controllers.controller('StreamCtrl', ['$scope', 'Registry', 'User', 'XM
                 console.log("Rooms joined", ep);
             });
         }
-        $scope.$on('$destroy', function(){
+        $scope.$on("$destroy", function(){
             for (var key in User.subscriptions) {
                 var ep = User.subscriptions[key];
                 XMPP.unsubscribe(ep, function () {
@@ -37,7 +37,7 @@ sensdash_controllers.controller('StreamCtrl', ['$scope', 'Registry', 'User', 'XM
     }
 ]);
 
-sensdash_controllers.controller('FavoritesCtrl', ['$scope', '$routeParams', 'Registry', 'User', 'XMPP',
+sensdash_controllers.controller("FavoritesCtrl", ["$scope", "$routeParams", "Registry", "User", "XMPP",
     function ($scope, $routeParams, Registry, User, XMPP) {
         var user_favorites = User.favorites;
         $scope.result_favorites = [];
@@ -51,41 +51,41 @@ sensdash_controllers.controller('FavoritesCtrl', ['$scope', '$routeParams', 'Reg
         for (var key in User.subscriptions) {
             var ep = User.subscriptions[key];
             XMPP.subscribe(ep, function () {
-                console.log("Rooms joined");
+                console.log("Room joined");
             });
         }
-        $scope.$on('$destroy', function(){
+        $scope.$on("$destroy", function(){
             for (var key in User.subscriptions) {
                 var ep = User.subscriptions[key];
                 XMPP.unsubscribe(ep, function () {
-                    console.log("Rooms left");
+                    console.log("Room was left");
                 });
             }
         });
     }
 ]);
 
-sensdash_controllers.controller('SettingsCtrl', ['$scope', 'User', function ($scope, User) {
+sensdash_controllers.controller("SettingsCtrl", ["$scope", "User", function ($scope, User) {
     $scope.user = User;
     $scope.preinstalled_registries = Config.REGISTRIES;
 
     $scope.registryAdd = function () {
         if ($scope.user.registries.indexOf($scope.inputRegistryURL) == -1) {
             $scope.user.registries.push($scope.inputRegistryURL);
-            $scope.user.save('registries');
+            $scope.user.save("registries");
             console.log($scope.user.registries);
-            $scope.inputRegistryURL = '';
+            $scope.inputRegistryURL = "";
         }
     };
     $scope.registryDelete = function (x) {
         var r = $scope.user.registries;
         r.splice(r.indexOf(x), 1);
-        $scope.user.save('registries');
+        $scope.user.save("registries");
     }
 }
 ]);
 
-sensdash_controllers.controller('ReferencesCtrl', ['$scope',
+sensdash_controllers.controller("ReferencesCtrl", ["$scope",
     function ($scope) {
     }]);
 
@@ -94,7 +94,7 @@ function SensorModalCtrl($scope, $modal, User) {
     $scope.open = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: 'partials/blocks/sensor_details_modal.html',
+            templateUrl: "partials/blocks/sensor_details_modal.html",
             controller: SensorModalInstanceCtrl,
             resolve: {
                 sensor: function () {
@@ -136,7 +136,7 @@ function RegistryModalCtrl($scope, $modal, User) {
     $scope.open = function () {
 
         var modalInstance = $modal.open({
-            templateUrl: 'partials/blocks/registry_details_modal.html',
+            templateUrl: "partials/blocks/registry_details_modal.html",
             controller: RegistryModalInstanceCtrl,
             resolve: {
                 sensor: function () {
@@ -162,6 +162,6 @@ var RegistryModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) 
     };
 
     $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
+        $modalInstance.dismiss("cancel");
     };
 };

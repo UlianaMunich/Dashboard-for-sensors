@@ -1,18 +1,18 @@
-'use strict';
+"use strict";
 
-var sensdash_services = angular.module('sensdash.services', ['ngResource']);
+var sensdash_services = angular.module("sensdash.services", ["ngResource"]);
 
-sensdash_services.factory('Sensor', ['$resource',
+sensdash_services.factory("Sensor", ["$resource",
     function ($resource) {
-        return $resource('api/sensors/:sensorId', {}, {
-            query: {method: 'GET', params: {sensorId: 'all'}, isArray: true}
+        return $resource("api/sensors/:sensorId", {}, {
+            query: {method: "GET", params: {sensorId: "all"}, isArray: true}
         });
     }]);
 
-sensdash_services.factory('Registry', ['$http', '$q', 'User', function ($http, $q, User) {
+sensdash_services.factory("Registry", ["$http", "$q", "User", function ($http, $q, User) {
     var registry = {
         load: function () {
-            var requests = []
+            var requests = [];
             var all_registries = User.registries.concat(Config.REGISTRIES);
             for(var i=0; i<all_registries.length; i++) {
                 requests.push($http.get(all_registries[i]));
@@ -31,7 +31,7 @@ sensdash_services.factory('Registry', ['$http', '$q', 'User', function ($http, $
     return registry;
 }])
 
-sensdash_services.factory('Graph', function () {
+sensdash_services.factory("Graph", function () {
     var graph = {
         charts: {},
         addChart: function (node_id, chart_obj) {
@@ -48,12 +48,12 @@ sensdash_services.factory('Graph', function () {
     };
     return graph;
 });
-sensdash_services.factory('Text', function () {
+sensdash_services.factory("Text", function () {
     var text = {
         text_blocks_map: {},
         updateTextBlock: function (new_text, sensor_id) {
             var element_for_text = text.text_blocks_map[sensor_id];
-            var messages = element_for_text.children('p');
+            var messages = element_for_text.children("p");
             if (messages.length > 10) {
                 messages[0].remove();
             }
@@ -63,8 +63,8 @@ sensdash_services.factory('Text', function () {
     return text;
 });
 
-sensdash_services.factory('XMPP', ['$location', 'Graph', 'Text', function ($location, Graph, Text) {
-    if (typeof Config === 'undefined') {
+sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($location, Graph, Text) {
+    if (typeof Config === "undefined") {
         console.log("Config is missing or broken, redirecting to setup reference page");
         $location.path("/reference");
     }
@@ -76,11 +76,11 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', 'Text', function ($loca
         received_message_ids: [],
         // logging IO for debug
         //raw_input: function (data) {
-        //    console.log('RECV: ' + data);
+        //    console.log("RECV: " + data);
         //  },
         // logging IO for debug
         // raw_output: function (data) {
-        //     console.log('SENT: ' + data);
+        //     console.log("SENT: " + data);
         // },
         connect: function (jid, pwd, callback) {
             xmpp.connection = new Strophe.Connection(BOSH_SERVICE);
@@ -95,7 +95,7 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', 'Text', function ($loca
                 xmpp.connection.pubsub.subscribe(
                     jid,
                     PUBSUB_SERVER,
-                    PUBSUB_NODE + '.' + sensor_map,
+                    PUBSUB_NODE + "." + sensor_map,
                     [],
                     xmpp.handle_incoming_pubsub,
                     on_subscribe);
@@ -112,7 +112,7 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', 'Text', function ($loca
             var jid = xmpp.connection.jid;
             if (end_point.type == "pubsub") {
                 xmpp.connection.pubsub.unsubscribe(
-                    PUBSUB_NODE + '.' + end_points);
+                    PUBSUB_NODE + "." + end_points);
                 on_unsubscribe();
             } else if (end_point.type == "muc") {
                 xmpp.connection.muc.leave(end_point.name, jid.split("@")[0]);
@@ -124,7 +124,7 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', 'Text', function ($loca
         },
         handle_incoming_muc: function (message) {
             var sensor = xmpp.find_sensor(message);
-            var text = Strophe.getText(message.getElementsByTagName('body')[0]);
+            var text = Strophe.getText(message.getElementsByTagName("body")[0]);
             if (sensor.type == "text") {
                 if (typeof text == "string"){
                     Text.updateTextBlock(text, sensor["id"]);
@@ -133,11 +133,11 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', 'Text', function ($loca
                 }
             } else if (sensor.type == "chart") {
                 try {
-                    text = text.replace(/&quot;/g, '"');
+                    text = text.replace(/&quot;/g, "");
                     var msg_object = JSON.parse(text);
                     console.log("JSON message parsed: ", msg_object);
                     //creating a new array from received map for Graph.update in format [timestamp, value], e.g. [1390225874697, 23]
-                    if ('sensorevent' in msg_object) {
+                    if ("sensorevent" in msg_object) {
                         var time_UTC = msg_object.sensorevent.timestamp;
                         var time_UNIX = (new Date(time_UTC.split(".").join("-")).getTime()) / 1000;
                         var data_array = new Array();
@@ -152,7 +152,7 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', 'Text', function ($loca
                     return true;
                 }
                 if (Array.isArray(data_array)) {
-                    Graph.update(data_array, '1');
+                    Graph.update(data_array, "1");
                 }
             }
             return true;
@@ -164,14 +164,14 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', 'Text', function ($loca
             }
             var server = "^" + Client.pubsub_server.replace(/\./g, "\\.");
             var re = new RegExp(server);
-            if ($(message).attr('from').match(re) && (xmpp.received_message_ids.indexOf(message.getAttribute('id')) == -1)) {
-                xmpp.received_message_ids.push(message.getAttribute('id'));
-                var _data = $(message).children('event')
-                    .children('items')
-                    .children('item')
-                    .children('entry').text();
-                var _node = $(message).children('event').children('items').first().attr('node');
-                var node_id = _node.replace(PUBSUB_NODE + '.', '');
+            if ($(message).attr("from").match(re) && (xmpp.received_message_ids.indexOf(message.getAttribute("id")) == -1)) {
+                xmpp.received_message_ids.push(message.getAttribute("id"));
+                var _data = $(message).children("event")
+                    .children("items")
+                    .children("item")
+                    .children("entry").text();
+                var _node = $(message).children("event").children("items").first().attr("node");
+                var node_id = _node.replace(PUBSUB_NODE + ".", "");
 
                 if (_data) {
                     // Data is a tag, try to extract JSON from inner text
@@ -186,7 +186,7 @@ sensdash_services.factory('XMPP', ['$location', 'Graph', 'Text', function ($loca
     return xmpp;
 }]);
 
-sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootScope) {
+sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootScope) {
     var user = {
         init: function () {
             user.registries = [];
@@ -209,15 +209,15 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
         },
         reload: function () {
             console.log("Loading user data");
-            user.load('profile');
-            user.load('subscriptions');
-            user.load('favorites');
-            user.load('registries');
+            user.load("profile");
+            user.load("subscriptions");
+            user.load("favorites");
+            user.load("registries");
         },
         subscribe: function (sensor) {
             if (!user.check_subscribe(sensor.id)) {
                 user.subscriptions[sensor.id] = sensor.end_points;
-                user.save('subscriptions');
+                user.save("subscriptions");
             }
         },
         check_subscribe: function (sensor_id) {
@@ -228,7 +228,6 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
             }
             return false;
         },
-
         unsubscribe: function (sensor, callback) {
             if (user.check_subscribe(sensor.id)) {
                 xmpp.unsubscribe(sensor.end_points, function () {
@@ -238,6 +237,10 @@ sensdash_services.factory('User', ['XMPP', '$rootScope', function (xmpp, $rootSc
                     console.log("user unsubscribed from sensor id = " + sensor.id);
                 });
             }
+        },
+        check_sla_updates:function(sensor,callback){
+            var last_update = sensor.sla_last_update;
+            var current_sla_date = user.subscriptions;
         }
     };
     user.init();
