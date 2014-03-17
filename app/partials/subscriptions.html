@@ -1,5 +1,10 @@
 <div id="subscriptions">
     <div class="row">
+        <div class="col-md-8 col-md-offset-2 sensor" ng-show="subscrip.length === 0">
+            <p> You aren't subscribed to an any data source yet. Please use "Senspr List" tab in order to choose necessary data source and accept SLA if needed.</p>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-6 sensor-data" id="{{sensor.id}}" ng-repeat="sensor in sensors">
             <div class="sensor">
                 <div class="row">

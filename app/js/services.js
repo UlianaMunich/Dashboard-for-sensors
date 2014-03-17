@@ -24,7 +24,7 @@ sensdash_services.factory("Registry", ["$http", "$q", "User", function ($http, $
                     list = list.concat(result[i].data);
                 }
                 return list;
-            })
+            });
             return flat_list;
         }
     }
@@ -54,7 +54,7 @@ sensdash_services.factory("Text", function () {
         updateTextBlock: function (new_text, sensor_id) {
             var element_for_text = text.text_blocks_map[sensor_id];
             var messages = element_for_text.children("p");
-            if (messages.length > 10) {
+            if (messages.length > 8) {
                 messages[0].remove();
             }
             element_for_text.append("<p>" + new_text + "</p>");
