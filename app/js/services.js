@@ -133,13 +133,13 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
                 }
             } else if (sensor.type == 'chart') {
                 try {
-                    var text = text.replace(/&quot;/g, '');
+                    var text = text.replace(/&quot;/g, '"');
                     var msg_object = JSON.parse(text);
                     console.log("JSON message parsed: ", msg_object);
                     //creating a new array from received map for Graph.update in format [timestamp, value], e.g. [1390225874697, 23]
                     if ('sensorevent' in msg_object) {
                         var time_UTC = msg_object.sensorevent.timestamp;
-                        var time_UNIX = (new Date(time_UTC.split(".").join("-")).getTime()) / 1000;
+                        var time_UNIX = (new Date(time_UTC.split(".").join("-")).getTime())/1000;
                         var data_array = new Array();
                         data_array[0] = time_UNIX;
                         data_array[1] = msg_object.sensorevent.values[0];
@@ -158,7 +158,6 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
             return true;
         },
         handle_incoming_pubsub: function (message) {
-            //console.log(message);
             if (!xmpp.connection.connected) {
                 return true;
             }
