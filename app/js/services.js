@@ -120,24 +120,24 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
             }
         },
         find_sensor: function (message) {
-            return {"id": 4, "type": "text"};
+            return {"id": 1, "type": "chart"};
         },
         handle_incoming_muc: function (message) {
             var sensor = xmpp.find_sensor(message);
             var text = Strophe.getText(message.getElementsByTagName("body")[0]);
-            if (sensor.type == "text") {
+            if (sensor.type == 'text') {
                 if (typeof text == "string"){
                     Text.updateTextBlock(text, sensor["id"]);
                 } else {
                     console.log("Message is not a Text");
                 }
-            } else if (sensor.type == "chart") {
+            } else if (sensor.type == 'chart') {
                 try {
-                    text = text.replace(/&quot;/g, "");
+                    var text = text.replace(/&quot;/g, '');
                     var msg_object = JSON.parse(text);
                     console.log("JSON message parsed: ", msg_object);
                     //creating a new array from received map for Graph.update in format [timestamp, value], e.g. [1390225874697, 23]
-                    if ("sensorevent" in msg_object) {
+                    if ('sensorevent' in msg_object) {
                         var time_UTC = msg_object.sensorevent.timestamp;
                         var time_UNIX = (new Date(time_UTC.split(".").join("-")).getTime()) / 1000;
                         var data_array = new Array();
