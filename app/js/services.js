@@ -139,7 +139,7 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
                     //creating a new array from received map for Graph.update in format [timestamp, value], e.g. [1390225874697, 23]
                     if ('sensorevent' in msg_object) {
                         var time_UTC = msg_object.sensorevent.timestamp;
-                        var time_UNIX = (new Date(time_UTC.split(".").join("-")).getTime())/1000;
+                        var time_UNIX = new Date(time_UTC).getTime();
                         var data_array = new Array();
                         data_array[0] = time_UNIX;
                         data_array[1] = msg_object.sensorevent.values[0];
