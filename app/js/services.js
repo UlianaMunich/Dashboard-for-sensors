@@ -24,7 +24,7 @@ sensdash_services.factory("Registry", ["$http", "$q", "User", function ($http, $
                     list = list.concat(result[i].data);
                 }
                 return list;
-            })
+            });
             return flat_list;
         }
     }
@@ -54,7 +54,7 @@ sensdash_services.factory("Text", function () {
         updateTextBlock: function (new_text, sensor_id) {
             var element_for_text = text.text_blocks_map[sensor_id];
             var messages = element_for_text.children("p");
-            if (messages.length > 10) {
+            if (messages.length > 8) {
                 messages[0].remove();
             }
             element_for_text.append("<p>" + new_text + "</p>");
@@ -152,7 +152,7 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
                     //creating a new array from received map for Graph.update in format [timestamp, value], e.g. [1390225874697, 23]
                     if ('sensorevent' in msg_object) {
                         var time_UTC = msg_object.sensorevent.timestamp;
-                        var time_UNIX = (new Date(time_UTC.split(".").join("-")).getTime());
+                        var time_UNIX = new Date(time_UTC).getTime();
                         data_array[0] = time_UNIX;
                         data_array[1] = msg_object.sensorevent.values[0];
                     } else {
@@ -170,7 +170,6 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
             return true;
         },
         handle_incoming_pubsub: function (message) {
-            //console.log(message);
             if (!xmpp.connection.connected) {
                 return true;
             }
