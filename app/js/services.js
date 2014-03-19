@@ -39,7 +39,7 @@ sensdash_services.factory("Graph", function () {
         },
         update: function (json_obj, node_id) {
             if (node_id in graph.charts) {
-                var shift = (graph.charts[1].series[0].data.length > 10);
+                var shift = (graph.charts[node_id].series[0].data.length > 10);
                 graph.charts[node_id].series[0].addPoint(json_obj, true, shift);
                 console.log("Chart updated:", node_id, json_obj);
             }
@@ -102,7 +102,9 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
                     on_subscribe);
                 console.log("Subscription request sent,", end_point);
             } else if (end_point.type == "muc") {
-                xmpp.connection.muc.join(end_point.name, jid.split("@")[0], xmpp.handle_incoming_muc);
+                var nickname = jid.split("@")[0];
+                var room = end_point.name.replace("xmpp://",'');
+                xmpp.connection.muc.join(room, nickname, xmpp.handle_incoming_muc);
                 on_subscribe();
             } else {
                 console.log("End point protocol not supported");
@@ -114,16 +116,15 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
                 xmpp.connection.pubsub.unsubscribe(PUBSUB_NODE + "." + end_points);
                 on_unsubscribe();
             } else if (end_point.type == "muc") {
-                xmpp.connection.muc.leave(end_point.name, jid.split("@")[0]);
+                var room = end_point.name.replace("xmpp://",'');
+                xmpp.connection.muc.leave(room, jid.split("@")[0]);
                 on_unsubscribe();
             }
         },
         find_sensor: function (message) {
             var endpoint_name = message.getAttribute('from');
-            console.log("TEST TEST TEST" + endpoint_name);
-            //to get to the end_points.name and remove "xmpp://"
-            //endpoints_to_handler_map['xmpp://'].name.split('://')[1];
-            endpoint_name = endpoint_name.replace(/\/\w+/g, '');
+            //to get to the end_points.name and add "xmpp://"
+            endpoint_name = "xmpp://" + endpoint_name.replace(/\/\w+/g, '');
             if (endpoint_name in xmpp.endpoints_to_handler_map) {
                 var handler_id = xmpp.endpoints_to_handler_map[endpoint_name].handler_id;
                 var handler_type = xmpp.endpoints_to_handler_map[endpoint_name].handler_type;
@@ -167,7 +168,7 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
                     return true;
                 }
                 if (Array.isArray(data_array)) {
-                    Graph.update(data_array, "1");
+                    Graph.update(data_array, sensor.id);
                 }
             }
             return true;
