@@ -54,7 +54,7 @@ sensdash_services.factory("Text", function () {
         updateTextBlock: function (new_text, sensor_id) {
             var element_for_text = text.text_blocks_map[sensor_id];
             var messages = element_for_text.children("p");
-            if (messages.length > 8) {
+            if (messages.length > 20) {
                 messages[0].remove();
             }
             element_for_text.append("<p>" + new_text + "</p>");

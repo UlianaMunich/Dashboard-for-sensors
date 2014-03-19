@@ -25,7 +25,7 @@
         "end_points": [
             {
                 "type": "muc",
-                "name": "inf3084@conference.mobilis-dev.inf.tu-dresden.de",
+                "name": "xmpp://inf3084@conference.mobilis-dev.inf.tu-dresden.de",
                 "pwd": null
             },
             {
