@@ -120,6 +120,9 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
         },
         find_sensor: function (message) {
             var endpoint_name = message.getAttribute('from');
+            console.log("TEST TEST TEST" + endpoint_name);
+            //to get to the end_points.name and remove "xmpp://"
+            //endpoints_to_handler_map['xmpp://'].name.split('://')[1];
             endpoint_name = endpoint_name.replace(/\/\w+/g, '');
             if (endpoint_name in xmpp.endpoints_to_handler_map) {
                 var handler_id = xmpp.endpoints_to_handler_map[endpoint_name].handler_id;
