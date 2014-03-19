@@ -23,15 +23,15 @@ sensdash_controllers.controller("StreamCtrl", ["$scope", "Registry", "User", "XM
         });
         for (var key in User.subscriptions) {
             var ep = User.subscriptions[key];
-            XMPP.subscribe(ep, function () {
-                console.log("Rooms joined", ep);
+            XMPP.subscribe(ep[0], function () {
+                console.log("Room joined", ep[0]);
             });
         }
         $scope.$on("$destroy", function(){
             for (var key in User.subscriptions) {
                 var ep = User.subscriptions[key];
-                XMPP.unsubscribe(ep, function () {
-                    console.log("Rooms left");
+                XMPP.unsubscribe(ep[0], function () {
+                    console.log("Room left", ep[0]);
                 });
             }
         });
