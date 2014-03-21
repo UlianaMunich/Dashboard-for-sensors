@@ -21,7 +21,7 @@
             "dev_details": "true",
             "responsible_team": "RN",
             "administrator": "Philipp Grubitzsch",
-            "EPConfig": "config.pdf",
+            "EPConfig": "config30.pdf",
             "end_points": [
                 {
                     "type": "muc",

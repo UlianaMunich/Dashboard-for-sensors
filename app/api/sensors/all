@@ -23,11 +23,13 @@
         "end_points": [
             {
                 "type": "muc",
+                "priority": "main",
                 "name": "xmpp://chat2@conference.likepro.co",
                 "pwd": null
             },
             {
                 "type": "muc",
+                "priority": "alternative",
                 "name": "xmpp://chat3@conference.likepro.co",
                 "pwd": null
             }

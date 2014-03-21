@@ -142,11 +142,12 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
             }
             var text = Strophe.getText(message.getElementsByTagName("body")[0]);
             if (sensor.type == 'text') {
-                if (typeof text == "string") {
-                    Text.updateTextBlock(text, sensor["id"]);
-                } else {
-                    console.log("Message is not a Text");
-                }
+                console.log(typeof text);
+              if (typeof text == "String") {
+                   Text.updateTextBlock(text, sensor["id"]);
+               } else {
+                  console.log("Message is not a Text");
+               }
             } else if (sensor.type == 'chart') {
                 try {
                     text = text.replace(/&quot;/g, '"');
