@@ -19,7 +19,7 @@
         "end_points": [
             {
                 "type": "muc",
-                "name": "xmpp://testraum@conference.mobilis-dev.inf.tu-dresden.deo",
+                "name": "xmpp://testraum@conference.mobilis-dev.inf.tu-dresden.de",
                 "pwd": null
             }
         ],

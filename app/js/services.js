@@ -142,9 +142,24 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
             }
             var text = Strophe.getText(message.getElementsByTagName("body")[0]);
             if (sensor.type == 'text') {
-                console.log(typeof text);
-              if (typeof text == "String") {
+              if (typeof text == "string") {
+                  var text = text.substring(0,text.indexOf("- http://"));
                    Text.updateTextBlock(text, sensor["id"]);
+                    //find an URL in the text
+                  var source = (text || '').toString();
+                  var urlArray = [];
+                  var matchArray;
+                  // Regular expression to find FTP, HTTP(S) and email URLs.
+                  var regexToken = /(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((mailto:)?[_.\w-]+@([\w][\w\-]+\.)+[a-zA-Z]{2,3})/g;
+
+                  // Iterate through any URLs in the text.
+                  while( (matchArray = regexToken.exec( source )) !== null )
+                  {
+                      var token = matchArray[0];
+                      urlArray.push( token );
+                    //  console.log(urlArray);
+                  }
+                  return urlArray;
                } else {
                   console.log("Message is not a Text");
                }
@@ -258,10 +273,6 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
                 callback();
                 console.log("user unsubscribed from sensor id = " + sensor.id);
             }
-        },
-        check_sla_updates: function (sensor, callback) {
-            var last_update = sensor.sla_last_update;
-            var current_sla_date = user.subscriptions;
         }
     };
     user.init();
