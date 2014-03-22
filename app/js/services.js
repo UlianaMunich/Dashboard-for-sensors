@@ -41,7 +41,7 @@ sensdash_services.factory("Graph", function () {
             if (node_id in graph.charts) {
                 var shift = (graph.charts[node_id].series[0].data.length > 10);
                 graph.charts[node_id].series[0].addPoint(json_obj, true, shift);
-                console.log("Chart updated:", node_id, json_obj);
+               // console.log("Chart updated:", node_id, json_obj);
             }
             return true;
         }
@@ -168,7 +168,7 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
                     text = text.replace(/&quot;/g, '"');
                     var msg_object = JSON.parse(text);
                     var data_array = [];
-                    console.log("JSON message parsed: ", msg_object);
+                    //console.log("JSON message parsed: ", msg_object);
                     //creating a new array from received map for Graph.update in format [timestamp, value], e.g. [1390225874697, 23]
                     if ('sensorevent' in msg_object) {
                         var time_UTC = msg_object.sensorevent.timestamp;
@@ -178,9 +178,8 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
                     } else {
                         data_array = msg_object;
                     }
-                    console.log(data_array);
                 } catch (e) {
-                    console.log("message is not valid JSON", text);
+                  //  console.log("message is not valid JSON", text);
                     return true;
                 }
                 if (Array.isArray(data_array)) {
@@ -240,10 +239,10 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
         },
         reload: function () {
             console.log("Loading user data");
+            user.load("registries");
             user.load("profile");
             user.load("subscriptions");
             user.load("favorites");
-            user.load("registries");
         },
         subscribe: function (sensor) {
             if (!user.check_subscribe(sensor.id)) {
@@ -256,12 +255,30 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
                 }
                 user.subscriptions[sensor.id] = end_points;
                 user.save("subscriptions");
-            }
+             }
+
         },
         check_subscribe: function (sensor_id) {
             for (var key in user.subscriptions) {
                 if (key == sensor_id) {
                     return true;
+                }
+            }
+            return false;
+        },
+        check_sla: function (sensor) {
+            var sla_current_timestamp = sensor.sla_last_update;
+            var newArray = user.subscriptions[sensor.id];
+            for (var i =0; i < newArray.length; i++) {
+                if (newArray[i].sla_last_update !== sla_current_timestamp) {
+                    console.log("Last SLA updates are differ from your SLA");
+                    delete user.subscriptions[sensor.id];
+                    delete user.favorites.indexOf(sensor.id);
+                    user.save("subscriptions");
+                    user.save("favorites");
+                    alert("SLA for sensor '" + sensor.title + "' was changed. If you want to use it you need to accept new SLA. Thank you!");
+                }else{
+                    console.log("No new SLA updates");
                 }
             }
             return false;
@@ -275,9 +292,10 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
             }
         }
     };
-    user.init();
     if (xmpp.connection.connected) {
         user.reload();
     }
+    user.init();
+
     return user;
 }]);

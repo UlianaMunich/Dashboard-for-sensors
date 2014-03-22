@@ -6,7 +6,7 @@
             "last_update": "2013-08-07T11:14:34.000+02:00",
             "description": "DSE students receive an opportunity to get current outdoor temperature in Dresden Momsenstr.20. This sensor provides temperature updates with 5-second frequency and represents a class of low-cost, high-performance sensors. It is implemented using a commercially available Raspberry Pi single-board computer with an affiliated USB thermometer and automatic WLAN and XMPP connections to a sensor MUC room established at boot time.",
             "sla": "Sensor resolution is 0.5 °C, measurements taken every 10 seconds. Uptime 95% from 6:00 till 22:00.",
-            "sla_last_update":"1395005996",
+            "sla_last_update":"1395503028",
             "icon": "img/icon/temper_outside.png",
             "preview": [
                 "img/sensor_images/preview/id_1_3.png",

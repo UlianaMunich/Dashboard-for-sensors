@@ -80,6 +80,7 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
                     $scope.process = "connecting...";
                 }
             };
+
             var update_connection = function (status) {
                 if (status == Strophe.Status.CONNECTING) {
                     $scope.in_progress = true;

@@ -4,7 +4,7 @@ var sensdash_controllers = angular.module("sensdash.controllers", []);
 
 sensdash_controllers.controller("RegistryCtrl", ["$scope", "Registry", "User",
     function ($scope, Registry, User) {
-        Registry.load().then(function(sensors){
+        Registry.load().then(function (sensors) {
             $scope.sensors = sensors;
         });
         $scope.user = User;
@@ -18,6 +18,7 @@ sensdash_controllers.controller("StreamCtrl", ["$scope", "Registry", "User", "XM
             for (var i = 0; i < registry_sensors.length; i++) {
                 if (User.check_subscribe(registry_sensors[i].id)) {
                     $scope.sensors.push(registry_sensors[i]);
+                    User.check_sla(registry_sensors[i]);
                 }
             }
         });
@@ -27,7 +28,7 @@ sensdash_controllers.controller("StreamCtrl", ["$scope", "Registry", "User", "XM
                 console.log("Room joined", ep[0]);
             });
         }
-        $scope.$on("$destroy", function(){
+        $scope.$on("$destroy", function () {
             for (var key in User.subscriptions) {
                 var ep = User.subscriptions[key];
                 XMPP.unsubscribe(ep[0], function () {
@@ -46,6 +47,7 @@ sensdash_controllers.controller("FavoritesCtrl", ["$scope", "$routeParams", "Reg
             for (var i = 0; i < all_sensors.length; i++) {
                 if (user_favorites.indexOf(all_sensors[i].id) != -1) {
                     $scope.result_favorites.push(all_sensors[i]);
+                    User.check_sla(registry_sensors[i]);
                 }
             }
         });
@@ -55,7 +57,7 @@ sensdash_controllers.controller("FavoritesCtrl", ["$scope", "$routeParams", "Reg
                 console.log("Room joined");
             });
         }
-        $scope.$on("$destroy", function(){
+        $scope.$on("$destroy", function () {
             for (var key in User.subscriptions) {
                 var ep = User.subscriptions[key];
                 XMPP.unsubscribe(ep[0], function () {
