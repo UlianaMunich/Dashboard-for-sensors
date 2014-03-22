@@ -51,14 +51,14 @@ sensdash_controllers.controller("FavoritesCtrl", ["$scope", "$routeParams", "Reg
         });
         for (var key in User.subscriptions) {
             var ep = User.subscriptions[key];
-            XMPP.subscribe(ep, function () {
+            XMPP.subscribe(ep[0], function () {
                 console.log("Room joined");
             });
         }
         $scope.$on("$destroy", function(){
             for (var key in User.subscriptions) {
                 var ep = User.subscriptions[key];
-                XMPP.unsubscribe(ep, function () {
+                XMPP.unsubscribe(ep[0], function () {
                     console.log("Room was left");
                 });
             }
