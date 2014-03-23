@@ -86,8 +86,8 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
         connect: function (jid, pwd, callback) {
             xmpp.connection = new Strophe.Connection(BOSH_SERVICE);
             xmpp.connection.connect(jid, pwd, callback);
-        //    xmpp.connection.rawInput = xmpp.raw_input;
-        //    xmpp.connection.rawOutput = xmpp.raw_output;
+         //  xmpp.connection.rawInput = xmpp.raw_input;
+        //   xmpp.connection.rawOutput = xmpp.raw_output;
         },
         subscribe: function (end_point, on_subscribe) {
             xmpp.endpoints_to_handler_map[end_point.name] = end_point;
@@ -104,6 +104,7 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
             } else if (end_point.type == "muc") {
                 var nickname = jid.split("@")[0];
                 var room = end_point.name.replace("xmpp://",'');
+                console.log(room);
                 xmpp.connection.muc.join(room, nickname, xmpp.handle_incoming_muc);
                 on_subscribe();
             } else {
@@ -238,7 +239,6 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
                 console.log);
         },
         reload: function () {
-            console.log("Loading user data");
             user.load("registries");
             user.load("profile");
             user.load("subscriptions");

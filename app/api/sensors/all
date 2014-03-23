@@ -24,15 +24,22 @@
             {
                 "type": "muc",
                 "priority": "main",
-                "name": "xmpp://chat2@conference.likepro.co",
+                "name": "xmpp://chat11@conference.likepro.co",
                 "pwd": null
             },
             {
                 "type": "muc",
                 "priority": "alternative",
-                "name": "xmpp://chat3@conference.likepro.co",
+                "name": "xmpp://chat12@conference.likepro.co",
                 "pwd": null
-            }
+            },
+                         {
+                             "type": "muc",
+                             "priority": "optional",
+                             "name": "xmpp://chat13@conference.likepro.co",
+                             "pwd": null
+                         }
+
         ],
         "template": {
             "subtitle": {
@@ -91,9 +98,16 @@
         "end_points": [
             {
                 "type": "muc",
-                "name": "xmpp://chat2@conference.likepro.co",
+                "priority": "main",
+                "name": "xmpp://chat4@conference.likepro.co",
                 "pwd": null
-            }
+            },
+            {
+                            "type": "muc",
+                            "priority": "optional",
+                            "name": "xmpp://chat5@conference.likepro.co",
+                            "pwd": null
+                        }
         ],
         "trust_level": "",
         "type": "text",
@@ -119,7 +133,8 @@
         "end_points": [
             {
                 "type": "muc",
-                "name": "xmpp://chat2@conference.likepro.co",
+                "priority": "main",
+                "name": "xmpp://chat6@conference.likepro.co",
                 "pwd": null
             }
         ],
@@ -146,16 +161,19 @@
         "end_points": [
             {
                 "type": "muc",
-                "name": "xmpp://chat2@conference.likepro.co",
+                "priority": "main",
+                "name": "xmpp://chat7@conference.likepro.co",
                 "pwd": null
             },
             {
                 "type": "muc",
-                "name": "xmpp://chat1@conference.likepro.co",
+                "priority": "alternative",
+                "name": "xmpp://chat8@conference.likepro.co",
                 "pwd": null
             },
             {
                 "type": "muc",
+                "priority": "optional",
                 "name": "xmpp://chat3@conference.likepro.co",
                 "pwd": null
             }
@@ -183,12 +201,14 @@
         "end_points": [
             {
                 "type": "muc",
-                "name": "xmpp://chat2@conference.likepro.co",
+                "priority": "main",
+                "name": "xmpp://chat9@conference.likepro.co",
                 "pwd": null
             },
             {
                 "type": "muc",
-                "name": "xmpp://chat2@conference.likepro.co",
+                "priority": "optional",
+                "name": "xmpp://chat10@conference.likepro.co",
                 "pwd": null
             }
         ],
@@ -215,7 +235,8 @@
         "end_points": [
             {
                 "type": "muc",
-                "name": "xmpp://chat2@conference.likepro.co",
+                "priority": "main",
+                "name": "xmpp://chat11@conference.likepro.co",
                 "pwd": null
             }
         ],

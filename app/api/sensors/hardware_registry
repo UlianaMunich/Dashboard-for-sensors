@@ -25,11 +25,13 @@
             "end_points": [
                 {
                     "type": "muc",
+                    "priority": "main",
                     "name": "xmpp://inf3084@conference.mobilis-dev.inf.tu-dresden.de",
                     "pwd": null
                 },
                 {
                     "type": "muc",
+                    "priority": "alternative",
                     "name": "xmpp://chat1@conference.likepro.co",
                     "pwd": null
                 }
