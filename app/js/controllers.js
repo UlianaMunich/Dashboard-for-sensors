@@ -44,11 +44,11 @@ sensdash_controllers.controller("FavoritesCtrl", ["$scope", "$routeParams", "Reg
     function ($scope, $routeParams, Registry, User, XMPP) {
         var user_favorites = User.favorites;
         $scope.result_favorites = [];
-        Registry.load().then(function (registry_sensors) {
-            for (var i = 0; i < registry_sensors.length; i++) {
-                User.check_sla(registry_sensors[i]);
-                if (user_favorites.indexOf(registry_sensors[i].id) != -1) {
-                    $scope.result_favorites.push(registry_sensors[i]);
+        Registry.load().then(function (all_sensors) {
+            for (var i = 0; i < all_sensors.length; i++) {
+                if (user_favorites.indexOf(all_sensors[i].id) != -1) {
+                    $scope.result_favorites.push(all_sensors[i]);
+                    User.check_sla(all_sensors[i]);
                 }
             }
         });
