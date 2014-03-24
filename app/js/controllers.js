@@ -13,7 +13,7 @@ sensdash_controllers.controller("RegistryCtrl", ["$scope", "Registry", "User",
 sensdash_controllers.controller("StreamCtrl", ["$scope", "Registry", "User", "XMPP",
     function ($scope, Registry, User, XMPP) {
         $scope.sensors = [];
-       $scope.subscrip = Object.keys(User.subscriptions);
+        $scope.subscrip = Object.keys(User.subscriptions);
         Registry.load().then(function (registry_sensors) {
             for (var i = 0; i < registry_sensors.length; i++) {
                 if (User.check_subscribe(registry_sensors[i].id)) {
@@ -24,19 +24,9 @@ sensdash_controllers.controller("StreamCtrl", ["$scope", "Registry", "User", "XM
         });
         for (var key in User.subscriptions) {
             var ep = User.subscriptions[key];
-            XMPP.subscribe(ep[0], function () {
-                console.log("Room joined", ep[0]);
-            });
+            XMPP.subscribe(ep);
         }
-        $scope.$on("$destroy", function () {
-            for (var key in User.subscriptions) {
-                var ep = User.subscriptions[key];
-                XMPP.unsubscribe(ep[0], function () {
-                    console.log("Room left", ep[0]);
-                });
-            }
-        });
-
+        $scope.$on("$destroy", XMPP.unsubscribe_all_endpoints);
     }
 ]);
 
@@ -125,7 +115,7 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
 
     $scope.unsubscribe = function () {
         User.unsubscribe($scope.sensor, function () {
-            console.log("user unsubscribed from sensor", $scope.sensor.id);
+            console.log("user unsubscribed from sensor: " + $scope.sensor.id);
         });
         $modalInstance.close();
     };
