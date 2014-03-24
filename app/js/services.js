@@ -63,7 +63,7 @@ sensdash_services.factory("Text", function () {
     return text;
 });
 
-sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($location, Graph, Text) {
+sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", function ($location, $timeout, Graph, Text) {
     if (typeof Config === "undefined") {
         console.log("Config is missing or broken, redirecting to setup reference page");
         $location.path("/reference");
@@ -89,7 +89,45 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
          //  xmpp.connection.rawInput = xmpp.raw_input;
         //   xmpp.connection.rawOutput = xmpp.raw_output;
         },
-        subscribe: function (end_point, on_subscribe) {
+        handle_roster: function(participant, room) {
+            var full_room_name = 'xmpp://' + room.name;
+            var participant_name = Object.keys(participant)[0];
+            var my_name =  room.nick;
+            if ((participant_name) && (participant_name != my_name)) {
+                xmpp.endpoints_to_handler_map[full_room_name].participants.push(participant_name);
+                console.log("Participant found: " + participant_name);
+            }
+            return true;
+        },
+        handle_presense: function(stanza) {
+            return true;
+        },
+        check_room: function(full_room_name, end_points) {
+            if (!xmpp.endpoints_to_handler_map[full_room_name]) {
+                return
+            }
+            var ep = xmpp.endpoints_to_handler_map[full_room_name];
+            if (ep.participants.length == 0) {
+                console.log("Room is empty, endpoint rejected: " + full_room_name);
+                for (var i = 0; i < end_points.length; i++) {
+                    // find invalid room in all end_points list, delete it, and call subscribe again
+                    if (end_points[i].handler_id == ep.handler_id) {
+                        xmpp.unsubscribe(end_points[i])
+                        end_points.splice(i, 1);
+                        xmpp.subscribe(end_points);
+                    }
+                }
+            } else {
+                console.log("Room is not empty, endpoint approved: " + full_room_name);
+            }
+        },
+        subscribe: function (end_points) {
+            if (end_points.length == 0) {
+                console.log("No valid sensor endpoints");
+                return
+            }
+            // select first endpoint
+            var end_point = end_points[0];
             xmpp.endpoints_to_handler_map[end_point.name] = end_point;
             var jid = xmpp.connection.jid;
             if (end_point.type == "pubsub") {
@@ -104,33 +142,31 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
             } else if (end_point.type == "muc") {
                 var nickname = jid.split("@")[0];
                 var room = end_point.name.replace("xmpp://",'');
-                console.log(room);
-                xmpp.connection.muc.join(room, nickname, xmpp.handle_incoming_muc,xmpp.presense_handler,xmpp.roster_handler);
-                on_subscribe();
+                xmpp.connection.muc.join(room, nickname, xmpp.handle_incoming_muc, xmpp.handle_presense, xmpp.handle_roster);
+                $timeout(function(){
+                    xmpp.check_room(end_point.name, end_points)
+                }, 5000);
+                console.log("Room joined: " + room);
             } else {
                 console.log("End point protocol not supported");
             }
         },
-        presense_handler: function(x){
-            //console.log(x);
-        },
-        roster_handler: function(x,room){
-            if (Object.keys(x).length <=1){
-                console.log("Only one occupant: its you!");
-            }
-          //console.log(XmppRoom[name]);
-            console.log(x,room);
-
-        },
-        unsubscribe: function (end_point, on_unsubscribe) {
+        unsubscribe: function (end_point) {
             var jid = xmpp.connection.jid;
             if (end_point.type == "pubsub") {
-                xmpp.connection.pubsub.unsubscribe(PUBSUB_NODE + "." + end_points);
-                on_unsubscribe();
+                xmpp.connection.pubsub.unsubscribe(PUBSUB_NODE + "." + end_point);
             } else if (end_point.type == "muc") {
                 var room = end_point.name.replace("xmpp://",'');
                 xmpp.connection.muc.leave(room, jid.split("@")[0]);
-                on_unsubscribe();
+                console.log("Room left: " + room);
+            }
+            delete xmpp.endpoints_to_handler_map[end_point.name]
+        },
+        unsubscribe_all_endpoints: function() {
+            for (var ep in xmpp.endpoints_to_handler_map) {
+                if (xmpp.endpoints_to_handler_map[ep]) {
+                    xmpp.unsubscribe(xmpp.endpoints_to_handler_map[ep]);
+                }
             }
         },
         find_sensor: function (message) {
@@ -263,6 +299,7 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
                     end_points[i].handler_type = sensor.type;
                     end_points[i].handler_id = sensor.id;
                     end_points[i].sla_last_update = sensor.sla_last_update;
+                    end_points[i].participants = [];
                 }
                 user.subscriptions[sensor.id] = end_points;
                 user.save("subscriptions");
@@ -284,7 +321,8 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
                 if (newArray[i].sla_last_update !== sla_current_timestamp) {
                     console.log("Last SLA updates are differ from your SLA");
                     delete user.subscriptions[sensor.id];
-                    delete user.favorites.indexOf(sensor.id);
+                    var array_index = user.favorites.indexOf(sensor.id);
+                    delete user.favorites[array_index];
                     user.save("subscriptions");
                     user.save("favorites");
                     alert("SLA for sensor '" + sensor.title + "' was changed. If you want to use it you need to accept new SLA. Thank you!");
@@ -299,7 +337,6 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
                 delete user.subscriptions[sensor.id];
                 user.save("subscriptions");
                 callback();
-                console.log("user unsubscribed from sensor id = " + sensor.id);
             }
         }
     };
