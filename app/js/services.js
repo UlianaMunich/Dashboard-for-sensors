@@ -105,11 +105,22 @@ sensdash_services.factory("XMPP", ["$location", "Graph", "Text", function ($loca
                 var nickname = jid.split("@")[0];
                 var room = end_point.name.replace("xmpp://",'');
                 console.log(room);
-                xmpp.connection.muc.join(room, nickname, xmpp.handle_incoming_muc);
+                xmpp.connection.muc.join(room, nickname, xmpp.handle_incoming_muc,xmpp.presense_handler,xmpp.roster_handler);
                 on_subscribe();
             } else {
                 console.log("End point protocol not supported");
             }
+        },
+        presense_handler: function(x){
+            //console.log(x);
+        },
+        roster_handler: function(x,room){
+            if (Object.keys(x).length <=1){
+                console.log("Only one occupant: its you!");
+            }
+          //console.log(XmppRoom[name]);
+            console.log(x,room);
+
         },
         unsubscribe: function (end_point, on_unsubscribe) {
             var jid = xmpp.connection.jid;
