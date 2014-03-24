@@ -30,7 +30,7 @@ sensdash_controllers.controller("StreamCtrl", ["$scope", "Registry", "User", "XM
     }
 ]);
 
-sensdash_controllers.controller("FavoritesCtrl", ["$scope", "$routeParams", "Registry", "User", "XMPP",
+sensdash_controllers.controller("FavoritesCtrl", ["$scope", "Registry", "User", "XMPP",
     function ($scope, $routeParams, Registry, User, XMPP) {
         var user_favorites = User.favorites;
         $scope.result_favorites = [];
@@ -44,7 +44,7 @@ sensdash_controllers.controller("FavoritesCtrl", ["$scope", "$routeParams", "Reg
         });
         for (var key in User.subscriptions) {
             var ep = User.subscriptions[key];
-            XMPP.subscribe(ep[0], function () {
+            XMPP.subscribe(ep, function () {
                 console.log("Room joined");
             });
         }
