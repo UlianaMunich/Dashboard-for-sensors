@@ -104,7 +104,7 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
         },
         check_room: function(full_room_name, end_points) {
             if (!xmpp.endpoints_to_handler_map[full_room_name]) {
-                return
+                return;
             }
             var ep = xmpp.endpoints_to_handler_map[full_room_name];
             if (ep.participants.length == 0) {
@@ -112,7 +112,7 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
                 for (var i = 0; i < end_points.length; i++) {
                     // find invalid room in all end_points list, delete it, and call subscribe again
                     if (end_points[i].handler_id == ep.handler_id) {
-                        xmpp.unsubscribe(end_points[i])
+                        xmpp.unsubscribe(end_points[i]);
                         end_points.splice(i, 1);
                         xmpp.subscribe(end_points);
                     }
@@ -124,7 +124,7 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
         subscribe: function (end_points) {
             if (end_points.length == 0) {
                 console.log("No valid sensor endpoints");
-                return
+                return;
             }
             // select first endpoint
             var end_point = end_points[0];
@@ -145,7 +145,7 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
                 xmpp.connection.muc.join(room, nickname, xmpp.handle_incoming_muc, xmpp.handle_presense, xmpp.handle_roster);
                 $timeout(function(){
                     xmpp.check_room(end_point.name, end_points)
-                }, 5000);
+                }, 2000);
                 console.log("Room joined: " + room);
             } else {
                 console.log("End point protocol not supported");
@@ -220,7 +220,7 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
                     //creating a new array from received map for Graph.update in format [timestamp, value], e.g. [1390225874697, 23]
                     if ('sensorevent' in msg_object) {
                         var time_UTC = msg_object.sensorevent.timestamp;
-                        var time_UNIX = new Date(time_UTC).getTime();
+                        var time_UNIX = moment.parseZone(time_UTC).valueOf();
                         data_array[0] = time_UNIX;
                         data_array[1] = msg_object.sensorevent.values[0];
                     } else {

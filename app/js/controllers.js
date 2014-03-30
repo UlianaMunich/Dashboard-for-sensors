@@ -8,12 +8,16 @@ sensdash_controllers.controller("RegistryCtrl", ["$scope", "Registry", "User",
             $scope.sensors = sensors;
         });
         $scope.user = User;
+        $scope.$watch('user.registries', function(a,b) {
+            Registry.load().then(function (sensors) {
+                $scope.sensors = sensors;
+            });
+        })
     }]);
 
 sensdash_controllers.controller("StreamCtrl", ["$scope", "Registry", "User", "XMPP",
     function ($scope, Registry, User, XMPP) {
         $scope.sensors = [];
-        $scope.subscrip = Object.keys(User.subscriptions);
         Registry.load().then(function (registry_sensors) {
             for (var i = 0; i < registry_sensors.length; i++) {
                 if (User.check_subscribe(registry_sensors[i].id)) {
@@ -31,7 +35,7 @@ sensdash_controllers.controller("StreamCtrl", ["$scope", "Registry", "User", "XM
 ]);
 
 sensdash_controllers.controller("FavoritesCtrl", ["$scope", "Registry", "User", "XMPP",
-    function ($scope, $routeParams, Registry, User, XMPP) {
+    function ($scope, Registry, User, XMPP) {
         var user_favorites = User.favorites;
         $scope.result_favorites = [];
         Registry.load().then(function (all_sensors) {
@@ -43,19 +47,14 @@ sensdash_controllers.controller("FavoritesCtrl", ["$scope", "Registry", "User", 
             }
         });
         for (var key in User.subscriptions) {
-            var ep = User.subscriptions[key];
-            XMPP.subscribe(ep, function () {
-                console.log("Room joined");
-            });
-        }
-        $scope.$on("$destroy", function () {
-            for (var key in User.subscriptions) {
+            if (user_favorites.indexOf(key) != -1) {
                 var ep = User.subscriptions[key];
-                XMPP.unsubscribe(ep[0], function () {
-                    console.log("Room was left");
+                XMPP.subscribe(ep, function () {
+                    console.log("Room joined");
                 });
             }
-        });
+        }
+        $scope.$on("$destroy", XMPP.unsubscribe_all_endpoints);
     }
 ]);
 
@@ -79,12 +78,16 @@ sensdash_controllers.controller("SettingsCtrl", ["$scope", "User", function ($sc
 }
 ]);
 
-sensdash_controllers.controller("ReferencesCtrl", ["$scope",
-    function ($scope) {
-    }]);
+sensdash_controllers.controller("ShowMoreCtrl", ["$scope", function ($scope) {
+    $scope.isCollapsed = true;
+    $scope.toggleCollapse = function () {
+        $scope.isCollapsed = !$scope.isCollapsed;
+    }
+}
+]);
 
 //Modal window controllers, check definition syntax
-function SensorModalCtrl($scope, $modal, User) {
+function SensorModalCtrl($scope, $modal) {
     $scope.open = function () {
 
         var modalInstance = $modal.open({

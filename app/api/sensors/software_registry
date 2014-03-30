@@ -6,7 +6,7 @@
         "last_update": "2013-08-07T11:14:34.000+02:00",
         "description": "Provides up to date news in IT and Telecommunication area together with information about new gadgets.",
         "sla": "",
-        "sla_last_update": "1395586915",
+        "sla_last_update": "1395663569",
         "icon": "img/sensor_images/itIcon.jpg",
         "picture": "img/sensor_images/itNews.jpg",
         "preview": "",
@@ -15,7 +15,7 @@
         "provider_www": "www.google.com",
         "location": "Dresden",
         "dev_details": "true",
-        "EPConfig": "config20.pdf",
+        "EPConfig": "docs/api2.pdf",
         "end_points": [
             {
                 "type": "muc",
@@ -24,37 +24,37 @@
                 "pwd": null
             }
         ],
-        "trust_level": "",
         "type": "text",
-        "template": ""
+        "template": "",
+        "comments": ""
     },
     {
-            "id": "21",
-            "title": "City Traffic",
-            "availability": true,
-            "last_update": "2013-08-07T11:14:34.000+02:00",
-            "description": "Provides an overview of current traffic jams level in the city my using googlemap",
-            "sla": "",
-            "sla_last_update": "",
-            "icon": "img/icon/traffic_icon.png",
-            "picture": "img/sensor_images/dresdentraffic.jpg",
-            "preview": "",
-            "access": "public",
-            "provider_name": "Google",
-            "provider_www": "www.google.com",
-            "location": "Dresden",
-            "dev_details": "true",
-            "EPConfig": "config.pdf",
-            "end_points": [
-                {
-                    "type": "muc",
-                    "priority": "main",
-                    "name": "xmpp://testraum2@conference.mobilis-dev.inf.tu-dresden.deo",
-                    "pwd": null
-                }
-            ],
-            "trust_level": "",
-            "type": "text",
-            "template": ""
-        }
+        "id": "21",
+        "title": "City Traffic",
+        "availability": true,
+        "last_update": "2013-08-07T11:14:34.000+02:00",
+        "description": "Provides an overview of current traffic jams level in the city my using googlemap",
+        "sla": "",
+        "sla_last_update": "",
+        "icon": "img/icon/traffic_icon.png",
+        "picture": "img/sensor_images/dresdentraffic.jpg",
+        "preview": "",
+        "access": "public",
+        "provider_name": "Google",
+        "provider_www": "www.google.com",
+        "location": "Dresden",
+        "dev_details": "true",
+        "EPConfig": "docs/api2.pdf",
+        "end_points": [
+            {
+                "type": "muc",
+                "priority": "main",
+                "name": "xmpp://testraum2@conference.mobilis-dev.inf.tu-dresden.deo",
+                "pwd": null
+            }
+        ],
+        "type": "text",
+        "template": "",
+        "comments": "http://test.de"
+    }
 ]

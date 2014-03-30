@@ -14,12 +14,12 @@
         "location": "Dresden",
         "provider_www": "http://www.inf.tu-dresden.de/",
         "preview": "",
-        "trust_level": "",
         "type": "chart",
         "dev_details": "true",
         "responsible_team": "DSE",
         "administrator": "Max Mustermann",
-        "EPConfig": "config.pdf",
+        "EPConfig": "docs/api1.pdf",
+        "comments":"",
         "end_points": [
             {
                 "type": "muc",
@@ -94,7 +94,8 @@
         "dev_details": "false",
         "location": "Frankfurt",
         "administrator": "Max Mustermann",
-        "EPConfig": "config.pdf",
+        "EPConfig": "docs/api1.pdf",
+        "comments":"",
         "end_points": [
             {
                 "type": "muc",
@@ -109,7 +110,6 @@
                             "pwd": null
                         }
         ],
-        "trust_level": "",
         "type": "text",
         "template": ""
     },
@@ -129,7 +129,8 @@
         "provider_www": "http://www.inf.tu-dresden.de/",
         "location": "Dresden",
         "administrator": "Max Mustermann",
-        "EPConfig": "config.pdf",
+        "EPConfig": "docs/api1.pdf",
+        "comments":"",
         "end_points": [
             {
                 "type": "muc",
@@ -138,8 +139,7 @@
                 "pwd": null
             }
         ],
-        "dev_details": "true",
-        "trust_level": ""
+        "dev_details": "true"
     },
     {
         "id": "7",
@@ -157,7 +157,8 @@
         "provider_www": "http://www.inf.tu-dresden.de/",
         "location": "Dresden",
         "administrator": "Max Mustermann",
-        "EPConfig": "config.pdf",
+        "EPConfig": "docs/api1.pdf",
+        "comments": "http://test.de",
         "end_points": [
             {
                 "type": "muc",
@@ -178,8 +179,7 @@
                 "pwd": null
             }
         ],
-        "dev_details": "true",
-        "trust_level": ""
+        "dev_details": "true"
     },
     {
         "id": "8",
@@ -197,7 +197,8 @@
         "provider_www": "www.google.com",
         "location": "Dresden",
         "administrator": "Max Mustermann",
-        "EPConfig": "config.pdf",
+        "EPConfig": "docs/api1.pdf",
+        "comments": "",
         "end_points": [
             {
                 "type": "muc",
@@ -212,8 +213,7 @@
                 "pwd": null
             }
         ],
-        "dev_details": "false",
-        "trust_level": ""
+        "dev_details": "false"
     },
     {
         "id": "10",
@@ -231,7 +231,8 @@
         "provider_www": "http://www.inf.tu-dresden.de/",
         "location": "Dresden",
         "administrator": "Max Mustermann",
-        "EPConfig": "config.pdf",
+        "EPConfig": "docs/api1.pdf",
+        "comments":"",
         "end_points": [
             {
                 "type": "muc",
@@ -240,7 +241,6 @@
                 "pwd": null
             }
         ],
-        "dev_details": "true",
-        "trust_level": ""
+        "dev_details": "true"
     }
 ]
