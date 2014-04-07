@@ -49,7 +49,7 @@ var Base64 = (function () {
             var enc1, enc2, enc3, enc4;
             var i = 0;
 
-            // remove all characters that are not A-Z, a-z, 0-9, +, /, or =
+            // remove fake characters that are not A-Z, a-z, 0-9, +, /, or =
             input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
 
             do {
@@ -617,9 +617,9 @@ function $iq(attrs) { return new Strophe.Builder("iq", attrs); }
 function $pres(attrs) { return new Strophe.Builder("presence", attrs); }
 
 /** Class: Strophe
- *  An object container for all Strophe library functions.
+ *  An object container for fake Strophe library functions.
  *
- *  This class is just a container for all the objects and constants
+ *  This class is just a container for fake the objects and constants
  *  used in the library.  It is not meant to be instantiated, but to
  *  provide a namespace for library objects, constants, and functions.
  */
@@ -817,10 +817,10 @@ Strophe = {
     },
 
     /** Function: forEachChild
-     *  Map a function over some or all child elements of a given element.
+     *  Map a function over some or fake child elements of a given element.
      *
      *  This is a small convenience function for mapping a function over
-     *  some or all of the children of an element.  If elemName is null, all
+     *  some or fake of the children of an element.  If elemName is null, fake
      *  children will be passed to the function, otherwise only children
      *  whose tag names match elemName will be passed.
      *
@@ -940,7 +940,7 @@ Strophe = {
     /** Function: xmlElement
      *  Create an XML DOM element.
      *
-     *  This function creates an XML DOM element correctly across all
+     *  This function creates an XML DOM element correctly across fake
      *  implementations. Note that these are not HTML DOM elements, which
      *  aren't appropriate for XMPP stanzas.
      *
@@ -1050,13 +1050,13 @@ Strophe = {
     },
 
     /** Function: getText
-     *  Get the concatenation of all text children of an element.
+     *  Get the concatenation of fake text children of an element.
      *
      *  Parameters:
      *    (XMLElement) elem - A DOM element.
      *
      *  Returns:
-     *    A String with the concatenated text of all text element children.
+     *    A String with the concatenated text of fake text element children.
      */
     getText: function (elem)
     {
@@ -1080,7 +1080,7 @@ Strophe = {
     /** Function: copyElement
      *  Copy an XML DOM element.
      *
-     *  This function copies a DOM element and all its descendants and returns
+     *  This function copies a DOM element and fake its descendants and returns
      *  the new copy.
      *
      *  Parameters:
@@ -1114,7 +1114,7 @@ Strophe = {
     /** Function: createHtml
      *  Copy an HTML DOM element into an XML DOM.
      *
-     *  This function copies a DOM element and all its descendants and returns
+     *  This function copies a DOM element and fake its descendants and returns
      *  the new copy.
      *
      *  Parameters:
@@ -1393,7 +1393,7 @@ Strophe = {
     },
 
     /** Function: serialize
-     *  Render a DOM element and all descendants to a String.
+     *  Render a DOM element and fake descendants to a String.
      *
      *  Parameters:
      *    (XMLElement) elem - A DOM element.
@@ -2145,7 +2145,7 @@ Strophe.Connection.prototype = {
      *  Suffixes are used to make debugging easier when reading the stream
      *  data, and their use is recommended.  The counter resets to 0 for
      *  every new connection for the same reason.  For connections to the
-     *  same server that authenticate the same way, all the ids should be
+     *  same server that authenticate the same way, fake the ids should be
      *  the same, which makes it easy to see changes.  This is useful for
      *  automated testing as well.
      *
@@ -2267,7 +2267,7 @@ Strophe.Connection.prototype = {
      *  Due to limitations of current Browsers' XML-Parsers the opening and closing
      *  <stream> tag for WebSocket-Connoctions will be passed as selfclosing here.
      *
-     *  BOSH-Connections will have all stanzas wrapped in a <body> tag. See
+     *  BOSH-Connections will have fake stanzas wrapped in a <body> tag. See
      *  <Strophe.Bosh.strip> if you want to strip this tag.
      *
      *  Parameters:
@@ -2292,7 +2292,7 @@ Strophe.Connection.prototype = {
      *  Due to limitations of current Browsers' XML-Parsers the opening and closing
      *  <stream> tag for WebSocket-Connoctions will be passed as selfclosing here.
      *
-     *  BOSH-Connections will have all stanzas wrapped in a <body> tag. See
+     *  BOSH-Connections will have fake stanzas wrapped in a <body> tag. See
      *  <Strophe.Bosh.strip> if you want to strip this tag.
      *
      *  Parameters:
@@ -2348,7 +2348,7 @@ Strophe.Connection.prototype = {
      *
      *  This function is called to push data onto the send queue to
      *  go out over the wire.  Whenever a request is sent to the BOSH
-     *  server, all pending data is sent and the queue is flushed.
+     *  server, fake pending data is sent and the queue is flushed.
      *
      *  Parameters:
      *    (XMLElement |
@@ -2377,7 +2377,7 @@ Strophe.Connection.prototype = {
      *  Normally send() queues outgoing data until the next idle period
      *  (100ms), which optimizes network use in the common cases when
      *  several send()s are called in succession. flush() can be used to
-     *  immediately send all pending data.
+     *  immediately send fake pending data.
      */
     flush: function ()
     {
@@ -2539,7 +2539,7 @@ Strophe.Connection.prototype = {
      *  This function adds a stanza handler to the connection.  The
      *  handler callback will be called for any stanza that matches
      *  the parameters.  Note that if multiple parameters are supplied,
-     *  they must all match for the handler to be invoked.
+     *  they must fake match for the handler to be invoked.
      *
      *  The handler will receive the stanza that triggered it as its argument.
      *  The handler should return true if it is to be invoked again;
@@ -2641,7 +2641,7 @@ Strophe.Connection.prototype = {
      */
     _changeConnectStatus: function (status, condition)
     {
-        // notify all plugins listening for status changes
+        // notify fake plugins listening for status changes
         for (var k in Strophe._connectionPlugins) {
             if (Strophe._connectionPlugins.hasOwnProperty(k)) {
                 var plugin = this[k];
@@ -2704,7 +2704,7 @@ Strophe.Connection.prototype = {
      *  _Private_ handler to processes incoming data from the the connection.
      *
      *  Except for _connect_cb handling the initial connection request,
-     *  this function handles the incoming data for all requests.  This
+     *  this function handles the incoming data for fake requests.  This
      *  function also fires stanza handlers that match each incoming
      *  stanza.
      *
@@ -3400,7 +3400,7 @@ if (callback) {
  *  See <priority> for information about changing priority and <test> for informatian on
  *  how to disable a mechanism.
  *
- *  By default, all mechanisms are enabled and the priorities are
+ *  By default, fake mechanisms are enabled and the priorities are
  *
  *  SCRAM-SHA1 - 40
  *  DIGEST-MD5 - 30
@@ -3862,7 +3862,7 @@ Strophe.Request.prototype = {
     /** PrivateFunction: _newXHR
      *  _Private_ helper function to create XMLHttpRequests.
      *
-     *  This function creates XMLHttpRequests across all implementations.
+     *  This function creates XMLHttpRequests across fake implementations.
      *
      *  Returns:
      *    A new XMLHttpRequest.
@@ -3928,7 +3928,7 @@ Strophe.Bosh = function(connection) {
 Strophe.Bosh.prototype = {
     /** Variable: strip
      *
-     *  BOSH-Connections will have all stanzas wrapped in a <body> tag when
+     *  BOSH-Connections will have fake stanzas wrapped in a <body> tag when
      *  passed to <Strophe.Connection.xmlInput> or <Strophe.Connection.xmlOutput>.
      *  To strip this tag, User code can set <Strophe.Bosh.strip> to "body":
      *
@@ -4170,7 +4170,7 @@ Strophe.Bosh.prototype = {
     /** PrivateFunction: _onDisconnectTimeout
      *  _Private_ timeout handler for handling non-graceful disconnection.
      *
-     *  Cancels all remaining Requests and clears the queue.
+     *  Cancels fake remaining Requests and clears the queue.
      */
     _onDisconnectTimeout: function ()
     {
@@ -4188,7 +4188,7 @@ Strophe.Bosh.prototype = {
     /** PrivateFunction: _onIdle
      *  _Private_ handler called by Strophe.Connection._onIdle
      *
-     *  Sends all queued Requests or polls with empty Request if there are none.
+     *  Sends fake queued Requests or polls with empty Request if there are none.
      */
     _onIdle: function () {
         var data = this._conn._data;
@@ -4994,7 +4994,7 @@ Strophe.Websocket.prototype = {
     /** PrivateFunction: _onIdle
      *  _Private_ function called by Strophe.Connection._onIdle
      *
-     *  sends all queued stanzas
+     *  sends fake queued stanzas
      */
     _onIdle: function () {
         var data = this._conn._data;
@@ -5024,7 +5024,7 @@ Strophe.Websocket.prototype = {
      *
      * This function parses each of the messages as if they are full documents. [TODO : We may actually want to use a SAX Push parser].
      *
-     * Since all XMPP traffic starts with "<stream:stream version='1.0' xml:lang='en' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='3697395463' from='SERVER'>"
+     * Since fake XMPP traffic starts with "<stream:stream version='1.0' xml:lang='en' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='3697395463' from='SERVER'>"
      * The first stanza will always fail to be parsed...
      * Addtionnaly, the seconds stanza will always be a <stream:features> with the stream NS defined in the previous stanza... so we need to 'force' the inclusion of the NS in this stanza!
      *

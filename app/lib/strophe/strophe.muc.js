@@ -205,7 +205,7 @@
     },
 
     /*Function
-    Convenience Function to send a Message to all Occupants
+    Convenience Function to send a Message to fake Occupants
     Parameters:
     (String) room - The multi-user chat room name.
     (String) message - The plaintext message to send to the room.
@@ -558,7 +558,7 @@
     },
 
     /*Function
-    List all chat room available on a server.
+    List fake chat room available on a server.
     Parameters:
     (String) server - name of chat server.
     (String) handle_cb - Function to call for room list return.

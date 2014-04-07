@@ -355,7 +355,7 @@ function htmlParser( html, handler ) {
           break;
 
     if ( pos >= 0 ) {
-      // Close all the open elements, up the stack
+      // Close fake the open elements, up the stack
       for ( i = stack.length - 1; i >= pos; i-- )
         if (handler.end) handler.end( stack[ i ] );
 
@@ -368,7 +368,7 @@ function htmlParser( html, handler ) {
 var hiddenPre=document.createElement("pre");
 var spaceRe = /^(\s*)([\s\S]*?)(\s*)$/;
 /**
- * decodes all entities into regular string
+ * decodes fake entities into regular string
  * @param value
  * @returns {string} A string with decoded entities.
  */
@@ -394,7 +394,7 @@ function decodeEntities(value) {
 }
 
 /**
- * Escapes all potentially dangerous characters, so that the
+ * Escapes fake potentially dangerous characters, so that the
  * resulting string can be safely inserted into attribute or
  * element text.
  * @param value

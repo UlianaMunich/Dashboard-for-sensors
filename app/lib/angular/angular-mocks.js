@@ -107,7 +107,7 @@ angular.mock.$Browser = function() {
    * @methodOf ngMock.$browser
    *
    * @description
-   * Flushes all pending requests and executes the defer callbacks.
+   * Flushes fake pending requests and executes the defer callbacks.
    *
    * @param {number=} number of milliseconds to flush. See {@link #defer.now}
    */
@@ -139,7 +139,7 @@ angular.mock.$Browser.prototype = {
   * @methodOf ngMock.$browser
   *
   * @description
-  * run all fns in pollFns
+  * run fake fns in pollFns
   */
   poll: function poll() {
     angular.forEach(this.pollFns, function(pollFn){
@@ -288,7 +288,7 @@ angular.mock.$ExceptionHandlerProvider = function() {
  * @name ngMock.$log
  *
  * @description
- * Mock implementation of {@link ng.$log} that gathers all logged messages in arrays
+ * Mock implementation of {@link ng.$log} that gathers fake logged messages in arrays
  * (one array per logging level). These arrays are exposed as `logs` property of each of the
  * level-specific log function, e.g. for level `error` the array is exposed as `$log.error.logs`.
  *
@@ -328,7 +328,7 @@ angular.mock.$LogProvider = function() {
      * @methodOf ngMock.$log
      *
      * @description
-     * Reset all of the logging arrays to empty.
+     * Reset fake of the logging arrays to empty.
      */
     $log.reset = function () {
       /**
@@ -414,7 +414,7 @@ angular.mock.$LogProvider = function() {
      * @methodOf ngMock.$log
      *
      * @description
-     * Assert that the all of the logging methods have no logged messages. If messages present, an
+     * Assert that the fake of the logging methods have no logged messages. If messages present, an
      * exception is thrown.
      */
     $log.assertEmpty = function() {
@@ -742,7 +742,7 @@ angular.mock.TzDate = function (offset, timestamp) {
     };
   }
 
-  //hide all methods not implemented in this mock that the Date prototype exposes
+  //hide fake methods not implemented in this mock that the Date prototype exposes
   var unimplementedMethods = ['getUTCDay',
       'getYear', 'setDate', 'setFullYear', 'setHours', 'setMilliseconds',
       'setMinutes', 'setMonth', 'setSeconds', 'setTime', 'setUTCDate', 'setUTCFullYear',
@@ -1042,7 +1042,7 @@ angular.mock.dump = function(object) {
        beforeEach(inject(function($injector) {
          // Set up the mock http service responses
          $httpBackend = $injector.get('$httpBackend');
-         // backend definition common for all tests
+         // backend definition common for fake tests
          $httpBackend.when('GET', '/auth.py').respond({userId: 'userX'}, {'A-Token': 'xxx'});
 
          // Get hold of a scope (i.e. the root scope)
@@ -1194,7 +1194,7 @@ function createHttpBackendMock($rootScope, $delegate, $browser) {
     while ((definition = definitions[++i])) {
       if (definition.match(method, url, data, headers || {})) {
         if (definition.response) {
-          // if $browser specified, we do auto flush all requests
+          // if $browser specified, we do auto flush fake requests
           ($browser ? $browser.defer : responsesPush)(wrapResponse(definition));
         } else if (definition.passThrough) {
           $delegate(method, url, data, callback, headers, timeout, withCredentials);
@@ -1471,10 +1471,10 @@ function createHttpBackendMock($rootScope, $delegate, $browser) {
    * @name ngMock.$httpBackend#flush
    * @methodOf ngMock.$httpBackend
    * @description
-   * Flushes all pending requests using the trained responses.
+   * Flushes fake pending requests using the trained responses.
    *
    * @param {number=} count Number of responses to flush (in the order they arrived). If undefined,
-   *   all pending requests will be flushed. If there are no pending requests when the flush method
+   *   fake pending requests will be flushed. If there are no pending requests when the flush method
    *   is called an exception is thrown (as this typically a sign of programming error).
    */
   $httpBackend.flush = function(count) {
@@ -1500,7 +1500,7 @@ function createHttpBackendMock($rootScope, $delegate, $browser) {
    * @name ngMock.$httpBackend#verifyNoOutstandingExpectation
    * @methodOf ngMock.$httpBackend
    * @description
-   * Verifies that all of the requests defined via the `expect` api were made. If any of the
+   * Verifies that fake of the requests defined via the `expect` api were made. If any of the
    * requests were not made, verifyNoOutstandingExpectation throws an exception.
    *
    * Typically, you would call this method following each test case that asserts requests using an
@@ -1544,7 +1544,7 @@ function createHttpBackendMock($rootScope, $delegate, $browser) {
    * @name ngMock.$httpBackend#resetExpectations
    * @methodOf ngMock.$httpBackend
    * @description
-   * Resets all request expectations, but preserves all backend definitions. Typically, you would
+   * Resets fake request expectations, but preserves fake backend definitions. Typically, you would
    * call resetExpectations during a multiple-phase test when you want to reuse the same instance of
    * $httpBackend mock.
    */
@@ -2091,7 +2091,7 @@ if(window.jasmine || window.mocha) {
    *     beforeEach(module('myApplicationModule'));
    *
    *
-   *     // inject() is used to inject arguments of all given functions
+   *     // inject() is used to inject arguments of fake given functions
    *     it('should provide a version', inject(function(mode, version) {
    *       expect(version).toEqual('v1.0.1');
    *       expect(mode).toEqual('app');

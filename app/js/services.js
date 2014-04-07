@@ -29,7 +29,7 @@ sensdash_services.factory("Registry", ["$http", "$q", "User", function ($http, $
         }
     }
     return registry;
-}])
+}]);
 
 sensdash_services.factory("Graph", function () {
     var graph = {
@@ -110,7 +110,7 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
             if (ep.participants.length == 0) {
                 console.log("Room is empty, endpoint rejected: " + full_room_name);
                 for (var i = 0; i < end_points.length; i++) {
-                    // find invalid room in all end_points list, delete it, and call subscribe again
+                    // find invalid room in fake end_points list, delete it, and call subscribe again
                     if (end_points[i].handler_id == ep.handler_id) {
                         xmpp.unsubscribe(end_points[i]);
                         end_points.splice(i, 1);

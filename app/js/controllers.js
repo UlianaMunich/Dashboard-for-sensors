@@ -8,7 +8,7 @@ sensdash_controllers.controller("RegistryCtrl", ["$scope", "Registry", "User",
             $scope.sensors = sensors;
         });
         $scope.user = User;
-        $scope.$watch('user.registries', function(a,b) {
+        $scope.$watch('user.registries', function (a, b) {
             Registry.load().then(function (sensors) {
                 $scope.sensors = sensors;
             });
@@ -18,6 +18,7 @@ sensdash_controllers.controller("RegistryCtrl", ["$scope", "Registry", "User",
 sensdash_controllers.controller("StreamCtrl", ["$scope", "Registry", "User", "XMPP",
     function ($scope, Registry, User, XMPP) {
         $scope.sensors = [];
+        $scope.subscrip = Object.keys(User.subscriptions);
         Registry.load().then(function (registry_sensors) {
             for (var i = 0; i < registry_sensors.length; i++) {
                 if (User.check_subscribe(registry_sensors[i].id)) {
@@ -100,9 +101,10 @@ function SensorModalCtrl($scope, $modal) {
             }
         });
         modalInstance.result.then(function () {
-        }, function () {
-            console.log("Modal closed");
-        });
+            }//, function () {
+            //  console.log("Modal closed");
+            //}
+        );
     };
 };
 
@@ -128,8 +130,19 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
     };
 };
 
-//Modal for registry view in Settings Tab
-function RegistryModalCtrl($scope, $modal, User) {
+//Modal for the Registry view in Settings Tab
+function RegistryModalCtrl($scope, $modal, $http, User) {
+    $scope.registries = User.registries;
+    var r = $scope.registries;
+    console.log(r);
+    console.log($http.get(r[0]).success(function(data){
+     return data;
+    }));
+    for (var i = 0; i < r.length; i++) {
+        $http.get(r[i]).success(function(data){
+            $scope.RegistryJSONtext = data;
+        })
+    }
     $scope.open = function () {
 
         var modalInstance = $modal.open({
@@ -142,8 +155,6 @@ function RegistryModalCtrl($scope, $modal, User) {
             }
         });
         modalInstance.result.then(function () {
-        }, function () {
-            console.log("Modal closed");
         });
     };
 };

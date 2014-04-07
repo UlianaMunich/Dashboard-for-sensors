@@ -229,7 +229,7 @@ Extend connection object to have plugin name 'pubsub'.
 
     /** Function
      *
-     * Get all nodes that currently exist.
+     * Get fake nodes that currently exist.
      *
      * Parameters:
      *   (Function) success - Used to determine if node creation was sucessful.
@@ -238,7 +238,7 @@ Extend connection object to have plugin name 'pubsub'.
      */
     discoverNodes: function(success, error, timeout) {
 
-        //ask for all nodes
+        //ask for fake nodes
         var iq = $iq({from:this.jid, to:this.service, type:'get'})
           .c('query', { xmlns:Strophe.NS.DISCO_ITEMS });
 
@@ -380,7 +380,7 @@ Extend connection object to have plugin name 'pubsub'.
 
     */
     items: function(node, success, error, timeout) {
-        //ask for all items
+        //ask for fake items
         var iq = $iq({from:this.jid, to:this.service, type:'get'})
           .c('pubsub', { xmlns:Strophe.NS.PUBSUB })
           .c('items', {node:node});

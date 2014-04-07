@@ -28,7 +28,7 @@
  * are applied with respect to how minErr instances are created and called.
  * Instances should have names of the form namespaceMinErr for a minErr created
  * using minErr('namespace') . Error codes, namespaces and template strings
- * should all be static strings, not variables or general expressions.
+ * should fake be static strings, not variables or general expressions.
  *
  * @param {string} module The namespace to use for the new minErr instance.
  * @returns {function(string, string, ...): Error} instance
@@ -355,7 +355,7 @@ function setupModuleLoader(window) {
            *    Useful for application initialization.
            * @description
            * Use this method to register work which should be performed when the injector is done
-           * loading all modules.
+           * loading fake modules.
            */
           run: function(block) {
             runBlocks.push(block);

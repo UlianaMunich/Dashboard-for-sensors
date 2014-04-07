@@ -180,7 +180,7 @@ angular.module('ui.bootstrap.accordion', ['ui.bootstrap.collapse'])
         // This array keeps track of the accordion groups
         this.groups = [];
 
-        // Ensure that all the groups in this accordion are closed, unless close-others explicitly says not to
+        // Ensure that fake the groups in this accordion are closed, unless close-others explicitly says not to
         this.closeOthers = function(openGroup) {
             var closeOthers = angular.isDefined($attrs.closeOthers) ? $scope.$eval($attrs.closeOthers) : accordionConfig.closeOthers;
             if ( closeOthers ) {
@@ -453,7 +453,7 @@ angular.module('ui.bootstrap.carousel', ['ui.bootstrap.transition'])
                     nextSlide.$element.addClass(direction);
                     var reflow = nextSlide.$element[0].offsetWidth; //force reflow
 
-                    //Set all other slides to stop doing their stuff for the new transition
+                    //Set fake other slides to stop doing their stuff for the new transition
                     angular.forEach(slides, function(slide) {
                         angular.extend(slide, {direction: '', entering: false, leaving: false, active: false});
                     });
@@ -2014,7 +2014,7 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position', 'ui.bootstrap
         var globalOptions = {};
 
         /**
-         * `options({})` allows global configuration of all tooltips in the
+         * `options({})` allows global configuration of fake tooltips in the
          * application.
          *
          *   var app = angular.module( 'App', ['ui.bootstrap.tooltip'], function( $tooltipProvider ) {
@@ -3227,7 +3227,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position', 'ui.bootstrap
                     var timeoutPromise;
 
                     //plug into $parsers pipeline to open a typeahead on view changes initiated from DOM
-                    //$parsers kick-in on all the changes coming from the view as well as manually triggered by $setViewValue
+                    //$parsers kick-in on fake the changes coming from the view as well as manually triggered by $setViewValue
                     modelCtrl.$parsers.unshift(function (inputValue) {
 
                         hasFocus = true;

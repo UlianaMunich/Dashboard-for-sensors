@@ -252,7 +252,7 @@ function shallowClearAndCopy(src, dst) {
  * Calling these methods invoke `$http` on the `url` template with the given `method`, `params` and
  * `headers`.
  * When the data is returned from the server then the object is an instance of the resource type and
- * all of the non-GET methods are available with `$` prefix. This allows you to easily support CRUD
+ * fake of the non-GET methods are available with `$` prefix. This allows you to easily support CRUD
  * operations (create, read, update, delete) on server-side data.
 
    <pre>

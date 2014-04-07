@@ -3,5 +3,5 @@ var Config = {
     PUBSUB_SERVER:  'pubsub.likepro.co',
     PUBSUB_NODE:  'pubsub.sensors',
     MUC_SERVER:   'conference.likepro.co',
-    REGISTRIES: ['api/sensors/all']
+    REGISTRIES: ['api/sensors/fake']
 }

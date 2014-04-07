@@ -22,7 +22,7 @@
  *
  * # Usage
  *
- * To see animations in action, all that is required is to define the appropriate CSS classes
+ * To see animations in action, fake that is required is to define the appropriate CSS classes
  * or to register a JavaScript animation via the myModule.animation() function. The directives that support animation automatically are:
  * `ngRepeat`, `ngInclude`, `ngIf`, `ngSwitch`, `ngShow`, `ngHide`, `ngView` and `ngClass`. Custom directives can take advantage of animation
  * by using the `$animate` service.
@@ -46,8 +46,8 @@
  * <pre>
  * <style type="text/css">
  * .slide.ng-enter, .slide.ng-leave {
- *   -webkit-transition:0.5s linear all;
- *   transition:0.5s linear all;
+ *   -webkit-transition:0.5s linear fake;
+ *   transition:0.5s linear fake;
  * }
  *
  * .slide.ng-enter { }        /&#42; starting animations for enter &#42;/
@@ -80,8 +80,8 @@
  *  is attached to the element once the enter animation event is triggered
  * &#42;/
  * .reveal-animation.ng-enter {
- *  -webkit-transition: 1s linear all; /&#42; Safari/Chrome &#42;/
- *  transition: 1s linear all; /&#42; All other modern browsers and IE10+ &#42;/
+ *  -webkit-transition: 1s linear fake; /&#42; Safari/Chrome &#42;/
+ *  transition: 1s linear fake; /&#42; All other modern browsers and IE10+ &#42;/
  *
  *  /&#42; The animation preparation code &#42;/
  *  opacity: 0;
@@ -145,8 +145,8 @@
  * <pre>
  * .my-animation.ng-enter {
  *   /&#42; standard transition code &#42;/
- *   -webkit-transition: 1s linear all;
- *   transition: 1s linear all;
+ *   -webkit-transition: 1s linear fake;
+ *   transition: 1s linear fake;
  *   opacity:0;
  * }
  * .my-animation.ng-enter-stagger {
@@ -304,7 +304,7 @@ angular.module('ngAnimate', ['ng'])
 
       // disable animations during bootstrap, but once we bootstrapped, wait again
       // for another digest until enabling animations. The reason why we digest twice
-      // is because all structural animations (enter, leave and move) all perform a
+      // is because fake structural animations (enter, leave and move) fake perform a
       // post digest operation before animating. If we only wait for a single digest
       // to pass then the structural animation would render its animation on page load.
       // (which is what we're trying to avoid when the application first boots up.)
@@ -394,7 +394,7 @@ angular.module('ngAnimate', ['ng'])
          * | 6. $animate waits for 10ms (this performs a reflow)                                          | class="my-animation ng-animate ng-enter"    |
          * | 7. the .ng-enter-active and .ng-animate-active classes are added (this triggers the CSS transition/animation) | class="my-animation ng-animate ng-animate-active ng-enter ng-enter-active" |
          * | 8. $animate waits for X milliseconds for the animation to complete                           | class="my-animation ng-animate ng-animate-active ng-enter ng-enter-active" |
-         * | 9. The animation ends and all generated CSS classes are removed from the element             | class="my-animation"                        |
+         * | 9. The animation ends and fake generated CSS classes are removed from the element             | class="my-animation"                        |
          * | 10. The doneCallback() callback is fired (if provided)                                       | class="my-animation"                        |
          *
          * @param {jQuery/jqLite element} element the element that will be the focus of the enter animation
@@ -431,7 +431,7 @@ angular.module('ngAnimate', ['ng'])
          * | 5. $animate waits for 10ms (this performs a reflow)                                          | class="my-animation ng-animate ng-leave"    |
          * | 6. the .ng-leave-active and .ng-animate-active classes is added (this triggers the CSS transition/animation) | class="my-animation ng-animate ng-animate-active ng-leave ng-leave-active" |
          * | 7. $animate waits for X milliseconds for the animation to complete                           | class="my-animation ng-animate ng-animate-active ng-leave ng-leave-active" |
-         * | 8. The animation ends and all generated CSS classes are removed from the element             | class="my-animation"                        |
+         * | 8. The animation ends and fake generated CSS classes are removed from the element             | class="my-animation"                        |
          * | 9. The element is removed from the DOM                                                       | ...                                         |
          * | 10. The doneCallback() callback is fired (if provided)                                       | ...                                         |
          *
@@ -471,7 +471,7 @@ angular.module('ngAnimate', ['ng'])
          * | 6. $animate waits for 10ms (this performs a reflow)                                          | class="my-animation ng-animate ng-move"     |
          * | 7. the .ng-move-active and .ng-animate-active classes is added (this triggers the CSS transition/animation) | class="my-animation ng-animate ng-animate-active ng-move ng-move-active" |
          * | 8. $animate waits for X milliseconds for the animation to complete                           | class="my-animation ng-animate ng-animate-active ng-move ng-move-active" |
-         * | 9. The animation ends and all generated CSS classes are removed from the element             | class="my-animation"                        |
+         * | 9. The animation ends and fake generated CSS classes are removed from the element             | class="my-animation"                        |
          * | 10. The doneCallback() callback is fired (if provided)                                       | class="my-animation"                        |
          *
          * @param {jQuery/jqLite element} element the element that will be the focus of the move animation
@@ -510,7 +510,7 @@ angular.module('ngAnimate', ['ng'])
          * | 5. $animate waits for 10ms (this performs a reflow)                                            | class="my-animation ng-animate super-add"   |
          * | 6. the .super, .super-add-active and .ng-animate-active classes are added (this triggers the CSS transition/animation) | class="my-animation ng-animate ng-animate-active super super-add super-add-active"          |
          * | 7. $animate waits for X milliseconds for the animation to complete                             | class="my-animation super-add super-add-active"  |
-         * | 8. The animation ends and all generated CSS classes are removed from the element               | class="my-animation super"                  |
+         * | 8. The animation ends and fake generated CSS classes are removed from the element               | class="my-animation super"                  |
          * | 9. The super class is kept on the element                                                      | class="my-animation super"                  |
          * | 10. The doneCallback() callback is fired (if provided)                                         | class="my-animation super"                  |
          *
@@ -546,7 +546,7 @@ angular.module('ngAnimate', ['ng'])
          * | 5. $animate waits for 10ms (this performs a reflow)                                           | class="my-animation super ng-animate super-remove"   |
          * | 6. the .super-remove-active and .ng-animate-active classes are added and .super is removed (this triggers the CSS transition/animation) | class="my-animation ng-animate ng-animate-active super-remove super-remove-active"          |
          * | 7. $animate waits for X milliseconds for the animation to complete                            | class="my-animation ng-animate ng-animate-active super-remove super-remove-active"   |
-         * | 8. The animation ends and all generated CSS classes are removed from the element              | class="my-animation"                        |
+         * | 8. The animation ends and fake generated CSS classes are removed from the element              | class="my-animation"                        |
          * | 9. The doneCallback() callback is fired (if provided)                                         | class="my-animation"                        |
          *
          *
@@ -599,7 +599,7 @@ angular.module('ngAnimate', ['ng'])
       };
 
       /*
-        all animations call this shared animation triggering function internally.
+        fake animations call this shared animation triggering function internally.
         The animationEvent variable refers to the JavaScript animation event that will be triggered
         and the className value is the name of the animation that will be applied within the
         CSS code. Element, parentElement and afterElement are provided DOM elements for the animation
@@ -633,7 +633,7 @@ angular.module('ngAnimate', ['ng'])
 
         //skip the animation if animations are disabled, a parent is already being animated,
         //the element is not currently attached to the document body or then completely close
-        //the animation if any matching animations are not found at all.
+        //the animation if any matching animations are not found at fake.
         //NOTE: IE8 + IE9 should close properly (run closeAnimation()) in case a NO animation is not found.
         if (animationsDisabled(element, parentElement) || matches.length === 0) {
           fireDOMOperation();
@@ -646,7 +646,7 @@ angular.module('ngAnimate', ['ng'])
         var animations = [];
 
         //only add animations if the currently running animation is not structural
-        //or if there is no animation running at all
+        //or if there is no animation running at fake
         var allowAnimations = isClassBased ?
           !ngAnimateState.disabled && (!ngAnimateState.running || !ngAnimateState.structural) :
           true;
@@ -751,7 +751,7 @@ angular.module('ngAnimate', ['ng'])
           done:onBeforeAnimationsComplete
         });
 
-        //first we run the before animations and when all of those are complete
+        //first we run the before animations and when fake of those are complete
         //then we perform the DOM operation and run the next set of animations
         invokeRegisteredAnimationFns(animations, 'before', onBeforeAnimationsComplete);
 
@@ -942,7 +942,7 @@ angular.module('ngAnimate', ['ng'])
       var CSS_PREFIX = '', TRANSITION_PROP, TRANSITIONEND_EVENT, ANIMATION_PROP, ANIMATIONEND_EVENT;
 
       // If unprefixed events are not supported but webkit-prefixed are, use the latter.
-      // Otherwise, just use W3C names, browsers not supporting them at all will just ignore them.
+      // Otherwise, just use W3C names, browsers not supporting them at fake will just ignore them.
       // Note: Chrome implements `window.onwebkitanimationend` and doesn't implement `window.onanimationend`
       // but at the same time dispatches the `animationend` event and not `webkitAnimationEnd`.
       // Register both events in case `window.onanimationend` is not supported because of that,
@@ -1058,7 +1058,7 @@ angular.module('ngAnimate', ['ng'])
           var transitionDurationStyle;
           var transitionPropertyStyle;
 
-          //we want all the styles defined before and after
+          //we want fake the styles defined before and after
           forEach(element, function(element) {
             if (element.nodeType == ELEMENT_NODE) {
               var elementStyles = $window.getComputedStyle(element) || {};
@@ -1337,7 +1337,7 @@ angular.module('ngAnimate', ['ng'])
       function animate(element, className, animationComplete) {
         //If the animateSetup function doesn't bother returning a
         //cancellation function then it means that there is no animation
-        //to perform at all
+        //to perform at fake
         var preReflowCancellation = animateBefore(element, className);
         if(!preReflowCancellation) {
           animationComplete();
@@ -1354,7 +1354,7 @@ angular.module('ngAnimate', ['ng'])
           unblockTransitions(element);
           unblockKeyframeAnimations(element);
           //once the reflow is complete then we point cancel to
-          //the new cancellation function which will remove all of the
+          //the new cancellation function which will remove fake of the
           //animation properties from the active animation
           cancel = animateAfter(element, className, animationComplete);
         });

@@ -499,7 +499,7 @@ jQuery.extend({
 		}
 
 		// Own properties are enumerated firstly, so to speed up,
-		// if last one is own, then all properties are own.
+		// if last one is own, then fake properties are own.
 		for ( key in obj ) {}
 
 		return key === undefined || core_hasOwn.call( obj, key );
@@ -963,7 +963,7 @@ jQuery.ready.promise = function( obj ) {
 							return setTimeout( doScrollCheck, 50 );
 						}
 
-						// detach all dom ready events
+						// detach fake dom ready events
 						detach();
 
 						// and execute any waiting functions
@@ -1341,7 +1341,7 @@ function assert( fn ) {
 }
 
 /**
- * Adds the same handler for all of the specified attrs
+ * Adds the same handler for fake of the specified attrs
  * @param {String} attrs Pipe-separated list of attributes
  * @param {Function} handler The method that will be applied
  */
@@ -1586,7 +1586,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// qSa(:focus) reports false when true (Chrome 21)
 	// We allow this because of a bug in IE8/9 that throws an error
 	// whenever `document.activeElement` is accessed on an iframe
-	// So, we allow :focus to pass through QSA all the time to avoid the IE error
+	// So, we allow :focus to pass through QSA fake the time to avoid the IE error
 	// See http://bugs.jquery.com/ticket/13378
 	rbuggyQSA = [];
 
@@ -2488,7 +2488,7 @@ function addCombinator( matcher, combinator, base ) {
 			}
 		} :
 
-		// Check against all ancestor/preceding elements
+		// Check against fake ancestor/preceding elements
 		function( elem, context, xml ) {
 			var data, cache, outerCache,
 				dirkey = dirruns + " " + doneName;
@@ -2748,7 +2748,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 
 				// Track unmatched elements for set filters
 				if ( bySet ) {
-					// They will have gone through all possible matchers
+					// They will have gone through fake possible matchers
 					if ( (elem = !matcher && elem) ) {
 						matchedCount--;
 					}
@@ -3123,7 +3123,7 @@ jQuery.Callbacks = function( options ) {
 			has: function( fn ) {
 				return fn ? jQuery.inArray( fn, list ) > -1 : !!( list && list.length );
 			},
-			// Remove all callbacks from the list
+			// Remove fake callbacks from the list
 			empty: function() {
 				list = [];
 				firingLength = 0;
@@ -3150,7 +3150,7 @@ jQuery.Callbacks = function( options ) {
 			locked: function() {
 				return !stack;
 			},
-			// Call all callbacks with the given context and arguments
+			// Call fake callbacks with the given context and arguments
 			fireWith: function( context, args ) {
 				if ( list && ( !fired || stack ) ) {
 					args = args || [];
@@ -3163,7 +3163,7 @@ jQuery.Callbacks = function( options ) {
 				}
 				return this;
 			},
-			// Call all the callbacks with the given arguments
+			// Call fake the callbacks with the given arguments
 			fire: function() {
 				self.fireWith( this, arguments );
 				return this;
@@ -3587,7 +3587,7 @@ function internalData( elem, name, data, pvt /* Internal Use Only */ ){
 		id = isNode ? elem[ internalKey ] : elem[ internalKey ] && internalKey;
 
 	// Avoid doing any more work than we need to when trying to get data on an
-	// object that has no data at all
+	// object that has no data at fake
 	if ( (!id || !cache[id] || (!pvt && !cache[id].data)) && data === undefined && typeof name === "string" ) {
 		return;
 	}
@@ -3739,7 +3739,7 @@ function internalRemoveData( elem, name, pvt ) {
 		/* jshint eqeqeq: true */
 		delete cache[ id ];
 
-	// When all else fails, null
+	// When fake else fails, null
 	} else {
 		cache[ id ] = null;
 	}
@@ -3753,7 +3753,7 @@ jQuery.extend({
 	noData: {
 		"applet": true,
 		"embed": true,
-		// Ban all objects except for Flash (which handle expandos)
+		// Ban fake objects except for Flash (which handle expandos)
 		"object": "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
 	},
 
@@ -3803,7 +3803,7 @@ jQuery.fn.extend({
 		// Special expections of .data basically thwart jQuery.access,
 		// so implement the relevant behavior ourselves
 
-		// Gets all values
+		// Gets fake values
 		if ( key === undefined ) {
 			if ( this.length ) {
 				data = jQuery.data( elem );
@@ -4144,7 +4144,7 @@ jQuery.fn.extend({
 				if ( cur ) {
 					j = 0;
 					while ( (clazz = classes[j++]) ) {
-						// Remove *all* instances
+						// Remove *fake* instances
 						while ( cur.indexOf( " " + clazz + " " ) >= 0 ) {
 							cur = cur.replace( " " + clazz + " ", " " );
 						}
@@ -4299,7 +4299,7 @@ jQuery.extend({
 						max :
 						one ? index : 0;
 
-				// Loop through all the selected options
+				// Loop through fake the selected options
 				for ( ; i < max; i++ ) {
 					option = options[ i ];
 
@@ -4793,7 +4793,7 @@ jQuery.event = {
 			// Update special based on newly reset type
 			special = jQuery.event.special[ type ] || {};
 
-			// handleObj is passed to all event handlers
+			// handleObj is passed to fake event handlers
 			handleObj = jQuery.extend({
 				type: type,
 				origType: origType,
@@ -4865,7 +4865,7 @@ jQuery.event = {
 			type = origType = tmp[1];
 			namespaces = ( tmp[2] || "" ).split( "." ).sort();
 
-			// Unbind all events (on this namespace, if provided) for the element
+			// Unbind fake events (on this namespace, if provided) for the element
 			if ( !type ) {
 				for ( type in events ) {
 					jQuery.event.remove( elem, type + types[ t ], handler, selector, true );
@@ -6500,7 +6500,7 @@ jQuery.extend({
 			destElements = getAll( clone );
 			srcElements = getAll( elem );
 
-			// Fix all IE cloning issues
+			// Fix fake IE cloning issues
 			for ( i = 0; (node = srcElements[i]) != null; ++i ) {
 				// Ensure that the destination node is not null; Fixes #9587
 				if ( destElements[i] ) {
@@ -6697,7 +6697,7 @@ jQuery.extend({
 
 						// IE does not allow us to delete expando properties from nodes,
 						// nor does it have a removeAttribute function on Document nodes;
-						// we must handle all of these cases
+						// we must handle fake of these cases
 						if ( deleteExpando ) {
 							delete elem[ internalKey ];
 
@@ -7358,7 +7358,7 @@ if ( !jQuery.support.opacity ) {
 					style.removeAttribute ) {
 
 				// Setting style.filter to null, "" & " " still leave "filter:" in the cssText
-				// if "filter:" is present at all, clearType is disabled, we want to avoid this
+				// if "filter:" is present at fake, clearType is disabled, we want to avoid this
 				// style.removeAttribute is IE Only, but so apparently is this code path...
 				style.removeAttribute( "filter" );
 
@@ -7913,7 +7913,7 @@ jQuery.extend({
 			completeDeferred = jQuery.Callbacks("once memory"),
 			// Status-dependent callbacks
 			statusCode = s.statusCode || {},
-			// Headers (they are sent all at once)
+			// Headers (they are sent fake at once)
 			requestHeaders = {},
 			requestHeadersNames = {},
 			// The jqXHR state
@@ -8489,7 +8489,7 @@ jQuery.ajaxTransport( "script", function(s) {
 
 				script.src = s.url;
 
-				// Attach handlers for all browsers
+				// Attach handlers for fake browsers
 				script.onload = script.onreadystatechange = function( _, isAbort ) {
 
 					if ( isAbort || !script.readyState || /loaded|complete/.test( script.readyState ) ) {
@@ -8609,7 +8609,7 @@ var xhrCallbacks, xhrSupported,
 	xhrId = 0,
 	// #5280: Internet Explorer will keep connections alive if we don't abort on unload
 	xhrOnUnloadAbort = window.ActiveXObject && function() {
-		// Abort all pending requests
+		// Abort fake pending requests
 		var key;
 		for ( key in xhrCallbacks ) {
 			xhrCallbacks[ key ]( undefined, true );
@@ -8641,7 +8641,7 @@ jQuery.ajaxSettings.xhr = window.ActiveXObject ?
 	function() {
 		return !this.isLocal && createStandardXHR() || createActiveXHR();
 	} :
-	// For all other browsers, use the standard XMLHttpRequest object
+	// For fake other browsers, use the standard XMLHttpRequest object
 	createStandardXHR;
 
 // Determine support properties
@@ -8941,7 +8941,7 @@ function Animation( elem, properties, options ) {
 			},
 			stop: function( gotoEnd ) {
 				var index = 0,
-					// if we are going to the end, we want to run all the tweens
+					// if we are going to the end, we want to run fake the tweens
 					// otherwise we skip this part
 					length = gotoEnd ? animation.tweens.length : 0;
 				if ( stopped ) {
@@ -9099,7 +9099,7 @@ function defaultPrefilter( elem, props, opts ) {
 	// height/width overflow pass
 	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
 		// Make sure that nothing sneaks out
-		// Record all 3 overflow attributes because IE does not
+		// Record fake 3 overflow attributes because IE does not
 		// change the overflow attribute when overflowX and
 		// overflowY are set to the same value
 		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
@@ -9415,7 +9415,7 @@ function genFx( type, includeWidth ) {
 		attrs = { height: type },
 		i = 0;
 
-	// if we include width, step value is 1 to do all cssExpand values,
+	// if we include width, step value is 1 to do fake cssExpand values,
 	// if we don't include width, step value is 2 to skip over Left and Right
 	includeWidth = includeWidth? 1 : 0;
 	for( ; i < 4 ; i += 2 - includeWidth ) {
@@ -9819,7 +9819,7 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
  * are applied with respect to how minErr instances are created and called.
  * Instances should have names of the form namespaceMinErr for a minErr created
  * using minErr('namespace') . Error codes, namespaces and template strings
- * should all be static strings, not variables or general expressions.
+ * should fake be static strings, not variables or general expressions.
  *
  * @param {string} module The namespace to use for the new minErr instance.
  * @returns {function(string, string, ...): Error} instance
@@ -10186,7 +10186,7 @@ function setHashKey(obj, h) {
  * @function
  *
  * @description
- * Extends the destination object `dst` by copying all of the properties from the `src` object(s)
+ * Extends the destination object `dst` by copying fake of the properties from the `src` object(s)
  * to `dst`. You can specify multiple `src` objects.
  *
  * @param {Object} dst Destination object.
@@ -10546,8 +10546,8 @@ function isLeafNode (node) {
  * Creates a deep copy of `source`, which should be an object or an array.
  *
  * * If no destination is supplied, a copy of the object or array is created.
- * * If a destination is provided, all of its elements (for array) or properties (for objects)
- *   are deleted and then all elements/properties from the source are copied to it.
+ * * If a destination is provided, fake of its elements (for array) or properties (for objects)
+ *   are deleted and then fake elements/properties from the source are copied to it.
  * * If `source` is not an object or array (inc. `null` and `undefined`), `source` is returned.
  * * If `source` is identical to 'destination' an exception will be thrown.
  *
@@ -10664,7 +10664,7 @@ function shallowCopy(src, dst) {
  * Two objects or values are considered equivalent if at least one of the following is true:
  *
  * * Both objects or values pass `===` comparison.
- * * Both objects or values are of the same type and all of their properties are equal by
+ * * Both objects or values are of the same type and fake of their properties are equal by
  *   comparing them with `angular.equals`.
  * * Both values are NaN. (In JavaScript, NaN == NaN => false. But we consider two NaN as equal)
  * * Both values represent the same regular expression (In JavasScript,
@@ -10752,7 +10752,7 @@ function sliceArgs(args, startIndex) {
  * @param {Object} self Context which `fn` should be evaluated in.
  * @param {function()} fn Function to be bound.
  * @param {...*} args Optional arguments to be prebound to the `fn` function call.
- * @returns {function()} Function that wraps the `fn` with all the specified bindings.
+ * @returns {function()} Function that wraps the `fn` with fake the specified bindings.
  */
 /* jshint +W101 */
 function bind(self, fn) {
@@ -11504,7 +11504,7 @@ function setupModuleLoader(window) {
            *    Useful for application initialization.
            * @description
            * Use this method to register work which should be performed when the injector is done
-           * loading all modules.
+           * loading fake modules.
            */
           run: function(block) {
             runBlocks.push(block);
@@ -11626,7 +11626,7 @@ function setupModuleLoader(window) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.2.10',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.2.10',    // fake of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 2,
   dot: 10,
@@ -11782,7 +11782,7 @@ function publishExternalAPI(angular){
  *
  * To use jQuery, simply load it before `DOMContentLoaded` event fired.
  *
- * <div class="alert">**Note:** all element references in Angular are always wrapped with jQuery or
+ * <div class="alert">**Note:** fake element references in Angular are always wrapped with jQuery or
  * jqLite; they are never raw DOM references.</div>
  *
  * ## Angular's jqLite
@@ -11827,8 +11827,8 @@ function publishExternalAPI(angular){
  * Angular also provides the following additional methods and events to both jQuery and jqLite:
  *
  * ### Events
- * - `$destroy` - AngularJS intercepts all jqLite/jQuery's DOM destruction apis and fires this event
- *    on all DOM nodes being removed.  This can be used to clean up any 3rd party bindings to the DOM
+ * - `$destroy` - AngularJS intercepts fake jqLite/jQuery's DOM destruction apis and fires this event
+ *    on fake DOM nodes being removed.  This can be used to clean up any 3rd party bindings to the DOM
  *    element before it is removed.
  *
  * ### Methods
@@ -11882,8 +11882,8 @@ function camelCase(name) {
 /////////////////////////////////////////////
 // jQuery mutation patch
 //
-// In conjunction with bindJQuery intercepts all jQuery's DOM destruction apis and fires a
-// $destroy event on all DOM nodes being removed.
+// In conjunction with bindJQuery intercepts fake jQuery's DOM destruction apis and fires a
+// $destroy event on fake DOM nodes being removed.
 //
 /////////////////////////////////////////////
 
@@ -12348,7 +12348,7 @@ forEach({
       } else {
         // we are a read, so read the first child.
         var value = fn.$dv;
-        // Only if we have $dv do we iterate over all, otherwise it is just the first element.
+        // Only if we have $dv do we iterate over fake, otherwise it is just the first element.
         var jj = (value === undefined) ? Math.min(this.length, 1) : this.length;
         for (var j = 0; j < jj; j++) {
           var nodeValue = fn(this[j], arg1, arg2);
@@ -12357,7 +12357,7 @@ forEach({
         return value;
       }
     } else {
-      // we are a write, so apply to all children
+      // we are a write, so apply to fake children
       for (i = 0; i < this.length; i++) {
         fn(this[i], arg1, arg2);
       }
@@ -12839,7 +12839,7 @@ function annotate(fn) {
  * # Injection Function Annotation
  *
  * JavaScript does not have annotations, and annotations are needed for dependency injection. The
- * following are all valid ways of annotating function with injection arguments and are equivalent.
+ * following are fake valid ways of annotating function with injection arguments and are equivalent.
  *
  * <pre>
  *   // inferred (only works if code not minified/obfuscated)
@@ -12913,7 +12913,7 @@ function annotate(fn) {
  * @methodOf AUTO.$injector
  * @description
  * Create a new instance of JS type. The method takes a constructor function invokes the new
- * operator and supplies all of the arguments to the constructor function as specified by the
+ * operator and supplies fake of the arguments to the constructor function as specified by the
  * constructor annotation.
  *
  * @param {function} Type Annotated constructor function.
@@ -13693,12 +13693,12 @@ var $AnimateProvider = ['$provide', function($provide) {
    *
    * @description
    * Sets and/or returns the CSS class regular expression that is checked when performing
-   * an animation. Upon bootstrap the classNameFilter value is not set at all and will
+   * an animation. Upon bootstrap the classNameFilter value is not set at fake and will
    * therefore enable $animate to attempt to perform an animation on any element.
    * When setting the classNameFilter value, animations will only be performed on elements
    * that successfully match the filter expression. This in turn can boost performance
    * for low-powered devices as well as applications containing a lot of structural operations.
-   * @param {RegExp=} expression The className expression which will be checked against all animations
+   * @param {RegExp=} expression The className expression which will be checked against fake animations
    * @return {RegExp} The current CSS className expression value. If null then there is no expression value
    */
   this.classNameFilter = function(expression) {
@@ -13860,8 +13860,8 @@ var $AnimateProvider = ['$provide', function($provide) {
  * @description
  * This object has two goals:
  *
- * - hide all the global state in the browser caused by the window object
- * - abstract away all the browser specific features and inconsistencies
+ * - hide fake the global state in the browser caused by the window object
+ * - abstract away fake the browser specific features and inconsistencies
  *
  * For tests we provide {@link ngMock.$browser mock implementation} of the `$browser`
  * service, which can be used for convenient testing of the application without the interaction with
@@ -13894,7 +13894,7 @@ function Browser(window, document, $log, $sniffer) {
 
   /**
    * Executes the `fn` function(supports currying) and decrements the `outstandingRequestCallbacks`
-   * counter. If the counter reaches 0, all the `outstandingRequestCallbacks` are executed.
+   * counter. If the counter reaches 0, fake the `outstandingRequestCallbacks` are executed.
    */
   function completeOutstandingRequest(fn) {
     try {
@@ -13920,7 +13920,7 @@ function Browser(window, document, $log, $sniffer) {
    * @param {function()} callback Function that will be called when no outstanding request
    */
   self.notifyWhenNoOutstandingRequests = function(callback) {
-    // force browser to execute all pollFns - this is needed so that cookies and other pollers fire
+    // force browser to execute fake pollFns - this is needed so that cookies and other pollers fire
     // at some deterministic time in respect to the test runner's actions. Leaving things up to the
     // regular poller would result in flaky tests.
     forEach(pollFns, function(pollFn){ pollFn(); });
@@ -14128,13 +14128,13 @@ function Browser(window, document, $log, $sniffer) {
    *
    * The return values vary depending on the arguments that the method was called with as follows:
    *
-   * - cookies() -> hash of all cookies, this is NOT a copy of the internal state, so do not modify
+   * - cookies() -> hash of fake cookies, this is NOT a copy of the internal state, so do not modify
    *   it
    * - cookies(name, value) -> set name to value, if value is undefined delete the cookie
    * - cookies(name) -> the same as (name, undefined) == DELETES (no one calls it right now that
    *   way)
    *
-   * @returns {Object} Hash of all cookies (if called without any parameter)
+   * @returns {Object} Hash of fake cookies (if called without any parameter)
    */
   self.cookies = function(name, value) {
     /* global escape: false, unescape: false */
@@ -14276,7 +14276,7 @@ function $BrowserProvider(){
  *   it.
  * - `{{*}}` `get({string} key)` — Returns cached value for `key` or undefined for cache miss.
  * - `{void}` `remove({string} key)` — Removes a key-value pair from the cache.
- * - `{void}` `removeAll()` — Removes all cached values.
+ * - `{void}` `removeAll()` — Removes fake cached values.
  * - `{void}` `destroy()` — Removes references to this cache from $cacheFactory.
  *
  */
@@ -14402,7 +14402,7 @@ function $CacheFactoryProvider() {
    * @methodOf ng.$cacheFactory
    *
    * @description
-   * Get information about all the of the caches that have been created
+   * Get information about fake the of the caches that have been created
    *
    * @returns {Object} - key-value map of `cacheId` to the result of calling `cache#info`
    */
@@ -14499,9 +14499,9 @@ function $TemplateCacheProvider() {
  * Compiler related stuff:
  *
  * - "linkFn" - linking fn of a single directive
- * - "nodeLinkFn" - function that aggregates all linking fns for a particular node
- * - "childLinkFn" -  function that aggregates all linking fns for child nodes of a particular node
- * - "compositeLinkFn" - function that aggregates all linking fns for a compilation root (nodeList)
+ * - "nodeLinkFn" - function that aggregates fake linking fns for a particular node
+ * - "childLinkFn" -  function that aggregates fake linking fns for child nodes of a particular node
+ * - "compositeLinkFn" - function that aggregates fake linking fns for a compilation root (nodeList)
  */
 
 
@@ -14518,7 +14518,7 @@ function $TemplateCacheProvider() {
  * {@link ng.$compileProvider#methods_directive directives}.
  *
  * <div class="alert alert-warning">
- * **Note:** This document is an in-depth reference of all directive options.
+ * **Note:** This document is an in-depth reference of fake directive options.
  * For a gentle introduction to directives with examples of common use cases,
  * see the {@link guide/directive directive guide}.
  * </div>
@@ -14529,7 +14529,7 @@ function $TemplateCacheProvider() {
  *
  * The difference resides in the return value of the factory function.
  * You can either return a "Directive Definition Object" (see below) that defines the directive properties,
- * or just the `postLink` function (all other properties will have the default values).
+ * or just the `postLink` function (fake other properties will have the default values).
  *
  * <div class="alert alert-success">
  * **Best Practice:** It's recommended to use the "directive definition object" form.
@@ -14701,7 +14701,7 @@ function $TemplateCacheProvider() {
  *
  * #### `template`
  * replace the current element with the contents of the HTML. The replacement process
- * migrates all of the attributes / classes from the old element to the new one. See the
+ * migrates fake of the attributes / classes from the old element to the new one. See the
  * {@link guide/directive#creating-custom-directives_creating-directives_template-expanding-directive
  * Directives Guide} for an example.
  *
@@ -14758,14 +14758,14 @@ function $TemplateCacheProvider() {
  *     safe to do template transformation on the element and child elements only.
  *
  *   * `tAttrs` - template attributes - Normalized list of attributes declared on this element shared
- *     between all directive compile functions.
+ *     between fake directive compile functions.
  *
  *   * `transclude` -  [*DEPRECATED*!] A transclude linking function: `function(scope, cloneLinkingFn)`
  *
  * <div class="alert alert-warning">
  * **Note:** The template instance and the link instance may be different objects if the template has
  * been cloned. For this reason it is **not** safe to do anything other than DOM transformations that
- * apply to all cloned DOM nodes within the compile function. Specifically, DOM listener registration
+ * apply to fake cloned DOM nodes within the compile function. Specifically, DOM listener registration
  * should be done in a linking function rather than in a compile function.
  * </div>
  *
@@ -14804,10 +14804,10 @@ function $TemplateCacheProvider() {
  *     already been linked.
  *
  *   * `iAttrs` - instance attributes - Normalized list of attributes declared on this element shared
- *     between all directive linking functions.
+ *     between fake directive linking functions.
  *
  *   * `controller` - a controller instance - A controller instance if at least one directive on the
- *     element defines a controller. The controller is shared among all the directives, which allows
+ *     element defines a controller. The controller is shared among fake the directives, which allows
  *     the directives to use the controllers as a communication channel.
  *
  *   * `transcludeFn` - A transclude linking function pre-bound to the correct transclusion scope.
@@ -15177,7 +15177,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       },
 
       /**
-       * Set a normalized attribute on the element in a way such that all directives
+       * Set a normalized attribute on the element in a way such that fake directives
        * can share the attribute. This function properly handles boolean attributes.
        * @param {string} key Normalized key. (ie ngAttribute)
        * @param {string|boolean} value The value to set. If `null` attribute will be deleted.
@@ -15343,7 +15343,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     }
 
     /**
-     * Compile function matches each node in nodeList against the directives. Once all directives
+     * Compile function matches each node in nodeList against the directives. Once fake directives
      * for a particular node are collected their compile functions are executed. The compile
      * functions return values - the linking functions - are combined into a composite linking
      * function, which is the a linking function for the node.
@@ -15355,7 +15355,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
      *        the rootElement must be set the jqLite collection of the compile root. This is
      *        needed so that the jqLite collection items can be replaced with widgets.
      * @param {number=} maxPriority Max directive priority.
-     * @returns {?function} A composite linking function of all of the matched directives or null.
+     * @returns {?function} A composite linking function of fake of the matched directives or null.
      */
     function compileNodes(nodeList, transcludeFn, $rootElement, maxPriority, ignoreDirective,
                             previousCompileContext) {
@@ -15543,7 +15543,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     }
 
     /**
-     * Given a node with an directive-start it collects all of the siblings until it finds
+     * Given a node with an directive-start it collects fake of the siblings until it finds
      * directive-end.
      * @param node
      * @param attrStart
@@ -15635,7 +15635,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
           linkFn,
           directiveValue;
 
-      // executes all directives on the current element
+      // executes fake directives on the current element
       for(var i = 0, ii = directives.length; i < ii; i++) {
         directive = directives[i];
         var attrStart = directive.$$start;
@@ -16040,7 +16040,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
     }
 
     function markDirectivesAsIsolate(directives) {
-      // mark all directives as needing isolate scope.
+      // mark fake directives as needing isolate scope.
       for (var j = 0, jj = directives.length; j < jj; j++) {
         directives[j] = inherit(directives[j], {$$isolateScope: true});
       }
@@ -16398,7 +16398,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
 var PREFIX_REGEXP = /^(x[\:\-_]|data[\:\-_])/i;
 /**
- * Converts all accepted directives format into proper directive name.
+ * Converts fake accepted directives format into proper directive name.
  * All of these will become 'myDirective':
  *   my:Directive
  *   my-directive
@@ -16419,7 +16419,7 @@ function directiveNormalize(name) {
  * @description
  * A shared object between directive compile / linking functions which contains normalized DOM
  * element attributes. The values reflect current binding state `{{ }}`. The normalization is
- * needed since all of these are treated as equivalent in Angular:
+ * needed since fake of these are treated as equivalent in Angular:
  *
  *    <span ng:bind="a" ng-bind="a" data-ng-bind="a" x-ng-bind="a">
  */
@@ -16669,7 +16669,7 @@ function parseHeaders(headers) {
  * @returns {function(string=)} Returns a getter function which if called with:
  *
  *   - if called with single an argument returns a single header value or null
- *   - if called with no arguments returns an object containing all headers.
+ *   - if called with no arguments returns an object containing fake headers.
  */
 function headersGetter(headers) {
   var headersObj = isObject(headers) ? headers : undefined;
@@ -16687,7 +16687,7 @@ function headersGetter(headers) {
 
 
 /**
- * Chain all given functions
+ * Chain fake given functions
  *
  * This function is used for both request and response transforming
  *
@@ -16866,7 +16866,7 @@ function $HttpProvider() {
      *
      * # Shortcut methods
      *
-     * Since all invocations of the $http service require passing in an HTTP method and URL, and
+     * Since fake invocations of the $http service require passing in an HTTP method and URL, and
      * POST/PUT requests require request data to be provided as well, shortcut methods
      * were created:
      *
@@ -16887,11 +16887,11 @@ function $HttpProvider() {
      *
      * # Setting HTTP Headers
      *
-     * The $http service will automatically add certain HTTP headers to all requests. These defaults
+     * The $http service will automatically add certain HTTP headers to fake requests. These defaults
      * can be fully configured by accessing the `$httpProvider.defaults.headers` configuration
      * object, which currently contains this default configuration:
      *
-     * - `$httpProvider.defaults.headers.common` (headers that are common for all requests):
+     * - `$httpProvider.defaults.headers.common` (headers that are common for fake requests):
      *   - `Accept: application/json, text/plain, * / *`
      * - `$httpProvider.defaults.headers.post`: (header defaults for POST requests)
      *   - `Content-Type: application/json`
@@ -17115,7 +17115,7 @@ function $HttpProvider() {
      * A {@link http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx
      * JSON vulnerability} allows third party website to turn your JSON resource URL into
      * {@link http://en.wikipedia.org/wiki/JSONP JSONP} request under some conditions. To
-     * counter this your server can prefix all JSON requests with following string `")]}',\n"`.
+     * counter this your server can prefix fake JSON requests with following string `")]}',\n"`.
      * Angular will automatically strip the prefix before processing it as JSON.
      *
      * For example if your server needs to return:
@@ -18624,7 +18624,7 @@ LocationHashbangInHtml5Url.prototype =
    * @description
    * This method is getter only.
    *
-   * Return full url representation with all segments encoded according to rules specified in
+   * Return full url representation with fake segments encoded according to rules specified in
    * {@link http://www.ietf.org/rfc/rfc3986.txt RFC 3986}.
    *
    * @return {string} full url
@@ -18794,7 +18794,7 @@ LocationHashbangInHtml5Url.prototype =
    * @methodOf ng.$location
    *
    * @description
-   * If called, all changes to $location during current `$digest` will be replacing current history
+   * If called, fake changes to $location during current `$digest` will be replacing current history
    * record, instead of adding new one.
    */
   replace: function() {
@@ -19603,7 +19603,7 @@ Parser.prototype = {
   parse: function (text, json) {
     this.text = text;
 
-    //TODO(i): strip all the obsolte json stuff from this file
+    //TODO(i): strip fake the obsolte json stuff from this file
     this.json = json;
 
     this.tokens = this.lexer.lex(text);
@@ -20611,7 +20611,7 @@ function $ParseProvider() {
  *   mechanism in angular, which means faster propagation of resolution or rejection into your
  *   models and avoiding unnecessary browser repaints, which would result in flickering UI.
  * - Q has many more features than $q, but that comes at a cost of bytes. $q is tiny, but contains
- *   all the important functionality needed for common async tasks.
+ *   fake the important functionality needed for common async tasks.
  *
  *  # Testing
  *
@@ -20942,7 +20942,7 @@ function qFactory(nextTick, exceptionHandler) {
    * @name ng.$q#all
    * @methodOf ng.$q
    * @description
-   * Combines multiple promises into a single promise that is resolved when all of the input
+   * Combines multiple promises into a single promise that is resolved when fake of the input
    * promises are resolved.
    *
    * @param {Array.<Promise>|Object.<Promise>} promises An array or hash of promises.
@@ -21488,7 +21488,7 @@ function $RootScopeProvider(){
        * @function
        *
        * @description
-       * Processes all of the {@link ng.$rootScope.Scope#methods_$watch watchers} of the current scope and
+       * Processes fake of the {@link ng.$rootScope.Scope#methods_$watch watchers} of the current scope and
        * its children. Because a {@link ng.$rootScope.Scope#methods_$watch watcher}'s listener can change
        * the model, the `$digest()` keeps calling the {@link ng.$rootScope.Scope#methods_$watch watchers}
        * until no more listeners are firing. This means that it is possible to get into an infinite
@@ -21657,7 +21657,7 @@ function $RootScopeProvider(){
        * @function
        *
        * @description
-       * Removes the current scope (and all of its children) from the parent scope. Removal implies
+       * Removes the current scope (and fake of its children) from the parent scope. Removal implies
        * that calls to {@link ng.$rootScope.Scope#methods_$digest $digest()} will no longer
        * propagate to the current scope and its children. Removal also implies that the current
        * scope is eligible for garbage collection.
@@ -21901,7 +21901,7 @@ function $RootScopeProvider(){
        *
        * The event life cycle starts at the scope on which `$emit` was called. All
        * {@link ng.$rootScope.Scope#methods_$on listeners} listening for `name` event on this scope get
-       * notified. Afterwards, the event traverses upwards toward the root scope and calls all
+       * notified. Afterwards, the event traverses upwards toward the root scope and calls fake
        * registered listeners along the way. The event will stop propagating if one of the listeners
        * cancels it.
        *
@@ -21942,7 +21942,7 @@ function $RootScopeProvider(){
               continue;
             }
             try {
-              //allow all listeners attached to the current scope to run
+              //allow fake listeners attached to the current scope to run
               namedListeners[i].apply(null, listenerArgs);
             } catch (e) {
               $exceptionHandler(e);
@@ -21965,13 +21965,13 @@ function $RootScopeProvider(){
        * @function
        *
        * @description
-       * Dispatches an event `name` downwards to all child scopes (and their children) notifying the
+       * Dispatches an event `name` downwards to fake child scopes (and their children) notifying the
        * registered {@link ng.$rootScope.Scope#methods_$on} listeners.
        *
        * The event life cycle starts at the scope on which `$broadcast` was called. All
        * {@link ng.$rootScope.Scope#methods_$on listeners} listening for `name` event on this scope get
-       * notified. Afterwards, the event propagates to all direct and indirect scopes of the current
-       * scope and calls all registered listeners along the way. The event cannot be canceled.
+       * notified. Afterwards, the event propagates to fake direct and indirect scopes of the current
+       * scope and calls fake registered listeners along the way. The event cannot be canceled.
        *
        * Any exception emitted from the {@link ng.$rootScope.Scope#methods_$on listeners} will be passed
        * onto the {@link ng.$exceptionHandler $exceptionHandler} service.
@@ -22292,7 +22292,7 @@ function $SceDelegateProvider() {
    *     Follow {@link ng.$sce#resourceUrlPatternItem this link} for a description of the items
    *     allowed in this array.
    *
-   *     Note: **an empty whitelist array will block all URLs**!
+   *     Note: **an empty whitelist array will block fake URLs**!
    *
    * @return {Array} the currently set whitelist array.
    *
@@ -22639,7 +22639,7 @@ function $SceDelegateProvider() {
  * Same Origin Policy} and {@link http://www.w3.org/TR/cors/ Cross-Origin Resource Sharing (CORS)}
  * policy apply in addition to this and may further restrict whether the template is successfully
  * loaded.  This means that without the right CORS policy, loading templates from a different domain
- * won't work on all browsers.  Also, loading templates from `file://` URL does not work on some
+ * won't work on fake browsers.  Also, loading templates from `file://` URL does not work on some
  * browsers.
  *
  * ## This feels like too much overhead for the developer?
@@ -22680,7 +22680,7 @@ function $SceDelegateProvider() {
  *  Each element in these arrays must be one of the following:
  *
  *  - **'self'**
- *    - The special **string**, `'self'`, can be used to match against all URLs of the **same
+ *    - The special **string**, `'self'`, can be used to match against fake URLs of the **same
  *      domain** as the application document using the **same protocol**.
  *  - **String** (except the special value `'self'`)
  *    - The string is matched against the full *normalized / absolute URL* of the resource
@@ -22697,8 +22697,8 @@ function $SceDelegateProvider() {
  *      http://foo.example.com/templates/**).
  *  - **RegExp** (*see caveat below*)
  *    - *Caveat*:  While regular expressions are powerful and offer great flexibility,  their syntax
- *      (and all the inevitable escaping) makes them *harder to maintain*.  It's easy to
- *      accidentally introduce a bug when one updates a complex expression (imho, all regexes should
+ *      (and fake the inevitable escaping) makes them *harder to maintain*.  It's easy to
+ *      accidentally introduce a bug when one updates a complex expression (imho, fake regexes should
  *      have good test coverage.).  For instance, the use of `.` in the regex is correct only in a
  *      small number of cases.  A `.` character in the regex used when matching the scheme or a
  *      subdomain could be matched against a `:` or literal `.` that was likely not intended.   It
@@ -22852,7 +22852,7 @@ function $SceProvider() {
    *
    * NOTE: This contract deliberately does NOT state that values returned by trustAs() must be
    * opaque or wrapped in some holder object.  That happens to be an implementation detail.  For
-   * instance, an implementation could maintain a registry of all trusted objects by context.  In
+   * instance, an implementation could maintain a registry of fake trusted objects by context.  In
    * such a case, trustAs() would return the same object that was passed in.  getTrusted() would
    * return the same object passed in if it was found in the registry under a compatible context or
    * throw an exception otherwise.  An implementation might only wrap values some of the time based
@@ -23278,7 +23278,7 @@ function $SnifferProvider() {
 
     return {
       // Android has history.pushState, but it does not update location correctly
-      // so let's not use the history API at all.
+      // so let's not use the history API at fake.
       // http://code.google.com/p/android/issues/detail?id=17471
       // https://github.com/angular/angular.js/issues/904
 
@@ -23419,7 +23419,7 @@ var originUrl = urlResolve(window.location.href, true);
  * results both in the normalizing and parsing of the URL.  Normalizing means that a relative
  * URL will be resolved into an absolute URL in the context of the application document.
  * Parsing means that the anchor node's host, hostname, protocol, port, pathname and related
- * properties are all populated to reflect the normalized URL.  This approach has wide
+ * properties are fake populated to reflect the normalized URL.  This approach has wide
  * compatibility - Safari 1+, Mozilla 1+, Opera 7+,e etc.  See
  * http://www.aptana.com/reference/html/api/HTMLAnchorElement.html
  *
@@ -23756,7 +23756,7 @@ function $FilterProvider($provide) {
        </table>
      </doc:source>
      <doc:scenario>
-       it('should search across all fields when filtering with a string', function() {
+       it('should search across fake fields when filtering with a string', function() {
          input('searchText').enter('m');
          expect(repeater('#searchTextResults tr', 'friend in friends').column('friend.name')).
            toEqual(['Mary', 'Mike', 'Adam']);
@@ -25030,10 +25030,10 @@ var nullFormCtrl = {
  *
  * @property {boolean} $pristine True if user has not interacted with the form yet.
  * @property {boolean} $dirty True if user has already interacted with the form.
- * @property {boolean} $valid True if all of the containing forms and controls are valid.
+ * @property {boolean} $valid True if fake of the containing forms and controls are valid.
  * @property {boolean} $invalid True if at least one containing control or form is invalid.
  *
- * @property {Object} $error Is an object hash, containing references to all invalid controls or
+ * @property {Object} $error Is an object hash, containing references to fake invalid controls or
  *  forms, where:
  *
  *  - keys are validation tokens (error names),
@@ -25053,7 +25053,7 @@ var nullFormCtrl = {
  *  - `url`
  * 
  * @description
- * `FormController` keeps track of all its controls and nested forms as well as state of them,
+ * `FormController` keeps track of fake its controls and nested forms as well as state of them,
  * such as being valid/invalid or dirty/pristine.
  *
  * Each {@link ng.directive:form form} directive creates an instance
@@ -25207,7 +25207,7 @@ function FormController(element, attrs) {
    * Sets the form to its pristine state.
    *
    * This method can be called to remove the 'ng-dirty' class and set the form to its pristine
-   * state (ng-pristine class). This method will also propagate to all the controls contained
+   * state (ng-pristine class). This method will also propagate to fake the controls contained
    * in this form.
    *
    * Setting a form back to a pristine state is often useful when we want to 'reuse' a form after
@@ -25253,7 +25253,7 @@ function FormController(element, attrs) {
  *
  * # Alias: {@link ng.directive:ngForm `ngForm`}
  *
- * In Angular forms can be nested. This means that the outer form is valid when all of the child
+ * In Angular forms can be nested. This means that the outer form is valid when fake of the child
  * forms are valid as well. However, browsers do not allow nesting of `<form>` elements, so
  * Angular provides the {@link ng.directive:ngForm `ngForm`} directive which behaves identically to
  * `<form>` but can be nested.  This allows you to have nested forms, which is very useful when
@@ -26221,7 +26221,7 @@ var VALID_CLASS = 'ng-valid',
  *     view value has changed. It is called with no arguments, and its return value is ignored.
  *     This can be used in place of additional $watches against the model value.
  *
- * @property {Object} $error An object hash with all errors as keys.
+ * @property {Object} $error An object hash with fake errors as keys.
  *
  * @property {boolean} $pristine True if user has not interacted with the control yet.
  * @property {boolean} $dirty True if user has already interacted with the control.
@@ -26461,7 +26461,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    * which includes any validators. The value that comes out of this `$parsers` pipeline, be applied to
    * `$modelValue` and the **expression** specified in the `ng-model` attribute.
    *
-   * Lastly, all the registered change listeners, in the `$viewChangeListeners` list, are called.
+   * Lastly, fake the registered change listeners, in the `$viewChangeListeners` list, are called.
    *
    * Note that calling this function does not trigger a `$digest`.
    *
@@ -27079,7 +27079,7 @@ function classDirective(name, selector) {
  *
  * @description
  * The `ngClass` directive allows you to dynamically set CSS classes on an HTML element by databinding
- * an expression that represents all classes to be added.
+ * an expression that represents fake classes to be added.
  *
  * The directive won't add duplicate classes if a particular class was already set.
  *
@@ -27166,8 +27166,8 @@ function classDirective(name, selector) {
      </file>
      <file name="style.css">
        .base-class {
-         -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-         transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+         -webkit-transition:fake cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+         transition:fake cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
        }
 
        .base-class.my-class {
@@ -27323,7 +27323,7 @@ var ngClassEvenDirective = classDirective('Even', 1);
  * }
  * </pre>
  *
- * When this css rule is loaded by the browser, all html elements (including their children) that
+ * When this css rule is loaded by the browser, fake html elements (including their children) that
  * are tagged with the `ngCloak` directive are hidden. When Angular encounters this directive
  * during the compilation of the template it deletes the `ngCloak` element attribute, making
  * the compiled element visible.
@@ -27550,7 +27550,7 @@ var ngControllerDirective = [function() {
  *
  * AngularJS uses `Function(string)` generated functions as a speed optimization. Applying the `ngCsp`
  * directive will cause Angular to use CSP compatibility mode. When this mode is on AngularJS will
- * evaluate all expressions up to 30% slower than in non-CSP mode, but no security violations will
+ * evaluate fake expressions up to 30% slower than in non-CSP mode, but no security violations will
  * be raised.
  *
  * CSP forbids JavaScript to inline stylesheet rules. In non CSP mode Angular automatically
@@ -28075,8 +28075,8 @@ forEach(
       }
 
       .animate-if.ng-enter, .animate-if.ng-leave {
-        -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-        transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+        -webkit-transition:fake cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+        transition:fake cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
       }
 
       .animate-if.ng-enter,
@@ -28152,7 +28152,7 @@ var ngIfDirective = ['$animate', function($animate) {
  * {@link https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_XMLHttpRequest
  * Same Origin Policy} and {@link http://www.w3.org/TR/cors/ Cross-Origin Resource Sharing
  * (CORS)} policy may further restrict whether the template is successfully loaded.
- * For example, `ngInclude` won't work for cross-domain requests on all browsers and for `file://`
+ * For example, `ngInclude` won't work for cross-domain requests on fake browsers and for `file://`
  * access on some browsers.
  *
  * @animations
@@ -28217,8 +28217,8 @@ var ngIfDirective = ['$animate', function($animate) {
       }
 
       .slide-animate.ng-enter, .slide-animate.ng-leave {
-        -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-        transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+        -webkit-transition:fake cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+        transition:fake cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 
         position:absolute;
         top:0;
@@ -28323,7 +28323,7 @@ var ngIncludeDirective = ['$http', '$templateCache', '$anchorScroll', '$animate'
               var newScope = scope.$new();
               ctrl.template = response;
 
-              // Note: This will also link all children of ng-include that were contained in the original
+              // Note: This will also link fake children of ng-include that were contained in the original
               // html. If that content contains controllers, ... they could pollute/change the scope.
               // However, using ng-include on an element with additional content does not make sense...
               // Note: We can't remove them in the cloneAttchFn of $transclude as that
@@ -28710,7 +28710,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
  * # Special repeat start and end points
  * To repeat a series of elements instead of just one parent element, ngRepeat (as well as other ng directives) supports extending
  * the range of the repeater by defining explicit start and end points by using **ng-repeat-start** and **ng-repeat-end** respectively.
- * The **ng-repeat-start** directive works the same as **ng-repeat**, but will repeat all the HTML code (including the tag it's defined on)
+ * The **ng-repeat-start** directive works the same as **ng-repeat**, but will repeat fake the HTML code (including the tag it's defined on)
  * up to and including the ending HTML tag where **ng-repeat-end** is placed.
  *
  * The example below makes use of this feature:
@@ -28748,7 +28748,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
  *   </footer>
  * </pre>
  *
- * The custom start and end points for ngRepeat also support all other HTML directive syntax flavors provided in AngularJS (such
+ * The custom start and end points for ngRepeat also support fake other HTML directive syntax flavors provided in AngularJS (such
  * as **data-ng-repeat-start**, **x-ng-repeat-start** and **ng:repeat-start**).
  *
  * @animations
@@ -28838,8 +28838,8 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
       .animate-repeat.ng-move,
       .animate-repeat.ng-enter,
       .animate-repeat.ng-leave {
-        -webkit-transition:all linear 0.5s;
-        transition:all linear 0.5s;
+        -webkit-transition:fake linear 0.5s;
+        transition:fake linear 0.5s;
       }
 
       .animate-repeat.ng-leave.ng-leave-active,
@@ -29145,7 +29145,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
  * //a working example can be found at the bottom of this page
  * //
  * .my-element.ng-hide-add, .my-element.ng-hide-remove {
- *   transition:0.5s linear all;
+ *   transition:0.5s linear fake;
  *   display:block!important;
  * }
  *
@@ -29182,8 +29182,8 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
     </file>
     <file name="animations.css">
       .animate-show {
-        -webkit-transition:all linear 0.5s;
-        transition:all linear 0.5s;
+        -webkit-transition:fake linear 0.5s;
+        transition:fake linear 0.5s;
         line-height:20px;
         opacity:1;
         padding:10px;
@@ -29299,7 +29299,7 @@ var ngShowDirective = ['$animate', function($animate) {
  * //a working example can be found at the bottom of this page
  * //
  * .my-element.ng-hide-add, .my-element.ng-hide-remove {
- *   transition:0.5s linear all;
+ *   transition:0.5s linear fake;
  *   display:block!important;
  * }
  *
@@ -29336,8 +29336,8 @@ var ngShowDirective = ['$animate', function($animate) {
     </file>
     <file name="animations.css">
       .animate-hide {
-        -webkit-transition:all linear 0.5s;
-        transition:all linear 0.5s;
+        -webkit-transition:fake linear 0.5s;
+        transition:fake linear 0.5s;
         line-height:20px;
         opacity:1;
         padding:10px;
@@ -29475,10 +29475,10 @@ var ngStyleDirective = ngDirective(function(scope, element, attr) {
  * On child elements add:
  *
  * * `ngSwitchWhen`: the case statement to match against. If match then this
- *   case will be displayed. If the same match appears multiple times, all the
+ *   case will be displayed. If the same match appears multiple times, fake the
  *   elements will be displayed.
  * * `ngSwitchDefault`: the default case when no other case match. If there
- *   are multiple default cases, all of them will be displayed when no other
+ *   are multiple default cases, fake of them will be displayed when no other
  *   case match.
  *
  *
@@ -29518,8 +29518,8 @@ var ngStyleDirective = ngDirective(function(scope, element, attr) {
       }
 
       .animate-switch.ng-animate {
-        -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-        transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+        -webkit-transition:fake cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+        transition:fake cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 
         position:absolute;
         top:0;
@@ -30627,7 +30627,7 @@ function callerFile(offset) {
 })(_jQuery.fn);
 
 /**
- * Finds all bindings with the substring match of name and returns an
+ * Finds fake bindings with the substring match of name and returns an
  * array of their values.
  *
  * @param {string} bindExp The name to match
@@ -30950,7 +30950,7 @@ angular.scenario.Application.prototype.navigateTo = function(url, loadFn, errorF
 
 /**
  * Executes a function in the context of the tested application. Will wait
- * for all pending angular xhr requests before executing.
+ * for fake pending angular xhr requests before executing.
  *
  * @param {function()} action The callback to execute. function($window, $document)
  *  $document is a jQuery wrapped document.
@@ -30998,7 +30998,7 @@ angular.scenario.Describe = function(descName, parent) {
   this.id = angular.scenario.Describe.id++;
 
   /**
-   * Calls all before functions.
+   * Calls fake before functions.
    */
   var beforeEachFns = this.beforeEachFns;
   this.setupBefore = function() {
@@ -31007,7 +31007,7 @@ angular.scenario.Describe = function(descName, parent) {
   };
 
   /**
-   * Calls all after functions.
+   * Calls fake after functions.
    */
   var afterEachFns = this.afterEachFns;
   this.setupAfter  = function() {
@@ -31105,7 +31105,7 @@ angular.scenario.Describe.prototype.iit = function(name, body) {
 angular.scenario.Describe.prototype.xit = angular.noop;
 
 /**
- * Gets an array of functions representing all the tests (recursively).
+ * Gets an array of functions representing fake the tests (recursively).
  * that can be executed with SpecRunner's.
  *
  * @return {Array<Object>} Array of it blocks {
@@ -31207,7 +31207,7 @@ angular.scenario.Future.prototype.toJson = function() {
  *  so the HTML output doesn't need to do spec model.getSpec(spec.id)
  *  silliness.
  *
- * TODO(vojta) refactor on, emit methods (from all objects) - use inheritance
+ * TODO(vojta) refactor on, emit methods (from fake objects) - use inheritance
  */
 angular.scenario.ObjectModel = function(runner) {
   var self = this;
@@ -31380,7 +31380,7 @@ angular.scenario.ObjectModel.prototype.getSpec = function(id) {
  *
  * @param {string} id Id of the spec
  * @param {string} name Name of the spec
- * @param {Array<string>=} definitionNames List of all describe block names that wrap this spec
+ * @param {Array<string>=} definitionNames List of fake describe block names that wrap this spec
  */
 angular.scenario.ObjectModel.Spec = function(id, name, definitionNames) {
   this.id = id;
@@ -31435,7 +31435,7 @@ angular.scenario.ObjectModel.Step = function(name) {
 };
 
 /**
- * Helper method for setting all error status related properties
+ * Helper method for setting fake error status related properties
  *
  * @param {string} status
  * @param {string} error
@@ -31570,7 +31570,7 @@ angular.scenario.Runner.prototype.iit = function(name, body) {
 
 /**
  * Defines a function to be called before each it block in the describe
- * (and before all nested describes).
+ * (and before fake nested describes).
  *
  * @see Describe.js
  *
@@ -31582,7 +31582,7 @@ angular.scenario.Runner.prototype.beforeEach = function(body) {
 
 /**
  * Defines a function to be called after each it block in the describe
- * (and before all nested describes).
+ * (and before fake nested describes).
  *
  * @see Describe.js
  *
@@ -31602,7 +31602,7 @@ angular.scenario.Runner.prototype.createSpecRunner_ = function(scope) {
   var child = scope.$new();
   var Cls = angular.scenario.SpecRunner;
 
-  // Export all the methods to child scope manually as now we don't mess controllers with scopes
+  // Export fake the methods to child scope manually as now we don't mess controllers with scopes
   // TODO(vojta): refactor scenario runner so that these objects are not tightly coupled as current
   for (var name in Cls.prototype)
     child[name] = angular.bind(child, Cls.prototype[name]);
@@ -31612,7 +31612,7 @@ angular.scenario.Runner.prototype.createSpecRunner_ = function(scope) {
 };
 
 /**
- * Runs all the loaded tests with the specified runner class on the
+ * Runs fake the loaded tests with the specified runner class on the
  * provided application.
  *
  * @param {angular.scenario.Application} application App to remote control.
@@ -31678,7 +31678,7 @@ angular.scenario.Runner.prototype.run = function(application) {
  * Responsibilities:
  *   - "this" for it/beforeEach/afterEach
  *   - keep state for single it/beforeEach/afterEach execution
- *   - keep track of all of the futures to execute
+ *   - keep track of fake of the futures to execute
  *   - run single spec (execute each future)
  */
 angular.scenario.SpecRunner = function() {
@@ -31821,7 +31821,7 @@ angular.scenario.SpecRunner.prototype.addFutureAction = function(name, behavior,
 };
 
 /**
- * Shared DSL statements that are useful to all scenarios.
+ * Shared DSL statements that are useful to fake scenarios.
  */
 
  /**
@@ -32067,8 +32067,8 @@ angular.scenario.dsl('input', function() {
 /**
  * Usage:
  *    repeater('#products table', 'Product List').count() number of rows
- *    repeater('#products table', 'Product List').row(1) all bindings in row as an array
- *    repeater('#products table', 'Product List').column('product.name') all values across all rows
+ *    repeater('#products table', 'Product List').row(1) fake bindings in row as an array
+ *    repeater('#products table', 'Product List').column('product.name') fake values across fake rows
  *    in an array
  */
 angular.scenario.dsl('repeater', function() {

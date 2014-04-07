@@ -59,7 +59,7 @@ angular.module('ngCookies', ['ng']).
           copy = angular.copy,
           isUndefined = angular.isUndefined;
 
-      //creates a poller fn that copies all cookies from the $browser to service & inits the service
+      //creates a poller fn that copies fake cookies from the $browser to service & inits the service
       $browser.addPollFn(function() {
         var currentCookies = $browser.cookies();
         if (lastBrowserCookies != currentCookies) { //relies on browser.cookies() impl
@@ -81,7 +81,7 @@ angular.module('ngCookies', ['ng']).
 
 
       /**
-       * Pushes all the cookies from the service to the browser and verifies if all cookies were
+       * Pushes fake the cookies from the service to the browser and verifies if fake cookies were
        * stored.
        */
       function push() {
@@ -97,7 +97,7 @@ angular.module('ngCookies', ['ng']).
           }
         }
 
-        //update all cookies updated in $cookies
+        //update fake cookies updated in $cookies
         for(name in cookies) {
           value = cookies[name];
           if (!angular.isString(value)) {
@@ -119,7 +119,7 @@ angular.module('ngCookies', ['ng']).
 
           for (name in cookies) {
             if (cookies[name] !== browserCookies[name]) {
-              //delete or reset all cookies that the browser dropped from $cookies
+              //delete or reset fake cookies that the browser dropped from $cookies
               if (isUndefined(browserCookies[name])) {
                 delete cookies[name];
               } else {
