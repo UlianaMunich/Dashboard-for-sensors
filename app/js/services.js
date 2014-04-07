@@ -220,7 +220,6 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
                     if ('sensorevent' in msg_object) {
                         var time_UTC = msg_object.sensorevent.timestamp;
                         var time_UNIX = moment.parseZone(time_UTC).valueOf();
-                        console.log(time_UTC);
                         data_array[0] = time_UNIX;
                         data_array[1] = msg_object.sensorevent.values[0];
                     } else {
@@ -327,13 +326,12 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
                     user.save("subscriptions");
                     user.save("favorites");
                     alert("SLA for sensor '" + sensor.title + "' was changed. If you want to use it you need to accept new SLA. Thank you!");
-                    return true;
+                    return false;
                 }else{
                     console.log("No new SLA updates");
-                    return false;
+                    return true;
                 }
             }
-            return false;
         },
         unsubscribe: function (sensor, callback) {
             if (user.check_subscribe(sensor.id)) {
