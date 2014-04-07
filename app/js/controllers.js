@@ -132,42 +132,22 @@ var SensorModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
 
 //Modal for the Registry view in Settings Tab
 function RegistryModalCtrl($scope, $modal, $http, User) {
-    $scope.registries = User.registries;
-    var r = $scope.registries;
-    console.log(r);
-    console.log($http.get(r[0]).success(function(data){
-     return data;
-    }));
-    for (var i = 0; i < r.length; i++) {
-        $http.get(r[i]).success(function(data){
-            $scope.RegistryJSONtext = data;
-        })
-    }
     $scope.open = function () {
-
         var modalInstance = $modal.open({
             templateUrl: "partials/blocks/registry_details_modal.html",
             controller: RegistryModalInstanceCtrl,
             resolve: {
-                sensor: function () {
-                    return $scope.sensor;
+                registry: function () {
+                    return $scope.registry;
                 }
             }
         });
-        modalInstance.result.then(function () {
-        });
     };
 };
-var RegistryModalInstanceCtrl = function ($scope, $modalInstance, sensor, User) {
-    $scope.user = User;
-    $scope.sensor = sensor;
-
-    $scope.viewRegistry = function () {
-        User.viewRegistry($scope.sensor, function () {
-            console.log("User saw JSON file", $scope.sensor.id);
-        });
-        $modalInstance.close();
-    };
+var RegistryModalInstanceCtrl = function ($scope, $modalInstance, $http, registry) {
+    $http.get(registry).success(function(data){
+        $scope.RegistryJSONtext = JSON.stringify(data, null, 4);
+    })
 
     $scope.cancel = function () {
         $modalInstance.dismiss("cancel");
