@@ -34,6 +34,11 @@ sensdash_directives.directive('chart', function (Graph) {
         restrict: 'A',
         template: '',
         link: function ($scope, element) {
+            Highcharts.setOptions({
+                global: {
+                    timezoneOffset: -1 * 60
+                }
+            });
             $(element).highcharts($scope.sensor.template, function (chart) {
                 Graph.addChart($scope.sensor.id, chart)
             });

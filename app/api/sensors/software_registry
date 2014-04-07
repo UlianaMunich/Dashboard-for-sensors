@@ -15,7 +15,7 @@
         "provider_www": "http://dse.inf.tu-dresden.de",
         "location": "Dresden",
         "dev_details": "true",
-        "EPConfig": "docs/api2.pdf",
+        "EPConfig": "Config20.pdf",
         "SDK": "docs/downloads/SensDash_source.zip",
         "end_points": [
             {
@@ -45,7 +45,7 @@
         "provider_www": "www.google.com",
         "location": "Dresden",
         "dev_details": "true",
-        "EPConfig": "docs/api2.pdf",
+        "EPConfig": "Config21.pdf",
         "SDK": "docs/downloads/SensDash_source.zip",
         "end_points": [
             {

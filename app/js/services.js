@@ -62,7 +62,7 @@ sensdash_services.factory("Text", function () {
     };
     return text;
 });
-
+//XMPP methods
 sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", function ($location, $timeout, Graph, Text) {
     if (typeof Config === "undefined") {
         console.log("Config is missing or broken, redirecting to setup reference page");
@@ -118,7 +118,7 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
                     }
                 }
             } else {
-                console.log("Room is not empty, endpoint approved: " + full_room_name);
+                console.log("Room is not empty, end-point approved: " + full_room_name);
             }
         },
         subscribe: function (end_points) {
@@ -146,7 +146,7 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
                 $timeout(function(){
                     xmpp.check_room(end_point.name, end_points)
                 }, 2000);
-                console.log("Room joined: " + room);
+                console.log("Room is joined: " + room);
             } else {
                 console.log("End point protocol not supported");
             }
@@ -158,7 +158,7 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
             } else if (end_point.type == "muc") {
                 var room = end_point.name.replace("xmpp://",'');
                 xmpp.connection.muc.leave(room, jid.split("@")[0]);
-                console.log("Room left: " + room);
+                console.log("Room is left: " + room);
             }
             delete xmpp.endpoints_to_handler_map[end_point.name]
         },
@@ -216,11 +216,11 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
                     text = text.replace(/&quot;/g, '"');
                     var msg_object = JSON.parse(text);
                     var data_array = [];
-                    //console.log("JSON message parsed: ", msg_object);
                     //creating a new array from received map for Graph.update in format [timestamp, value], e.g. [1390225874697, 23]
                     if ('sensorevent' in msg_object) {
                         var time_UTC = msg_object.sensorevent.timestamp;
                         var time_UNIX = moment.parseZone(time_UTC).valueOf();
+                        console.log(time_UTC);
                         data_array[0] = time_UNIX;
                         data_array[1] = msg_object.sensorevent.values[0];
                     } else {
@@ -264,6 +264,7 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
     return xmpp;
 }]);
 
+//User preferences an methods
 sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootScope) {
     var user = {
         init: function () {
@@ -326,8 +327,10 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
                     user.save("subscriptions");
                     user.save("favorites");
                     alert("SLA for sensor '" + sensor.title + "' was changed. If you want to use it you need to accept new SLA. Thank you!");
+                    return true;
                 }else{
                     console.log("No new SLA updates");
+                    return false;
                 }
             }
             return false;

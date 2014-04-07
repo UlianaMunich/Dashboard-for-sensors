@@ -67,7 +67,7 @@ sensdash_controllers.controller("SettingsCtrl", ["$scope", "User", function ($sc
         if ($scope.user.registries.indexOf($scope.inputRegistryURL) == -1) {
             $scope.user.registries.push($scope.inputRegistryURL);
             $scope.user.save("registries");
-            console.log($scope.user.registries);
+            //console.log($scope.user.registries);
             $scope.inputRegistryURL = "";
         }
     };
