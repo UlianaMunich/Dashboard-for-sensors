@@ -63,18 +63,20 @@
                     <td>{{ registry }}</td>
                     <td>
                         <button class="btn btn-default" ng-controller="RegistryModalCtrl" ng-click="open()">View
-                        <button class="btn btn-default" ng-click="registryDelete(registry)">Delete</button>
+                            <button class="btn btn-default" ng-click="registryDelete(registry)">Delete</button>
                         </button>
                     </td>
                 </tr>
-                <tr><form ng-submit="registryAdd()">
-                    <td><input type="text" placeholder="Add new registry URL here" class="form-control"
-                               id="inputRegistryURL" ng-model="inputRegistryURL"
-                               required>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-default">Save</button>
-                    </td></form>
+                <tr>
+                    <form ng-submit="registryAdd()">
+                        <td><input type="text" placeholder="Add new registry URL here" class="form-control"
+                                   id="inputRegistryURL" ng-model="inputRegistryURL"
+                                   required>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-default">Save</button>
+                        </td>
+                    </form>
                 </tr>
 
             </table>

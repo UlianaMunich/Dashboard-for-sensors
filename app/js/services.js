@@ -319,7 +319,7 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
             var newArray = user.subscriptions[sensor.id];
             for (var i =0; i < newArray.length; i++) {
                 if (newArray[i].sla_last_update !== sla_current_timestamp) {
-                    console.log("Last SLA updates are differ from your SLA");
+                    //console.log("Last SLA updates are differ from your SLA");
                     delete user.subscriptions[sensor.id];
                     var array_index = user.favorites.indexOf(sensor.id);
                     delete user.favorites[array_index];
@@ -328,7 +328,7 @@ sensdash_services.factory("User", ["XMPP", "$rootScope", function (xmpp, $rootSc
                     alert("SLA for sensor '" + sensor.title + "' was changed. If you want to use it you need to accept new SLA. Thank you!");
                     return false;
                 }else{
-                    console.log("No new SLA updates");
+                    console.log("No SLA updates");
                     return true;
                 }
             }

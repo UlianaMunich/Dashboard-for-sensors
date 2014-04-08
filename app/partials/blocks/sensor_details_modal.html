@@ -12,8 +12,8 @@
         <p ng-show="sensor.responsible_team"><strong>Responsible Team: </strong>{{sensor.responsible_team}}</p>
         <p ng-show="sensor.administrator"><strong>Administrator: </strong>{{sensor.administrator}}</p>
         <p><strong>Reliability: </strong>Has {{sensor.end_points.length}} end-point(s)</p>
-        <p ng-show="sensor.EPConfig"><strong>End-Point configuration: </strong>{{sensor.EPConfig}}
-        <a href="#" >Download</a>
+        <p ng-show="sensor.EPConfig"><strong>End-Point configuration: </strong>
+        <a href="{{sensor.EPConfig}}" >Download</a>
     </div>
     <div class="div_sla" ng-show="sensor.sla">
         <p ng-hide="user.check_subscribe(sensor.id)">Please read and accept the SLA to subscribe</p>

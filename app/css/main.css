@@ -148,3 +148,6 @@ table.table.registry-list>tbody>tr>td {
     margin: 0 5px;
     float: left;
 }
+a.manageAccount{
+    float: right;
+}

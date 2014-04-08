@@ -40,10 +40,9 @@ sensdash_controllers.controller("FavoritesCtrl", ["$scope", "Registry", "User", 
         $scope.result_favorites = [];
         Registry.load().then(function (all_sensors) {
             for (var i = 0; i < all_sensors.length; i++) {
-                if (user_favorites.indexOf(all_sensors[i].id) != -1) {
+                if ((user_favorites.indexOf(all_sensors[i].id) != -1) && User.check_sla(all_sensors[i])) {
                     $scope.result_favorites.push(all_sensors[i]);
-                    User.check_sla(all_sensors[i]);
-                }
+                  }
             }
         });
         for (var key in User.subscriptions) {
@@ -146,9 +145,34 @@ function RegistryModalCtrl($scope, $modal, $http, User) {
 var RegistryModalInstanceCtrl = function ($scope, $modalInstance, $http, registry) {
     $http.get(registry).success(function(data){
         $scope.RegistryJSONtext = JSON.stringify(data, null, 4);
-    })
+    });
 
     $scope.cancel = function () {
         $modalInstance.dismiss("cancel");
+    };
+};
+
+//Modal for Log In with another XMPP server
+function LogInModalCtrl($scope, $modal) {
+    $scope.open = function () {
+        var modalInstance = $modal.open({
+            templateUrl: "partials/blocks/log_in_modal.html",
+            controller: LogInModalInstanceCtrl,
+            resolve: {
+                registry: function () {
+                    return $scope.registry;
+                }
+            }
+        });
+    };
+};
+var LogInModalInstanceCtrl = function ($scope, $modalInstance) {
+    $scope.logIn = function(){
+        console.log("modal submitted");
+        $modalInstance.close();
+    }
+    $scope.cancel = function () {
+        $modalInstance.dismiss("cancel");
+        $modalInstance.close();
     };
 };

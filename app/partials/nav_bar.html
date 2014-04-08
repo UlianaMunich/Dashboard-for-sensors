@@ -22,6 +22,8 @@
         </div>
         <button type="submit" class="btn btn-default" ng-disabled="in_progress">Sign in
         </button>
+        <br/>
+        <a class="manageAccount" ng-controller="LogInModalCtrl" ng-click="open()">Manage XMPP Account</a>
     </form>
     <div class="navbar-right status" ng-show="process">
         <span>{{process}}</span>
@@ -31,5 +33,6 @@
         <button class="btn btn-default" ng-click="disconnect()">Sign out
         </button>
     </div>
+
 </div>
 
