@@ -59,7 +59,7 @@ sensdash_controllers.controller("FavoritesCtrl", ["$scope", "Registry", "User", 
 
 sensdash_controllers.controller("SettingsCtrl", ["$scope", "User", function ($scope, User) {
     $scope.user = User;
-    $scope.preinstalled_registries = Config.REGISTRIES;
+    $scope.preinstalled_registries = Config.DEFAULT_REGISTRIES;
 
     $scope.registryAdd = function () {
         if ($scope.user.registries.indexOf($scope.inputRegistryURL) == -1) {
@@ -167,8 +167,10 @@ function LogInModalCtrl($scope, $modal) {
     };
 };
 var LogInModalInstanceCtrl = function ($scope, $modalInstance) {
+    $scope.bosh_server = Config.BOSH_SERVER;
     $scope.logIn = function(){
-        console.log("modal submitted");
+        Config.BOSH_SERVER = $scope.bosh_server;
+        console.log("modal submitted, " + Config.BOSH_SERVER);
         $modalInstance.close();
     }
     $scope.cancel = function () {

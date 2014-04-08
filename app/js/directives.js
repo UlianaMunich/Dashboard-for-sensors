@@ -68,6 +68,7 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
             $scope.user = {
                 'jid': $cookies.myID,
                 'pass': $cookies.myToken,
+                'bosh_server': $cookies.bosh_server ? $cookies.bosh_server: Config.DEFAULT_BOSH_SERVER,
                 'name': '',
                 'signedIn': false
             };
@@ -80,8 +81,8 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
                 $scope.process = "";
             };
             $scope.login = function () {
-                if ($scope.user.jid) {
-                    $scope.xmpp.connect($scope.user.jid, $scope.user.pass, update_connection);
+                if (($scope.user.jid) && ($scope.user.pass) && ($scope.user.bosh_server)) {
+                    $scope.xmpp.connect($scope.user.jid, $scope.user.pass, $scope.user.bosh_server, update_connection);
                     $scope.process = "connecting...";
                 }
             };
@@ -121,6 +122,7 @@ sensdash_directives.directive('navbar', function ($location, $timeout, XMPP, Use
                     $scope.in_progress = false;
                     $cookies.myID = $scope.user.jid;
                     $cookies.myToken = $scope.user.pass;
+                    $cookies.bosh_server = $scope.user.bosh_server;
                     User.reload();
                 }
             };
