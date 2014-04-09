@@ -13,7 +13,7 @@ sensdash_services.factory("Registry", ["$http", "$q", "User", function ($http, $
     var registry = {
         load: function () {
             var requests = [];
-            var all_registries = User.registries.concat(Config.REGISTRIES);
+            var all_registries = User.registries.concat(Config.DEFAULT_REGISTRIES);
             for (var i = 0; i < all_registries.length; i++) {
                 requests.push($http.get(all_registries[i]));
             }
@@ -69,8 +69,6 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
         $location.path("/reference");
     }
     var BOSH_SERVICE = Config.BOSH_SERVER;
-    var PUBSUB_SERVER = Config.PUBSUB_SERVER;
-    var PUBSUB_NODE = Config.PUBSUB_NODE;
     var xmpp = {
         connection: {connected: false},
         endpoints_to_handler_map: {},
@@ -83,8 +81,8 @@ sensdash_services.factory("XMPP", ["$location", "$timeout", "Graph", "Text", fun
          raw_output: function (data) {
              console.log("SENT: " + data);
          },
-        connect: function (jid, pwd, callback) {
-            xmpp.connection = new Strophe.Connection(BOSH_SERVICE);
+        connect: function (jid, pwd, bosh_server, callback) {
+            xmpp.connection = new Strophe.Connection(bosh_server);
             xmpp.connection.connect(jid, pwd, callback);
          //  xmpp.connection.rawInput = xmpp.raw_input;
         //   xmpp.connection.rawOutput = xmpp.raw_output;
