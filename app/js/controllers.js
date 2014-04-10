@@ -19,6 +19,7 @@ sensdash_controllers.controller("StreamCtrl", ["$scope", "Registry", "User", "XM
     function ($scope, Registry, User, XMPP) {
         $scope.sensors = [];
         $scope.subscrip = Object.keys(User.subscriptions);
+        $scope.process = "loading data...";
         Registry.load().then(function (registry_sensors) {
             for (var i = 0; i < registry_sensors.length; i++) {
                 if (User.check_subscribe(registry_sensors[i].id) && User.check_sla(registry_sensors[i])) {
